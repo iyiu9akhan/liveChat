@@ -8,15 +8,15 @@ function Registration() {
   return (
     <>
       <Container>
-        <div className="h-screen mx-auto flex justify-center  items-center gap-[69px]">
+        <div className="h-screen mx-auto flex justify-center md:items-center md:gap-[69px]">
           <div>
-            <h2 className="font-primary font-bold text-[35px] text-heading mb-13px">
+            <h2 className="font-primary font-bold mt-[50px] text-center md:text-left md:mt-0 text-[33px] md:text-[35px] text-heading mb-13px">
               Get started with easily register
             </h2>
-            <p className="font-primary text-[20px] text-black/50 mb-[40px]">
+            <p className="font-primary text-[20px] text-black/50 mb-[25px] md:mb-[40px] text-center md:text-left">
               Free register and you can enjoy it
             </p>
-            <div className="flex flex-col gap-[56px] mb-[51px]">
+            <div className="flex flex-col gap-[26px] mb-[33px] md:gap-[56px] md:mb-[51px] items-center md:items-start">
               <TextField
                 label="Email Address"
                 variant="outlined"
@@ -150,17 +150,17 @@ function Registration() {
                 }}
               />
             </div>
-            <div className="w-[368px] bg-primary rounded-full flex justify-center items-center h-[67px] cursor-pointer mb-[35px]">
+            <div className="w-[368px] bg-primary rounded-full flex justify-center items-center h-[67px] cursor-pointer mb-[35px] mx-auto md:mx-0">
               <div className="bg-[#5B36F5]/25 rounded-[86px] blur-[13px] h-[28px] w-[71px] relative"></div>
               <button className=" text-white font-primary capitalize text-[20px] absolute">
                 sign up
               </button>
             </div>
-            <p className="text-center w-[368px] font-regular text-[13px] text-secondary">
+            <p className="text-center md:w-[368px] font-regular text-[13px] text-secondary ">
               Already have an account ? <span className="font-bold text-[#EA6C00]"><a href="#">Sign In</a></span>
             </p>
           </div>
-          <div>
+          <div className="hidden md:block">
             <img
               src={regImg}
               alt="#regImg"
