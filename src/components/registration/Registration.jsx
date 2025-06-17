@@ -8,8 +8,8 @@ function Registration() {
   return (
     <>
       <Container>
-        <div className="h-screen mx-auto flex justify-center md:items-center md:gap-[69px]">
-          <div>
+        <div className="h-screen mx-auto flex justify-between md:items-center md:gap-[69px]">
+          <div className="md:ml-[190px]">
             <h2 className="font-primary font-bold mt-[50px] text-center md:text-left md:mt-0 text-[33px] md:text-[35px] text-heading mb-13px">
               Get started with easily register
             </h2>
