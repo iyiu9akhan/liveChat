@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import regImg from "../../assets/registration/registration.png";
 import Container from "../Layout/Container";
-import { useFormControl } from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 
 function Registration() {
+  const [email, setEmail] = useState("");
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleSignUp = () => {
+    if (!email) {
+      console.log("Enter Your Email");
+    } else {
+      console.log(email);
+    }
+  };
   return (
     <>
       <Container>
@@ -18,9 +28,10 @@ function Registration() {
             </p>
             <div className="flex flex-col gap-[26px] mb-[33px] md:gap-[56px] md:mb-[51px] items-center md:items-start">
               <TextField
+                onChange={handleEmail}
                 label="Email Address"
                 variant="outlined"
-                type="text"
+                type="email"
                 sx={{
                   width: "368px",
                   "& .MuiOutlinedInput-root": {
@@ -152,12 +163,18 @@ function Registration() {
             </div>
             <div className="w-[368px] bg-primary rounded-full flex justify-center items-center h-[67px] cursor-pointer mb-[35px] mx-auto md:mx-0">
               <div className="bg-[#5B36F5]/25 rounded-[86px] blur-[13px] h-[28px] w-[71px] relative"></div>
-              <button className=" text-white font-primary capitalize text-[20px] absolute">
+              <button
+                onClick={handleSignUp}
+                className=" text-white font-primary capitalize text-[20px] absolute"
+              >
                 sign up
               </button>
             </div>
             <p className="text-center md:w-[368px] font-regular text-[13px] text-secondary ">
-              Already have an account ? <span className="font-bold text-[#EA6C00]"><a href="#">Sign In</a></span>
+              Already have an account ?{" "}
+              <span className="font-bold text-[#EA6C00]">
+                <a href="#">Sign In</a>
+              </span>
             </p>
           </div>
           <div className="hidden md:block">
