@@ -5,14 +5,39 @@ import TextField from "@mui/material/TextField";
 
 function Registration() {
   const [email, setEmail] = useState("");
+  const [emailErr, setEmailErr] = useState("")
+
+  const [name, setName] = useState("");
+  const [pass, setPass] = useState("");
+
   const handleEmail = (e) => {
     setEmail(e.target.value);
+    setEmailErr("")
   };
+
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handlePass = (e) => {
+    setPass(e.target.value);
+  };
+
   const handleSignUp = () => {
     if (!email) {
-      console.log("Enter Your Email");
+     setEmailErr("Enter Your Email");
     } else {
       console.log(email);
+    }
+    if (!name) {
+      console.log("Enter Your Name");
+    } else {
+      console.log(name);
+    }
+     if (!pass) {
+      console.log("Enter Your Password");
+    } else {
+      console.log(pass);
     }
   };
   return (
@@ -72,7 +97,9 @@ function Registration() {
                   },
                 }}
               />{" "}
+              <p>{emailErr}</p>
               <TextField
+                onChange={handleName}
                 label="Full Name"
                 variant="outlined"
                 type="text"
@@ -117,9 +144,10 @@ function Registration() {
                 }}
               />{" "}
               <TextField
+              onChange={handlePass}
                 label="Password"
                 variant="outlined"
-                type="text"
+                type="password"
                 sx={{
                   width: "368px",
                   "& .MuiOutlinedInput-root": {
@@ -161,12 +189,12 @@ function Registration() {
                 }}
               />
             </div>
-            <div className="w-[368px] bg-primary rounded-full flex justify-center items-center h-[67px] cursor-pointer mb-[35px] mx-auto md:mx-0">
+            <div
+              onClick={handleSignUp}
+              className="w-[368px] bg-primary rounded-full flex justify-center items-center h-[67px] cursor-pointer mb-[35px] mx-auto md:mx-0"
+            >
               <div className="bg-[#5B36F5]/25 rounded-[86px] blur-[13px] h-[28px] w-[71px] relative"></div>
-              <button
-                onClick={handleSignUp}
-                className=" text-white font-primary capitalize text-[20px] absolute"
-              >
+              <button className=" text-white font-primary capitalize text-[20px] absolute cursor-pointer">
                 sign up
               </button>
             </div>
