@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import regImg from "../../assets/registration/registration.png";
 import Container from "../Layout/Container";
 import TextField from "@mui/material/TextField";
+import { IoEye } from "react-icons/io5";
+import { IoEyeOff } from "react-icons/io5";
 
 function Registration() {
   const [email, setEmail] = useState("");
@@ -33,6 +35,7 @@ function Registration() {
       setShakePass(true);
     }, 10);
   };
+  const [visible, setVisible] = useState(true);
 
   const handleAnimationEnd = () => {
     setShakeEmail(false);
@@ -189,57 +192,71 @@ function Registration() {
                 }}
               />
               {/* {nameErr && <p>{nameErr}</p>} */}
-              <TextField
-                className={shakePass ? "shake" : ""}
-                onAnimationEnd={handleAnimationEnd}
-                onChange={handlePass}
-                label="Password"
-                variant="outlined"
-                type="password"
-                error={!!passErr}
-                sx={{
-                  width: "368px",
-                  "& .MuiOutlinedInput-root": {
-                    height: "81px",
-                    borderRadius: "8.6px",
-                    "& fieldset": {
-                      borderColor: passErr ? "#FF0000" : "#11175D4D",
-                      borderWidth: "2px",
-                      opacity: 0.8,
+              <div className={`relative ${shakePass ? "shake" : ""}`}>
+                <TextField
+                  onAnimationEnd={handleAnimationEnd}
+                  onChange={handlePass}
+                  label="Password"
+                  variant="outlined"
+                  type={visible ? "password" : "text"}
+                  error={!!passErr}
+                  sx={{
+                    width: "368px",
+                    "& .MuiOutlinedInput-root": {
+                      height: "81px",
+                      borderRadius: "8.6px",
+                      "& fieldset": {
+                        borderColor: passErr ? "#FF0000" : "#11175D4D",
+                        borderWidth: "2px",
+                        opacity: 0.8,
+                      },
+                      "&:hover fieldset": {
+                        borderColor: passErr ? "#FF0000" : "#11175D4D",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: passErr ? "#FF0000" : "#11175D4D",
+                      },
+                      "& input::placeholder": {
+                        color: passErr ? "#FF0000" : "#999",
+                      },
+                      "& input": {
+                        paddingLeft: "20px",
+                        paddingTop: "12px",
+                        fontSize: "20px",
+                        color: "#11175D",
+                      },
                     },
-                    "&:hover fieldset": {
-                      borderColor: passErr ? "#FF0000" : "#11175D4D",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: passErr ? "#FF0000" : "#11175D4D",
-                    },
-                    "& input::placeholder": {
-                      color: passErr ? "#FF0000" : "#999",
-                    },
-                    "& input": {
-                      paddingLeft: "20px",
-                      paddingTop: "12px",
+                    "& label": {
                       fontSize: "20px",
-                      color: "#11175D",
+                      top: "10px",
+                      left: "10px",
+                      color: passErr ? "#FF0000" : "#11175D",
                     },
-                  },
-                  "& label": {
-                    fontSize: "20px",
-                    top: "10px",
-                    left: "10px",
-                    color: passErr ? "#FF0000" : "#11175D",
-                  },
-                  "& label.MuiInputLabel-shrink": {
-                    top: "1px",
-                    left: "1px",
-                    fontSize: "16px",
-                    color: passErr ? "#FF0000" : "#11175D",
-                    backgroundColor: "#fff",
-                    padding: "0 12px",
-                    letterSpacing: "3px",
-                  },
-                }}
-              />
+                    "& label.MuiInputLabel-shrink": {
+                      top: "1px",
+                      left: "1px",
+                      fontSize: "16px",
+                      color: passErr ? "#FF0000" : "#11175D",
+                      backgroundColor: "#fff",
+                      padding: "0 12px",
+                      letterSpacing: "3px",
+                    },
+                  }}
+                />
+                {visible ? (
+                  <IoEyeOff
+                    onClick={() => setVisible(!visible)}
+                    size={20}
+                    className="absolute right-[5%] top-[50%] -translate-y-1/2 cursor-pointer"
+                  />
+                ) : (
+                  <IoEye
+                    onClick={() => setVisible(!visible)}
+                    size={20}
+                    className="absolute right-[5%] top-[50%] -translate-y-1/2 cursor-pointer"
+                  />
+                )}
+              </div>
               {/* {passErr && <p>{passErr}</p>} */}
             </div>
             <div
