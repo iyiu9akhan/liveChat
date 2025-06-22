@@ -58,19 +58,19 @@ function Registration() {
 
   const handleSignUp = () => {
     if (!email) {
-      setEmailErr("Enter Your Email");
+      setEmailErr(true);
       triggerShakeEmail();
     } else {
       console.log(email);
     }
     if (!name) {
-      setNameErr("Enter Your Name");
+      setNameErr(true);
       triggerShakeName();
     } else {
       console.log(name);
     }
     if (!pass) {
-      setPassErr("Enter Your Password");
+      setPassErr(true);
       triggerShakePass()
     } else {
       console.log(pass);
@@ -144,7 +144,7 @@ function Registration() {
                 className={shakeName ? "shake" : ""}
                 onAnimationEnd={handleAnimationEnd}
                 onChange={handleName}
-                label="Your Name"
+                label="Full Name"
                 variant="outlined"
                 type="email"
                 error={!!nameErr}
@@ -196,7 +196,7 @@ function Registration() {
               className={shakePass ? "shake" : ""}
                 onAnimationEnd={handleAnimationEnd}
                 onChange={handlePass}
-                label="Your Password"
+                label="Password"
                 variant="outlined"
                 type="email"
                 error={!!passErr}
