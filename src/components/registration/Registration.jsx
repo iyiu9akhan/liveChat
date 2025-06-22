@@ -13,7 +13,7 @@ function Registration() {
       setShakeEmail(true);
     }, 10);
   };
-  
+
   const [name, setName] = useState("");
   const [nameErr, setNameErr] = useState("");
   const [shakeName, setShakeName] = useState(false);
@@ -23,11 +23,10 @@ function Registration() {
       setShakeName(true);
     }, 10);
   };
-  
-  
+
   const [pass, setPass] = useState("");
   const [passErr, setPassErr] = useState("");
-   const [shakePass, setShakePass] = useState(false);
+  const [shakePass, setShakePass] = useState(false);
   const triggerShakePass = () => {
     setShakePass(false);
     setTimeout(() => {
@@ -54,8 +53,6 @@ function Registration() {
     setPassErr("");
   };
 
-  
-
   const handleSignUp = () => {
     if (!email) {
       setEmailErr(true);
@@ -71,7 +68,7 @@ function Registration() {
     }
     if (!pass) {
       setPassErr(true);
-      triggerShakePass()
+      triggerShakePass();
     } else {
       console.log(pass);
     }
@@ -146,7 +143,7 @@ function Registration() {
                 onChange={handleName}
                 label="Full Name"
                 variant="outlined"
-                type="email"
+                type="text"
                 error={!!nameErr}
                 sx={{
                   width: "368px",
@@ -193,12 +190,12 @@ function Registration() {
               />
               {/* {nameErr && <p>{nameErr}</p>} */}
               <TextField
-              className={shakePass ? "shake" : ""}
+                className={shakePass ? "shake" : ""}
                 onAnimationEnd={handleAnimationEnd}
                 onChange={handlePass}
                 label="Password"
                 variant="outlined"
-                type="email"
+                type="password"
                 error={!!passErr}
                 sx={{
                   width: "368px",
