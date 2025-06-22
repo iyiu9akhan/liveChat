@@ -5,37 +5,73 @@ import TextField from "@mui/material/TextField";
 
 function Registration() {
   const [email, setEmail] = useState("");
-  const [emailErr, setEmailErr] = useState("")
-
+  const [emailErr, setEmailErr] = useState("");
+  const [shakeEmail, setShakeEmail] = useState(false);
+  const triggerShakeEmail = () => {
+    setShakeEmail(false);
+    setTimeout(() => {
+      setShakeEmail(true);
+    }, 10);
+  };
+  
   const [name, setName] = useState("");
+  const [nameErr, setNameErr] = useState("");
+  const [shakeName, setShakeName] = useState(false);
+  const triggerShakeName = () => {
+    setShakeName(false);
+    setTimeout(() => {
+      setShakeName(true);
+    }, 10);
+  };
+  
+  
   const [pass, setPass] = useState("");
+  const [passErr, setPassErr] = useState("");
+   const [shakePass, setShakePass] = useState(false);
+  const triggerShakePass = () => {
+    setShakePass(false);
+    setTimeout(() => {
+      setShakePass(true);
+    }, 10);
+  };
+
+  const handleAnimationEnd = () => {
+    setShakeEmail(false);
+  };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    setEmailErr("")
+    setEmailErr("");
   };
 
   const handleName = (e) => {
     setName(e.target.value);
+    setNameErr("");
   };
 
   const handlePass = (e) => {
     setPass(e.target.value);
+    setPassErr("");
   };
+
+  
 
   const handleSignUp = () => {
     if (!email) {
-     setEmailErr("Enter Your Email");
+      setEmailErr("Enter Your Email");
+      triggerShakeEmail();
     } else {
       console.log(email);
     }
     if (!name) {
-      console.log("Enter Your Name");
+      setNameErr("Enter Your Name");
+      triggerShakeName();
     } else {
       console.log(name);
     }
-     if (!pass) {
-      console.log("Enter Your Password");
+    if (!pass) {
+      setPassErr("Enter Your Password");
+      triggerShakePass()
     } else {
       console.log(pass);
     }
@@ -51,143 +87,163 @@ function Registration() {
             <p className="font-primary text-[20px] text-black/50 mb-[25px] md:mb-[40px] text-center md:text-left">
               Free register and you can enjoy it
             </p>
-            <div className="flex flex-col gap-[26px] mb-[33px] md:gap-[56px] md:mb-[51px] items-center md:items-start">
+            <div className="flex flex-col gap-[20px] md:gap-[56px] mb-[33px]  md:mb-[51px] items-center md:items-start">
               <TextField
+                className={shakeEmail ? "shake" : ""}
+                onAnimationEnd={handleAnimationEnd}
                 onChange={handleEmail}
                 label="Email Address"
                 variant="outlined"
                 type="email"
+                error={!!emailErr}
                 sx={{
                   width: "368px",
                   "& .MuiOutlinedInput-root": {
                     height: "81px",
                     borderRadius: "8.6px",
                     "& fieldset": {
-                      borderColor: "#11175D",
-                      opacity: 0.3,
+                      borderColor: emailErr ? "#FF0000" : "#11175D4D",
                       borderWidth: "2px",
+                      opacity: 0.8,
                     },
                     "&:hover fieldset": {
-                      borderColor: "#11175D",
+                      borderColor: emailErr ? "#FF0000" : "#11175D4D",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#11175D",
+                      borderColor: emailErr ? "#FF0000" : "#11175D4D",
+                    },
+                    "& input::placeholder": {
+                      color: emailErr ? "#FF0000" : "#999",
                     },
                     "& input": {
                       paddingLeft: "20px",
                       paddingTop: "12px",
                       fontSize: "20px",
+                      color: "#11175D",
                     },
                   },
                   "& label": {
                     fontSize: "20px",
                     top: "10px",
                     left: "10px",
-                    color: "#11175D",
-                    backgroundColor: "transparent",
+                    color: emailErr ? "#FF0000" : "#11175D",
                   },
                   "& label.MuiInputLabel-shrink": {
                     top: "1px",
                     left: "1px",
                     fontSize: "16px",
-                    color: "#11175D",
-                    backgroundColor: "#fff",
-                    padding: "0 12px",
-                    letterSpacing: "3px",
-                  },
-                }}
-              />{" "}
-              <p>{emailErr}</p>
-              <TextField
-                onChange={handleName}
-                label="Full Name"
-                variant="outlined"
-                type="text"
-                sx={{
-                  width: "368px",
-                  "& .MuiOutlinedInput-root": {
-                    height: "81px",
-                    borderRadius: "8.6px",
-                    "& fieldset": {
-                      borderColor: "#11175D",
-                      opacity: 0.3,
-                      borderWidth: "2px",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#11175D",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#11175D",
-                    },
-                    "& input": {
-                      paddingLeft: "20px",
-                      paddingTop: "12px",
-                      fontSize: "20px",
-                    },
-                  },
-                  "& label": {
-                    fontSize: "20px",
-                    top: "10px",
-                    left: "10px",
-                    color: "#11175D",
-                    backgroundColor: "transparent",
-                  },
-                  "& label.MuiInputLabel-shrink": {
-                    top: "1px",
-                    left: "1px",
-                    fontSize: "16px",
-                    color: "#11175D",
-                    backgroundColor: "#fff",
-                    padding: "0 12px",
-                    letterSpacing: "3px",
-                  },
-                }}
-              />{" "}
-              <TextField
-              onChange={handlePass}
-                label="Password"
-                variant="outlined"
-                type="password"
-                sx={{
-                  width: "368px",
-                  "& .MuiOutlinedInput-root": {
-                    height: "81px",
-                    borderRadius: "8.6px",
-                    "& fieldset": {
-                      borderColor: "#11175D",
-                      opacity: 0.3,
-                      borderWidth: "2px",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#11175D",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#11175D",
-                    },
-                    "& input": {
-                      paddingLeft: "20px",
-                      paddingTop: "12px",
-                      fontSize: "20px",
-                    },
-                  },
-                  "& label": {
-                    fontSize: "20px",
-                    top: "10px",
-                    left: "10px",
-                    color: "#11175D",
-                    backgroundColor: "transparent",
-                  },
-                  "& label.MuiInputLabel-shrink": {
-                    top: "1px",
-                    left: "1px",
-                    fontSize: "16px",
-                    color: "#11175D",
+                    color: emailErr ? "#FF0000" : "#11175D",
                     backgroundColor: "#fff",
                     padding: "0 12px",
                     letterSpacing: "3px",
                   },
                 }}
               />
+              {/* {emailErr && <p>{emailErr}</p>} */}
+              <TextField
+                className={shakeName ? "shake" : ""}
+                onAnimationEnd={handleAnimationEnd}
+                onChange={handleName}
+                label="Your Name"
+                variant="outlined"
+                type="email"
+                error={!!nameErr}
+                sx={{
+                  width: "368px",
+                  "& .MuiOutlinedInput-root": {
+                    height: "81px",
+                    borderRadius: "8.6px",
+                    "& fieldset": {
+                      borderColor: nameErr ? "#FF0000" : "#11175D4D",
+                      borderWidth: "2px",
+                      opacity: 0.8,
+                    },
+                    "&:hover fieldset": {
+                      borderColor: nameErr ? "#FF0000" : "#11175D4D",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: nameErr ? "#FF0000" : "#11175D4D",
+                    },
+                    "& input::placeholder": {
+                      color: nameErr ? "#FF0000" : "#999",
+                    },
+                    "& input": {
+                      paddingLeft: "20px",
+                      paddingTop: "12px",
+                      fontSize: "20px",
+                      color: "#11175D",
+                    },
+                  },
+                  "& label": {
+                    fontSize: "20px",
+                    top: "10px",
+                    left: "10px",
+                    color: nameErr ? "#FF0000" : "#11175D",
+                  },
+                  "& label.MuiInputLabel-shrink": {
+                    top: "1px",
+                    left: "1px",
+                    fontSize: "16px",
+                    color: nameErr ? "#FF0000" : "#11175D",
+                    backgroundColor: "#fff",
+                    padding: "0 12px",
+                    letterSpacing: "3px",
+                  },
+                }}
+              />
+              {/* {nameErr && <p>{nameErr}</p>} */}
+              <TextField
+              className={shakePass ? "shake" : ""}
+                onAnimationEnd={handleAnimationEnd}
+                onChange={handlePass}
+                label="Your Password"
+                variant="outlined"
+                type="email"
+                error={!!passErr}
+                sx={{
+                  width: "368px",
+                  "& .MuiOutlinedInput-root": {
+                    height: "81px",
+                    borderRadius: "8.6px",
+                    "& fieldset": {
+                      borderColor: passErr ? "#FF0000" : "#11175D4D",
+                      borderWidth: "2px",
+                      opacity: 0.8,
+                    },
+                    "&:hover fieldset": {
+                      borderColor: passErr ? "#FF0000" : "#11175D4D",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: passErr ? "#FF0000" : "#11175D4D",
+                    },
+                    "& input::placeholder": {
+                      color: passErr ? "#FF0000" : "#999",
+                    },
+                    "& input": {
+                      paddingLeft: "20px",
+                      paddingTop: "12px",
+                      fontSize: "20px",
+                      color: "#11175D",
+                    },
+                  },
+                  "& label": {
+                    fontSize: "20px",
+                    top: "10px",
+                    left: "10px",
+                    color: passErr ? "#FF0000" : "#11175D",
+                  },
+                  "& label.MuiInputLabel-shrink": {
+                    top: "1px",
+                    left: "1px",
+                    fontSize: "16px",
+                    color: passErr ? "#FF0000" : "#11175D",
+                    backgroundColor: "#fff",
+                    padding: "0 12px",
+                    letterSpacing: "3px",
+                  },
+                }}
+              />
+              {/* {passErr && <p>{passErr}</p>} */}
             </div>
             <div
               onClick={handleSignUp}
