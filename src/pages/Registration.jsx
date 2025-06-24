@@ -5,7 +5,8 @@ import TextField from "@mui/material/TextField";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import { Link, useNavigate } from "react-router";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
 
 function Registration() {
   const auth = getAuth();
@@ -82,8 +83,11 @@ function Registration() {
     if (email && name && pass) {
       createUserWithEmailAndPassword(auth, email, pass)
         .then(() => {
-          console.log("registration done");
-          navigate("/login")
+          sendEmailVerification(auth.currentUser)
+          toast.success("registration done");
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
           setEmail("");
           setName("");
           setPass("");
@@ -103,6 +107,18 @@ function Registration() {
   return (
     <>
       <Container>
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <div className="h-screen mx-auto flex justify-between md:items-center md:gap-[69px]">
           <div className="md:ml-[190px]">
             <h2 className="font-primary font-bold mt-[50px] text-center md:text-left md:mt-0 text-[33px] md:text-[35px] text-heading">
