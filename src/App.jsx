@@ -8,8 +8,11 @@ const router = createBrowserRouter(
       element: <Registration />,
     },
   ],
-  { base: "/liveChat/" }
+  { 
+    basename: "/liveChat/" // Correct property name is 'basename'
+  }
 );
+
 function App() {
   return (
     <>
