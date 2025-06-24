@@ -97,14 +97,14 @@ function Registration() {
                       borderWidth: "2px",
                       opacity: 0.8,
                     },
-                      "&:after": {
-                        borderBottom: `2px solid ${
-                          passErr ? "#FF0000" : "#11175D4D"
-                        }`,
-                      },
-                      "&:hover:before": {
-                        borderBottomColor: passErr ? "#FF0000" : "#11175D4D",
-                      },
+                    "&:after": {
+                      borderBottom: `2px solid ${
+                        passErr ? "#FF0000" : "#11175D4D"
+                      }`,
+                    },
+                    "&:hover:before": {
+                      borderBottomColor: passErr ? "#FF0000" : "#11175D4D",
+                    },
                     "&:hover fieldset": {
                       borderColor: emailErr ? "#FF0000" : "#11175D4D",
                     },
@@ -145,15 +145,15 @@ function Registration() {
                   type={visible ? "password" : "text"}
                   error={!!passErr}
                   sx={{
-                  width: "368px",
-                  "& .MuiInput-root": {
-                    height: "81px",
-                    borderRadius: "8.6px",
-                    "& fieldset": {
-                      borderColor: emailErr ? "#FF0000" : "#11175D4D",
-                      borderWidth: "2px",
-                      opacity: 0.8,
-                    },
+                    width: "368px",
+                    "& .MuiInput-root": {
+                      height: "81px",
+                      borderRadius: "8.6px",
+                      "& fieldset": {
+                        borderColor: emailErr ? "#FF0000" : "#11175D4D",
+                        borderWidth: "2px",
+                        opacity: 0.8,
+                      },
                       "&:after": {
                         borderBottom: `2px solid ${
                           passErr ? "#FF0000" : "#11175D4D"
@@ -162,35 +162,35 @@ function Registration() {
                       "&:hover:before": {
                         borderBottomColor: passErr ? "#FF0000" : "#11175D4D",
                       },
-                    "&:hover fieldset": {
-                      borderColor: emailErr ? "#FF0000" : "#11175D4D",
+                      "&:hover fieldset": {
+                        borderColor: emailErr ? "#FF0000" : "#11175D4D",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: emailErr ? "#FF0000" : "#11175D4D",
+                      },
+                      "& input::placeholder": {
+                        color: emailErr ? "#FF0000" : "#999",
+                      },
+                      "& input": {
+                        paddingTop: "30px",
+                        fontSize: "20px",
+                        color: "#11175D",
+                      },
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: emailErr ? "#FF0000" : "#11175D4D",
-                    },
-                    "& input::placeholder": {
-                      color: emailErr ? "#FF0000" : "#999",
-                    },
-                    "& input": {
-                      paddingTop: "30px",
+                    "& label": {
                       fontSize: "20px",
-                      color: "#11175D",
+                      top: "30px",
+                      left: "2px",
+                      color: emailErr ? "#FF0000" : "#11175D",
                     },
-                  },
-                  "& label": {
-                    fontSize: "20px",
-                    top: "30px",
-                    left: "2px",
-                    color: emailErr ? "#FF0000" : "#11175D",
-                  },
-                  "& label.MuiInputLabel-shrink": {
-                    top: "35px",
-                    fontSize: "16px",
-                    color: emailErr ? "#FF0000" : "#11175D",
-                    backgroundColor: "#fff",
-                    letterSpacing: "3px",
-                  },
-                }}
+                    "& label.MuiInputLabel-shrink": {
+                      top: "35px",
+                      fontSize: "16px",
+                      color: emailErr ? "#FF0000" : "#11175D",
+                      backgroundColor: "#fff",
+                      letterSpacing: "3px",
+                    },
+                  }}
                 />
                 {visible ? (
                   <IoEyeOff
