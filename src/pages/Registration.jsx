@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import regImg from "../../assets/registration/registration.png";
-import Container from "../Layout/Container";
+import regImg from "../assets/registration/registration.png"
+import Container from "../components/Layout/Container"
 import TextField from "@mui/material/TextField";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
