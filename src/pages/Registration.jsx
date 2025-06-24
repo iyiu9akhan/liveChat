@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import regImg from "../assets/registration/registration.png"
-import Container from "../components/Layout/Container"
+import regImg from "../assets/registration/registration.png";
+import Container from "../components/Layout/Container";
 import TextField from "@mui/material/TextField";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import { Link } from "react-router";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function Registration() {
+  const auth = getAuth();
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [shakeEmail, setShakeEmail] = useState(false);
@@ -58,22 +61,41 @@ function Registration() {
 
   const handleSignUp = () => {
     if (!email) {
-      setEmailErr(true);
+      setEmailErr("Email is required");
       triggerShakeEmail();
     } else {
       console.log(email);
     }
     if (!name) {
-      setNameErr(true);
       triggerShakeName();
+      setNameErr("Name is required");
     } else {
       console.log(name);
     }
     if (!pass) {
-      setPassErr(true);
       triggerShakePass();
+      setPassErr("Password is required");
     } else {
       console.log(pass);
+    }
+    if (email && name && pass) {
+      createUserWithEmailAndPassword(auth, email, pass)
+        .then(() => {
+          console.log("registration done");
+          setEmail("");
+          setName("");
+          setPass("");
+        })
+        .catch((error) => {
+          console.error("Registration error:", error.message);
+          if (error.message.includes("email-already-in-use")) {
+            setEmailErr("This email is already registered");
+          } else if (error.message.includes("invalid-email")) {
+            setEmailErr("Please enter a valid email address");
+          } else if (error.message.includes("weak-password")) {
+            setPassErr("Password should be at least 6 characters");
+          }
+        });
     }
   };
   return (
@@ -81,7 +103,7 @@ function Registration() {
       <Container>
         <div className="h-screen mx-auto flex justify-between md:items-center md:gap-[69px]">
           <div className="md:ml-[190px]">
-            <h2 className="font-primary font-bold mt-[50px] text-center md:text-left md:mt-0 text-[33px] md:text-[35px] text-heading mb-13px">
+            <h2 className="font-primary font-bold mt-[50px] text-center md:text-left md:mt-0 text-[33px] md:text-[35px] text-heading">
               Get started with easily register
             </h2>
             <p className="font-primary text-[20px] text-black/50 mb-[25px] md:mb-[40px] text-center md:text-left">
@@ -89,12 +111,14 @@ function Registration() {
             </p>
             <div className="flex flex-col gap-[20px] md:gap-[56px] mb-[33px]  md:mb-[51px] items-center md:items-start">
               <TextField
+                value={email}
                 className={shakeEmail ? "shake" : ""}
                 onAnimationEnd={handleAnimationEnd}
                 onChange={handleEmail}
                 label="Email Address"
                 variant="outlined"
                 type="email"
+                helperText={emailErr}
                 error={!!emailErr}
                 sx={{
                   width: "368px",
@@ -139,8 +163,8 @@ function Registration() {
                   },
                 }}
               />
-              {/* {emailErr && <p>{emailErr}</p>} */}
               <TextField
+                value={name}
                 className={shakeName ? "shake" : ""}
                 onAnimationEnd={handleAnimationEnd}
                 onChange={handleName}
@@ -148,6 +172,7 @@ function Registration() {
                 variant="outlined"
                 type="text"
                 error={!!nameErr}
+                helperText={nameErr}
                 sx={{
                   width: "368px",
                   "& .MuiOutlinedInput-root": {
@@ -191,15 +216,16 @@ function Registration() {
                   },
                 }}
               />
-              {/* {nameErr && <p>{nameErr}</p>} */}
               <div className={`relative ${shakePass ? "shake" : ""}`}>
                 <TextField
+                  value={pass}
                   onAnimationEnd={handleAnimationEnd}
                   onChange={handlePass}
                   label="Password"
                   variant="outlined"
                   type={visible ? "password" : "text"}
                   error={!!passErr}
+                  helperText={passErr}
                   sx={{
                     width: "368px",
                     "& .MuiOutlinedInput-root": {
@@ -221,9 +247,10 @@ function Registration() {
                       },
                       "& input": {
                         paddingLeft: "20px",
-                        paddingTop: "12px",
+                        paddingTop: "18px",
                         fontSize: "20px",
                         color: "#11175D",
+                        paddingRight: "50px",
                       },
                     },
                     "& label": {
@@ -247,17 +274,16 @@ function Registration() {
                   <IoEyeOff
                     onClick={() => setVisible(!visible)}
                     size={20}
-                    className="absolute right-[5%] top-[50%] -translate-y-1/2 cursor-pointer"
+                    className="absolute right-[5%] top-[45px] -translate-y-1/2 cursor-pointer"
                   />
                 ) : (
                   <IoEye
                     onClick={() => setVisible(!visible)}
                     size={20}
-                    className="absolute right-[5%] top-[50%] -translate-y-1/2 cursor-pointer"
+                    className="absolute right-[5%] top-[45px] -translate-y-1/2 cursor-pointer"
                   />
                 )}
               </div>
-              {/* {passErr && <p>{passErr}</p>} */}
             </div>
             <div
               onClick={handleSignUp}
@@ -271,7 +297,7 @@ function Registration() {
             <p className="text-center md:w-[368px] font-regular text-[13px] text-secondary ">
               Already have an account ?{" "}
               <span className="font-bold text-[#EA6C00]">
-                <a href="#">Sign up</a>
+                <Link to="/login">Sign In</Link>
               </span>
             </p>
           </div>
