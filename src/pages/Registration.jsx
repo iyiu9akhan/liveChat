@@ -4,11 +4,12 @@ import Container from "../components/Layout/Container";
 import TextField from "@mui/material/TextField";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function Registration() {
   const auth = getAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [shakeEmail, setShakeEmail] = useState(false);
@@ -82,6 +83,7 @@ function Registration() {
       createUserWithEmailAndPassword(auth, email, pass)
         .then(() => {
           console.log("registration done");
+          navigate("/login")
           setEmail("");
           setName("");
           setPass("");
