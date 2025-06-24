@@ -5,10 +5,17 @@ import TextField from "@mui/material/TextField";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import { Link, useNavigate } from "react-router";
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { HashLoader } from "react-spinners";
+import { css } from "@emotion/react";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 
 function Registration() {
+  const [loading, setLoading] = useState(false);
   const auth = getAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -81,9 +88,10 @@ function Registration() {
       console.log(pass);
     }
     if (email && name && pass) {
+      setLoading(true);
       createUserWithEmailAndPassword(auth, email, pass)
         .then(() => {
-          sendEmailVerification(auth.currentUser)
+          sendEmailVerification(auth.currentUser);
           toast.success("registration done");
           setTimeout(() => {
             navigate("/login");
@@ -101,6 +109,9 @@ function Registration() {
           } else if (error.message.includes("weak-password")) {
             setPassErr("Password should be at least 6 characters");
           }
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   };
@@ -304,13 +315,21 @@ function Registration() {
               </div>
             </div>
             <div
-              onClick={handleSignUp}
+              onClick={!loading ? handleSignUp : undefined}
               className="w-[368px] bg-primary rounded-full flex justify-center items-center h-[67px] cursor-pointer mb-[35px] mx-auto md:mx-0"
             >
-              <div className="bg-[#5B36F5]/25 rounded-[86px] blur-[13px] h-[28px] w-[71px] relative"></div>
-              <button className=" text-white font-primary capitalize text-[20px] absolute cursor-pointer">
-                sign up
-              </button>
+              {loading ? (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <HashLoader color="#000" size={50} speedMultiplier={1.5} />
+                </div>
+              ) : (
+                <>
+                  <div className="bg-[#5B36F5]/25 rounded-[86px] blur-[13px] h-[28px] w-[71px] relative"></div>
+                  <button className="text-white font-primary capitalize text-[20px] absolute cursor-pointer">
+                    Sign Up
+                  </button>
+                </>
+              )}
             </div>
             <p className="text-center md:w-[368px] font-regular text-[13px] text-secondary ">
               Already have an account ?{" "}
