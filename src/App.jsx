@@ -8,7 +8,7 @@ const router = createBrowserRouter(
       element: <Registration />,
     },
   ],
-  { basename: "/" }
+  { base: "/liveChat/" }
 );
 function App() {
   return (
