@@ -271,7 +271,7 @@ function Registration() {
             <p className="text-center md:w-[368px] font-regular text-[13px] text-secondary ">
               Already have an account ?{" "}
               <span className="font-bold text-[#EA6C00]">
-                <a href="#">Sign In</a>
+                <a href="#">Sign up</a>
               </span>
             </p>
           </div>
