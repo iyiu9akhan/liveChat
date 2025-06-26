@@ -1,12 +1,12 @@
 {
   "name": "livechat",
-  "homepage": "https://iyiu9akhan.github.io/liveChat/",
+  "homepage": "https://iyiu9akhan.github.io/liveChat",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp dist/index.html dist/404.html",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
@@ -22,6 +22,7 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router": "^7.6.2",
+    "react-router-dom": "^7.6.2",
     "react-spinners": "^0.17.0",
     "react-toastify": "^11.0.5",
     "tailwindcss": "^4.1.10"
