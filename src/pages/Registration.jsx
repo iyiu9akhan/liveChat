@@ -68,52 +68,57 @@ function Registration() {
   };
 
   const handleSignUp = () => {
+    let hasError = false;
     if (!email) {
       setEmailErr("Email is required");
       triggerShakeEmail();
+      hasError = true;
     } else {
       console.log(email);
     }
     if (!name) {
       triggerShakeName();
       setNameErr("Name is required");
+      hasError = true;
     } else {
       console.log(name);
     }
     if (!pass) {
       triggerShakePass();
       setPassErr("Password is required");
+      hasError = true;
     } else {
       console.log(pass);
     }
-    if (email && name && pass) {
-      setLoading(true);
 
-      createUserWithEmailAndPassword(auth, email, pass)
-        .then(() => {
-          sendEmailVerification(auth.currentUser);
-          toast.success("registration done");
+    if (hasError) return;
+
+    createUserWithEmailAndPassword(auth, email, pass)
+      .then(() => {
+        setLoading(true);
+        sendEmailVerification(auth.currentUser);
+        toast.success("registration done");
+        setTimeout(() => {
+          setLoading(false);
           setTimeout(() => {
-            setLoading(false);
-            setTimeout(() => {
-              navigate("/login");
-            }, 1000);
-          }, 2000);
-          setEmail("");
-          setName("");
-          setPass("");
-        })
-        .catch((error) => {
-          console.error("Registration error:", error.message);
-          if (error.message.includes("email-already-in-use")) {
-            setEmailErr("This email is already registered");
-          } else if (error.message.includes("invalid-email")) {
-            setEmailErr("Please enter a valid email address");
-          } else if (error.message.includes("weak-password")) {
-            setPassErr("Password should be at least 6 characters");
-          }
-        });
-    }
+            navigate("/login");
+          }, 1000);
+        }, 2000);
+        setEmail("");
+        setName("");
+        setPass("");
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error("Registration error:", error.message);
+        if (error.message.includes("email-already-in-use")) {
+          setEmailErr("This email is already registered");
+        } else if (error.message.includes("invalid-email")) {
+          setEmailErr("Please enter a valid email address");
+        } else if (error.message.includes("weak-password")) {
+          setPassErr("Password should be at least 6 characters");
+        }
+      });
   };
   return (
     <>
