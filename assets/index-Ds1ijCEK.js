@@ -1522,4 +1522,4 @@ export default theme;`}function Bh(t={},...n){const{breakpoints:a,mixins:o={},sp
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */yo(rD,aD,"app");const iD={apiKey:"AIzaSyA9kZWjsr1tW2h68vJfOUD3GPrdgPVTraY",authDomain:"github-iyiu9akhan.firebaseapp.com",projectId:"github-iyiu9akhan",storageBucket:"github-iyiu9akhan.firebasestorage.app",messagingSenderId:"147997054430",appId:"1:147997054430:web:f8df1eaeb2c71e005ab94f"};TS(iD);AT.createRoot(document.getElementById("root")).render(Z.jsx(_x,{children:Z.jsx(nD,{})}));
+ */yo(rD,aD,"app");const iD={apiKey:"AIzaSyA9kZWjsr1tW2h68vJfOUD3GPrdgPVTraY",authDomain:"github-iyiu9akhan.firebaseapp.com",projectId:"github-iyiu9akhan",storageBucket:"github-iyiu9akhan.firebasestorage.app",messagingSenderId:"147997054430",appId:"1:147997054430:web:f8df1eaeb2c71e005ab94f"};TS(iD);AT.createRoot(document.getElementById("root")).render(Z.jsx(_x,{basename:"/liveChat",children:Z.jsx(nD,{})}));
