@@ -8,7 +8,7 @@ import firebaseConfig from "./authentication/firebase.config.js";
 import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename="/liveChat">
+  <BrowserRouter basename="/liveChat/">
     <App />
   </BrowserRouter>
 );
