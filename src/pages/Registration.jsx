@@ -109,7 +109,7 @@ function Registration() {
     }
 
     if (hasError) return;
-    
+
     setLoading(true);
 
     createUserWithEmailAndPassword(auth, email, pass)

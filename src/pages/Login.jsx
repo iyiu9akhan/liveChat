@@ -85,7 +85,7 @@ function Login() {
         setPass("");
         setPassErr(false);
         setEmailErr(false);
-        setDisbleErr(false)
+        setDisbleErr(false);
       })
       .catch((error) => {
         setLoading(false);
