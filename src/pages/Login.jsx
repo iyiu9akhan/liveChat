@@ -43,7 +43,7 @@ function Registration() {
     setPassErr("");
   };
 
-  const handleSignUp = () => {
+  const handleSignIn = () => {
     if (!email) {
       setEmailErr(true);
       triggerShakeEmail();
@@ -208,19 +208,24 @@ function Registration() {
               </div>
             </div>
             <div
-              onClick={handleSignUp}
+              onClick={handleSignIn}
               className="w-[368px] bg-primary rounded-[9px] flex justify-center items-center h-[67px] cursor-pointer mb-[35px] mx-auto md:mx-0"
             >
               <button className=" text-white font-primary capitalize text-[20px] absolute cursor-pointer">
                 Login to Continue
               </button>
             </div>
-            <p className="md:w-[368px] font-regular text-[13px] text-secondary ">
-              Don’t have an account ?{" "}
-              <span className="font-bold text-[#EA6C00]">
-                <Link to="/registration">Sign up</Link>
-              </span>
-            </p>
+            <div className="flex justify-between md:w-[368px]">
+              <p className="font-regular text-[13px] text-secondary ">
+                Don’t have an account ?{" "}
+                <span className="font-bold text-[#EA6C00]">
+                  <Link to="/registration">Sign up</Link>
+                </span>
+              </p>
+              <p className="font-regular text-[13px] text-secondary cursor-pointer">
+                <Link to="/resetPassword" > Forgotten password?</Link>
+              </p>
+            </div>
           </div>
           <div className="hidden md:block">
             <img

@@ -26,12 +26,14 @@
 import { HashRouter, Routes, Route, BrowserRouter } from "react-router";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
    <Routes>
       <Route path="/registration" element={<Registration />} />
       <Route path="/login" element= {<Login/>}/>
+      <Route path="/resetPassword" element={<ResetPassword/>}/>
     </Routes>
   );
 }
