@@ -4,10 +4,19 @@ import Container from "../components/Layout/Container";
 import TextField from "@mui/material/TextField";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
-import { Link } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { toast, ToastContainer } from "react-toastify";
+import { getAuth } from "firebase/auth";
+import { HashLoader } from "react-spinners";
 
-function Registration() {
+function Login() {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [loginErr, setLoginErr] = useState(false);
+  const [disableErr, setDisbleErr] = useState(false);
+  const auth = getAuth();
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [shakeEmail, setShakeEmail] = useState(false);
@@ -32,40 +41,80 @@ function Registration() {
   const handleAnimationEnd = () => {
     setShakeEmail(false);
   };
-
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setEmailErr("");
+    setLoginErr(false);
   };
 
   const handlePass = (e) => {
     setPass(e.target.value);
     setPassErr("");
+    setLoginErr(false);
   };
 
   const handleSignIn = () => {
+    let hasError = false;
     if (!email) {
-      setEmailErr(true);
+      setEmailErr("Email is required");
       triggerShakeEmail();
-    } else {
-      console.log(email);
+      hasError = true;
     }
 
     if (!pass) {
-      setPassErr(true);
       triggerShakePass();
-    } else {
-      console.log(pass);
+      setPassErr("Password is required");
+      hasError = true;
     }
-    if (email && pass) {
-      console.log("login done");
-      setEmail("");
-      setPass("");
-    }
+
+    if (hasError) return;
+
+    setLoading(true);
+
+    signInWithEmailAndPassword(auth, email, pass)
+      .then(() => {
+        console.log(auth.currentUser);
+        toast.success("Login Successfully");
+        setTimeout(() => {
+          setLoading(false);
+          setTimeout(() => {
+            navigate("/home");
+          }, 1000);
+        }, 2000);
+        setEmail("");
+        setPass("");
+        setPassErr(false);
+        setEmailErr(false);
+        setDisbleErr(false)
+      })
+      .catch((error) => {
+        setLoading(false);
+        if (error.code === "auth/invalid-credential") {
+          setLoginErr(true);
+          setEmailErr(true);
+          setPassErr(true);
+        } else if (error.code === "auth/user-disabled") {
+          setDisbleErr(true);
+          setEmailErr(true);
+          setPassErr(true);
+        }
+      });
   };
   return (
     <>
       <Container>
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <div className="h-screen mx-auto flex justify-between md:items-center md:gap-[69px]">
           <div className="md:ml-[190px] mx-auto md:ms-0">
             <h2 className="font-primary font-bold mt-[50px] text-center md:text-left md:mt-0 text-[33px] md:text-[35px] text-heading mb-[29px]">
@@ -86,6 +135,7 @@ function Registration() {
                 label="Email Address"
                 variant="standard"
                 type="email"
+                helperText={emailErr}
                 error={!!emailErr}
                 sx={{
                   width: "368px",
@@ -99,11 +149,11 @@ function Registration() {
                     },
                     "&:after": {
                       borderBottom: `2px solid ${
-                        passErr ? "#FF0000" : "#11175D4D"
+                        emailErr ? "#FF0000" : "#11175D4D"
                       }`,
                     },
                     "&:hover:before": {
-                      borderBottomColor: passErr ? "#FF0000" : "#11175D4D",
+                      borderBottomColor: emailErr ? "#FF0000" : "#11175D4D",
                     },
                     "&:hover fieldset": {
                       borderColor: emailErr ? "#FF0000" : "#11175D4D",
@@ -142,6 +192,7 @@ function Registration() {
                   onChange={handlePass}
                   label="Password"
                   variant="standard"
+                  helperText={passErr}
                   type={visible ? "password" : "text"}
                   error={!!passErr}
                   sx={{
@@ -150,7 +201,7 @@ function Registration() {
                       height: "81px",
                       borderRadius: "8.6px",
                       "& fieldset": {
-                        borderColor: emailErr ? "#FF0000" : "#11175D4D",
+                        borderColor: passErr ? "#FF0000" : "#11175D4D",
                         borderWidth: "2px",
                         opacity: 0.8,
                       },
@@ -163,13 +214,13 @@ function Registration() {
                         borderBottomColor: passErr ? "#FF0000" : "#11175D4D",
                       },
                       "&:hover fieldset": {
-                        borderColor: emailErr ? "#FF0000" : "#11175D4D",
+                        borderColor: passErr ? "#FF0000" : "#11175D4D",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: emailErr ? "#FF0000" : "#11175D4D",
+                        borderColor: passErr ? "#FF0000" : "#11175D4D",
                       },
                       "& input::placeholder": {
-                        color: emailErr ? "#FF0000" : "#999",
+                        color: passErr ? "#FF0000" : "#999",
                       },
                       "& input": {
                         paddingTop: "30px",
@@ -181,12 +232,12 @@ function Registration() {
                       fontSize: "20px",
                       top: "30px",
                       left: "2px",
-                      color: emailErr ? "#FF0000" : "#11175D",
+                      color: passErr ? "#FF0000" : "#11175D",
                     },
                     "& label.MuiInputLabel-shrink": {
                       top: "35px",
                       fontSize: "16px",
-                      color: emailErr ? "#FF0000" : "#11175D",
+                      color: passErr ? "#FF0000" : "#11175D",
                       backgroundColor: "#fff",
                       letterSpacing: "3px",
                     },
@@ -207,13 +258,32 @@ function Registration() {
                 )}
               </div>
             </div>
-            <div
-              onClick={handleSignIn}
-              className="w-[368px] bg-primary rounded-[9px] flex justify-center items-center h-[67px] cursor-pointer mb-[35px] mx-auto md:mx-0"
-            >
-              <button className=" text-white font-primary capitalize text-[20px] absolute cursor-pointer">
-                Login to Continue
-              </button>
+            {loginErr && (
+              <p className="text-[#FF0000] font-medium text-base font-secondary w-[368px] mb-5 text-justify">
+                Authentication failed. Please verify your email and password,
+                then try again.
+              </p>
+            )}
+            {disableErr && (
+              <p className="text-[#FF0000] font-medium text-base font-secondary w-[368px] mb-5 text-justify">
+                Your account has been disabled. Please contact support.
+              </p>
+            )}
+            <div className="w-[368px] h-[67px] mb-[35px] mx-auto md:mx-0">
+              {!loading ? (
+                <div
+                  onClick={handleSignIn}
+                  className="bg-primary rounded-full flex justify-center items-center h-full w-full cursor-pointer"
+                >
+                  <span className="text-white font-primary capitalize text-[20px]">
+                    Login to Continue
+                  </span>
+                </div>
+              ) : (
+                <div className="flex justify-center items-center h-full w-full">
+                  <HashLoader color="#EA6C00" size={40} speedMultiplier={1.3} />
+                </div>
+              )}
             </div>
             <div className="flex justify-between md:w-[368px]">
               <p className="font-regular text-[13px] text-secondary ">
@@ -223,7 +293,7 @@ function Registration() {
                 </span>
               </p>
               <p className="font-regular text-[13px] text-secondary cursor-pointer">
-                <Link to="/resetPassword" > Forgotten password?</Link>
+                <Link to="/resetPassword"> Forgotten password?</Link>
               </p>
             </div>
           </div>
@@ -240,4 +310,4 @@ function Registration() {
   );
 }
 
-export default Registration;
+export default Login;

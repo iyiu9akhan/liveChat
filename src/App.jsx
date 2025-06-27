@@ -27,13 +27,24 @@ import { HashRouter, Routes, Route, BrowserRouter } from "react-router";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import ResetPassword from "./pages/ResetPassword";
+import Home from "./pages/Home";
+import PathProtector from "./components/Layout/PathProtector";
 
 function App() {
   return (
-   <Routes>
+    <Routes>
+      {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
       <Route path="/registration" element={<Registration />} />
-      <Route path="/login" element= {<Login/>}/>
-      <Route path="/resetPassword" element={<ResetPassword/>}/>
+      <Route path="/login" element={<Login />} />
+      <Route path="/resetPassword" element={<ResetPassword />} />
+      <Route
+        path="/home"
+        element={
+          <PathProtector>
+            <Home />
+          </PathProtector>
+        }
+      />
     </Routes>
   );
 }

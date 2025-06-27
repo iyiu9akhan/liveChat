@@ -91,28 +91,29 @@ function Registration() {
       if (!/(?=.*[0-9])/.test(pass)) {
         setPassErr("Password must contain a single digit from 1 to 9.");
         hasError = true;
-      }else if(!/(?=.*[a-z])/.test(pass)){
-        setPassErr("Password must contain one lowercase letter.")
+      } else if (!/(?=.*[a-z])/.test(pass)) {
+        setPassErr("Password must contain one lowercase letter.");
         hasError = true;
-      }else if(!/(?=.*[A-Z])/.test(pass)){
-        setPassErr("Password must contain one uppercase letter.")
+      } else if (!/(?=.*[A-Z])/.test(pass)) {
+        setPassErr("Password must contain one uppercase letter.");
         hasError = true;
-      }else if(!/(?=.*\W)/.test(pass)){
-        setPassErr("Password must contain one special character.")
+      } else if (!/(?=.*\W)/.test(pass)) {
+        setPassErr("Password must contain one special character.");
         hasError = true;
-      }else if(!/^.{8,16}$/.test(pass)){
-        setPassErr("Password must be between 8 and 16 characters.")
+      } else if (!/^.{8,16}$/.test(pass)) {
+        setPassErr("Password must be between 8 and 16 characters.");
         hasError = true;
-      }else{
+      } else {
         console.log(pass);
       }
     }
 
     if (hasError) return;
+    
+    setLoading(true);
 
     createUserWithEmailAndPassword(auth, email, pass)
       .then(() => {
-        setLoading(true);
         sendEmailVerification(auth.currentUser);
         toast.success("registration done");
         setTimeout(() => {

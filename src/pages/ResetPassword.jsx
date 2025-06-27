@@ -3,17 +3,19 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { MdOutlinePublishedWithChanges } from "react-icons/md";
 import { FaChevronLeft } from "react-icons/fa";
-import { Await, Link, Navigate } from "react-router";
+import { Await, Link, Navigate, useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import { initializeApp } from "firebase/app";
 import {
   fetchSignInMethodsForEmail,
   getAuth,
-  sendEmailVerification,
   sendPasswordResetEmail,
 } from "firebase/auth";
+import { HashLoader } from "react-spinners";
 
 function ResetPassword() {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const auth = getAuth();
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState("");
@@ -33,48 +35,35 @@ function ResetPassword() {
     setEmailErr("");
   };
 
-const resetPassword = () => {
-  if (!email) {
-    setEmailErr("Please enter a valid email address");
-    triggerShakeEmail();
-    return;
-  }
-
-  console.log("Checking email:", email);
-
-  fetchSignInMethodsForEmail(auth, email)
-    .then((methods) => {
-      console.log("Sign-in methods for email:", methods);
-
-      if (!methods || !methods.includes("password")) {
-        setEmailErr("No account found with this email");
-        triggerShakeEmail();
-        return;
-      }
-
-      return sendPasswordResetEmail(auth, email)
-        .then(() => {
-          toast.success("Password reset email sent to " + email);
-          setEmail("");
-        })
-        .catch((error) => {
-          console.error("Error sending reset email:", error);
-          setEmailErr("Failed to send reset email");
-          triggerShakeEmail();
-        });
-    })
-    .catch((error) => {
-      console.error("Error fetching sign-in methods:", error);
-      if (error.code === "auth/invalid-email") {
-        setEmailErr("Please enter a valid email address");
-      } else {
-        setEmailErr("Error: " + (error.message || "Unexpected error"));
-      }
+  const resetPassword = () => {
+    if (!email) {
+      setEmailErr("Please enter a valid email address");
       triggerShakeEmail();
-    });
-};
-
-
+      return;
+    }
+    setLoading(true);
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toast.success("Password Reset Email Sent");
+        setEmail("");
+        setTimeout(() => {
+          setLoading(false);
+          setTimeout(() => {
+            navigate("/login");
+          }, 1000);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+        if (error.message.includes("auth/invalid-email")) {
+          setEmailErr("Please enter a valid email address");
+        } else {
+          console.log("error");
+        }
+        triggerShakeEmail();
+      });
+  };
 
   return (
     <>
@@ -113,7 +102,6 @@ const resetPassword = () => {
                 height: "81px",
                 borderRadius: "8.6px",
                 "& fieldset": {
-                  // borderColor: emailErr ? "#FF0000" : "#11175D4D",
                   borderWidth: "2px",
                   opacity: 0.8,
                 },
@@ -150,19 +138,25 @@ const resetPassword = () => {
               },
             }}
           />
-          <button
-            className="capitalize text-[25px] font-medium w-full bg-orange rounded-[8.6px] mt-5 h-[44px] text-white cursor-pointer"
-            onClick={resetPassword}
-          >
-            reset passowrd
-          </button>
+          {!loading ? (
+            <div
+              onClick={resetPassword}
+              className="capitalize text-[25px] font-medium w-full bg-orange rounded-[8.6px] mt-5 h-[46px] text-white cursor-pointer flex items-center justify-center"
+            >
+              <span className="text-[21px] font-secondary">Reset Password</span>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center w-full mt-5 h-[46px]">
+              <HashLoader color="#11175D" size={40} speedMultiplier={1.3} />
+            </div>
+          )}
           <div className="flex justify-center items-center mt-6 gap-3">
             <Link
               to="/login"
               className="flex items-center gap-3 cursor-pointer"
             >
               <FaChevronLeft />
-              <span className="font-regular">Back to Login</span>
+              <span className="font-regular text-base">Back to Login</span>
             </Link>
           </div>
         </div>
