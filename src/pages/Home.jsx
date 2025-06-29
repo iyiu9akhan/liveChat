@@ -160,7 +160,7 @@ function Home() {
                     {friends.map((friends, index) => (
                       <div
                         key={index}
-                        className="flex items-center mt-[17px] justify-between cursor-pointer" 
+                        className="flex items-center mt-[17px] justify-between cursor-pointer"
                       >
                         <div className="flex items-center">
                           <img src={friends.img} alt="#friend_img" />
