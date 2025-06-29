@@ -8,14 +8,6 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa";
-// import group_one from "../assets/home/groupList/group_one.png";
-// import group_two from "../assets/home/groupList/group_two.png";
-// import group_three from "../assets/home/groupList/group_three.png";
-// import friendRqst_one from "../assets/home/friendRqst/frdRqst_one.png";
-// import friendRqst_two from "../assets/home/friendRqst/frdRqst_two.png";
-// import friendRqst_three from "../assets/home/friendRqst/frdRqst_three.png";
-// import friendRqst_four from "../assets/home/friendRqst/frdRqst_four.png";
-// import HomeInfo from "./HomeInfo";
 import {
   groupList,
   friendRqst,
@@ -168,7 +160,7 @@ function Home() {
                     {friends.map((friends, index) => (
                       <div
                         key={index}
-                        className="flex items-center mt-[17px] justify-between"
+                        className="flex items-center mt-[17px] justify-between cursor-pointer" 
                       >
                         <div className="flex items-center">
                           <img src={friends.img} alt="#friend_img" />
@@ -234,7 +226,7 @@ function Home() {
                     {myGroup.map((myGroup, index) => (
                       <div
                         key={index}
-                        className="flex items-center mt-[17px] justify-between"
+                        className="flex items-center mt-[17px] justify-between cursor-pointer"
                       >
                         <div className="flex items-center">
                           <img src={myGroup.img} alt="#friend_img" />
