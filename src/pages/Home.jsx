@@ -42,9 +42,9 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="flex">
-            <div className="flex flex-col ml-[43px] mr-[22px]">
-              <div className="mb-[43px]">
+          <div className="flex ">
+            <div className="flex flex-col ml-[43px] mr-[22px] h-full">
+              <div className="mb-[43px] h-[50%] flex flex-col justify-between">
                 <div className="relative mb-[43px]">
                   <input
                     type="text"
@@ -61,33 +61,69 @@ function Home() {
                     size={20}
                   />
                 </div>
-                <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] w-[427px] h-[347px]">
-                  <h1>group list</h1>
+                <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] w-[427px] h-full relative">
+                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
+                    group list
+                  </h1>
+                  <PiDotsThreeOutlineVerticalFill
+                    className="absolute right-[23px] top-[20px] cursor-pointer mt-1"
+                    size={20}
+                  />
                 </div>
               </div>
 
-              <div className="w-[427px] h-[462px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px]">
+              <div className="w-[427px]  rounded-[20px] h-[50%] p-[20px] relative">
                 <div>
-                  <h1>friend request</h1>
+                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
+                    friend request
+                  </h1>
+                      <PiDotsThreeOutlineVerticalFill
+                    className="absolute right-[23px] top-[20px] cursor-pointer mt-1"
+                    size={20}
+                  />
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-[43px]">
-              <div className="flex gap-[19px]">
-                <div className="w-[344px] h-[455px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px]">
-                  <h1>friends</h1>
+            <div className="flex flex-col gap-[43px] h-full">
+              <div className="flex gap-[19px] h-[50%]">
+                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative">
+                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
+                    friends
+                  </h1>
+                      <PiDotsThreeOutlineVerticalFill
+                    className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
+                    size={20}
+                  />
                 </div>{" "}
-                <div className="w-[344px] h-[455px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px]">
-                  <h1>user list</h1>
+                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative">
+                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
+                    user list
+                  </h1>
+                      <PiDotsThreeOutlineVerticalFill
+                    className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
+                    size={20}
+                  />
                 </div>
               </div>
-              <div className="flex gap-[19px]">
-                <div className="w-[344px] h-[455px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px]">
-                  <h1>my groups</h1>
+              <div className="flex gap-[19px] h-[50%]">
+                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px]  relative">
+                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
+                    my groups
+                  </h1>
+                      <PiDotsThreeOutlineVerticalFill
+                    className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
+                    size={20}
+                  />
                 </div>
-                <div className="w-[344px] h-[455px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px]">
-                  <h1>blocked users</h1>
+                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative ">
+                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
+                    blocked users
+                  </h1>
+                      <PiDotsThreeOutlineVerticalFill
+                    className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
+                    size={20}
+                  />
                 </div>
               </div>
             </div>
