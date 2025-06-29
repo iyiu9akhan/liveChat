@@ -12,7 +12,7 @@ function Home() {
   return (
     <>
       <Container>
-        <div className="flex h-screen p-[35px]">
+        <div className="flex h-screen py-[35px]">
           <div className="w-[186px] h-full bg-primary rounded-[20px] flex flex-col  py-[38px] justify-between">
             <div className="mb-[78px] flex justify-center">
               <img
@@ -77,7 +77,7 @@ function Home() {
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
                     friend request
                   </h1>
-                      <PiDotsThreeOutlineVerticalFill
+                  <PiDotsThreeOutlineVerticalFill
                     className="absolute right-[23px] top-[20px] cursor-pointer mt-1"
                     size={20}
                   />
@@ -91,7 +91,7 @@ function Home() {
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     friends
                   </h1>
-                      <PiDotsThreeOutlineVerticalFill
+                  <PiDotsThreeOutlineVerticalFill
                     className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
                     size={20}
                   />
@@ -100,7 +100,7 @@ function Home() {
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     user list
                   </h1>
-                      <PiDotsThreeOutlineVerticalFill
+                  <PiDotsThreeOutlineVerticalFill
                     className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
                     size={20}
                   />
@@ -111,7 +111,7 @@ function Home() {
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     my groups
                   </h1>
-                      <PiDotsThreeOutlineVerticalFill
+                  <PiDotsThreeOutlineVerticalFill
                     className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
                     size={20}
                   />
@@ -120,7 +120,7 @@ function Home() {
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     blocked users
                   </h1>
-                      <PiDotsThreeOutlineVerticalFill
+                  <PiDotsThreeOutlineVerticalFill
                     className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
                     size={20}
                   />
