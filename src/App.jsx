@@ -34,10 +34,10 @@ function App() {
   return (
     <Routes>
       <Route path="/registration" element={<Registration />} />
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/resetPassword" element={<ResetPassword />} />
       <Route
-        path="/home"
+        path="/"
         element={
           <PathProtector>
             <Home />
