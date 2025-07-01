@@ -122,8 +122,8 @@ function Login() {
             </h2>
             <div className="flex items-center gap-[10px] border-2 border-secondary/30 rounded-[8px] w-[220px] h-[62px] justify-center mb-[32px] cursor-pointer mx-auto md:ms-0">
               <FcGoogle size={20} />
-              <h6 className="capitalize font-secondary font-semibold text-[13px] text-secondary">
-                login with google
+              <h6 className="font-secondary font-semibold text-[13px] text-secondary">
+                Login with Google
               </h6>
             </div>
             <div className="flex flex-col gap-[20px] md:gap-[56px] mb-[33px]  md:mb-[51px] items-center md:items-start">
