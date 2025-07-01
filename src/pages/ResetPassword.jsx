@@ -5,7 +5,6 @@ import { MdOutlinePublishedWithChanges } from "react-icons/md";
 import { FaChevronLeft } from "react-icons/fa";
 import { Await, Link, Navigate, useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
-// import { initializeApp } from "firebase/app";
 import {
   fetchSignInMethodsForEmail,
   getAuth,
