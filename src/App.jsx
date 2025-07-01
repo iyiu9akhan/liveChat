@@ -33,9 +33,8 @@ import PathProtector from "./components/Layout/PathProtector";
 function App() {
   return (
     <Routes>
-      {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
       <Route path="/registration" element={<Registration />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
       <Route path="/resetPassword" element={<ResetPassword />} />
       <Route
         path="/home"
