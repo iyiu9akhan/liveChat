@@ -29,6 +29,7 @@ import blockedUser_three from "../assets/home/blockedUsers/blockedUser_three.png
 import blockedUser_four from "../assets/home/blockedUsers/blockedUser_four.png";
 import blockedUser_five from "../assets/home/blockedUsers/blockedUser_five.png";
 
+
 export const groupList = [
   {
     img: group_one,
