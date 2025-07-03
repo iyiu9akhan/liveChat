@@ -21,7 +21,7 @@ function Home() {
   return (
     <>
       <Container>
-        <div className="md:flex h-screen py-[35px]">
+        <div className="md:flex md:h-screen md:py-[35px]">
           <div className="h-[150px] md:w-[186px] md:h-full bg-primary rounded-[20px] flex md:flex-col  py-[38px] justify-between">
             <div className="">
               <div className="mb-[78px] md:flex md:justify-center">
