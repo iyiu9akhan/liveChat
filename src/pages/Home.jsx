@@ -22,40 +22,43 @@ function Home() {
     <>
       <Container>
         <div className="md:flex md:h-screen md:py-[35px]">
-          <div className="h-[150px] md:w-[186px] md:h-full bg-primary rounded-[20px] flex md:flex-col  py-[38px] justify-between">
+          <div className="p-[25px] md:p-0 h-[100px] md:w-[186px] md:h-full bg-primary md:rounded-[20px] md:flex md:flex-col md:py-[38px] md:justify-between mb-[90px] md:mb-0">
             <div className="">
-              <div className="mb-[78px] md:flex md:justify-center">
+              <div className="mb-[25px] md:mb-[78px] flex justify-between md:justify-center items-center">
+                <p className="block md:hidden text-white font-primary text-[30px]">
+                  liveChat
+                </p>
                 <img
                   src={profilePic}
                   alt="#profile_pic"
-                  className="h-[100px] w-[100px] rounded-full object-cover cursor-pointer"
+                  className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer"
                 />
               </div>
-              <div className="md:flex md:flex-col items-end relative">
+              <div className="flex md:flex-col items-end relative">
                 <div className="relative cursor-pointer h-[89px] text-[#C3C3C3] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
-                  <GoHomeFill size={46} />
-                  <div className="absolute w-[8px] h-[89px] bg-[#1e1e1e] top-0 right-0 rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
+                  <GoHomeFill size={36} md:size={46} />
+                  <div className="absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
                 </div>
                 <div className="relative cursor-pointer h-[89px] text-[#C3C3C3] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
-                  <AiFillMessage size={46} />
-                  <div className="absolute w-[8px] h-[89px] bg-[#1e1e1e] top-0 right-0 rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
+                  <AiFillMessage size={36} md:size={46} />
+                  <div className="absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
                 </div>
                 <div className="relative cursor-pointer h-[89px] text-[#C3C3C3] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
-                  <IoSettingsSharp size={46} />
-                  <div className="absolute w-[8px] h-[89px] bg-[#1e1e1e] top-0 right-0 rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
+                  <IoSettingsSharp size={36} md:size={46} />
+                  <div className="absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
                 </div>
               </div>
             </div>
-            <div className="flex items-end flex-col">
+            <div className="md:flex items-end flex-col hidden">
               <div className="relative cursor-pointer h-[89px] text-[#ffffff] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
                 <FaSignOutAlt size={46} />
                 <div className="absolute w-[8px] h-[89px] bg-[#1e1e1e] top-0 right-0 rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
               </div>
             </div>
           </div>
-          <div className="flex ">
-            <div className="flex flex-col ml-[43px] mr-[22px] h-full justify-between">
-              <div className="h-[48%] flex flex-col gap-[40px]">
+          <div className="md:flex ">
+            <div className="flex flex-col md:ml-[43px] md:mr-[22px] h-full justify-between">
+              <div className="h-[48%] flex flex-col md:gap-[40px]">
                 <div className="relative">
                   <input
                     type="text"
@@ -72,7 +75,7 @@ function Home() {
                     size={20}
                   />
                 </div>
-                <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] w-[427px] h-full relative overflow-y-scroll">
+                <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] md:w-[427px] h-full relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
                     group list
                   </h1>
@@ -87,7 +90,7 @@ function Home() {
                         className="flex items-center mt-[17px] justify-between"
                       >
                         <div className="flex items-center">
-                          <img src={group.img} alt="#group_img"/>
+                          <img src={group.img} alt="#group_img" />
                           <div className="mx-[14px] ">
                             <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
                               {group.title}
@@ -108,7 +111,7 @@ function Home() {
                 </div>
               </div>
 
-              <div className="w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
+              <div className="md:w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
                 <div>
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
                     friend request
@@ -147,8 +150,8 @@ function Home() {
             </div>
 
             <div className="flex flex-col h-full justify-between">
-              <div className="flex gap-[19px] h-[48%] ">
-                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
+              <div className="md:flex gap-[19px] h-[48%] ">
+                <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     friends
                   </h1>
@@ -180,7 +183,7 @@ function Home() {
                     ))}
                   </div>
                 </div>{" "}
-                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
+                <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     user list
                   </h1>
@@ -213,8 +216,8 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-[19px] h-[48%]">
-                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px]  relative overflow-y-scroll">
+              <div className="md:flex gap-[19px] h-[48%]">
+                <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px]  relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
                     my groups
                   </h1>
@@ -246,7 +249,7 @@ function Home() {
                     ))}
                   </div>
                 </div>
-                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
+                <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     blocked users
                   </h1>
