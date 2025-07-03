@@ -37,7 +37,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/resetPassword" element={<ResetPassword />} />
       <Route
-        path="/"
+        path="/home"
         element={
           <PathProtector>
             <Home />

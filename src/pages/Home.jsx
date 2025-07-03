@@ -54,9 +54,9 @@ function Home() {
             </div>
           </div>
           <div className="flex ">
-            <div className="flex flex-col ml-[43px] mr-[22px] h-full">
-              <div className="mb-[43px] h-[50%] flex flex-col justify-between">
-                <div className="relative mb-[43px]">
+            <div className="flex flex-col ml-[43px] mr-[22px] h-full justify-between">
+              <div className="h-[48%] flex flex-col gap-[40px]">
+                <div className="relative">
                   <input
                     type="text"
                     className="w-full h-[59px] rounded-[20px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] pl-[65px] border-none focus:outline-none placeholder:text-iconGray placeholder:font-regular placeholder:font-medium placeholder:text-base text-primary text-[19px] font-medium font-regular capitalize"
@@ -72,7 +72,7 @@ function Home() {
                     size={20}
                   />
                 </div>
-                <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] w-[427px] h-full relative">
+                <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] w-[427px] h-full relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
                     group list
                   </h1>
@@ -87,7 +87,7 @@ function Home() {
                         className="flex items-center mt-[17px] justify-between"
                       >
                         <div className="flex items-center">
-                          <img src={group.img} alt="#group_img" />
+                          <img src={group.img} alt="#group_img"/>
                           <div className="mx-[14px] ">
                             <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
                               {group.title}
@@ -97,7 +97,7 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer mr-[9px]">
+                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer">
                           <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[20px]">
                             join
                           </p>
@@ -108,7 +108,7 @@ function Home() {
                 </div>
               </div>
 
-              <div className="w-[427px]  rounded-[20px] h-[50%] p-[20px] relative">
+              <div className="w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
                 <div>
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
                     friend request
@@ -134,7 +134,7 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer mr-[9px]">
+                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer">
                           <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[16px]">
                             Accept
                           </p>
@@ -146,9 +146,9 @@ function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-[43px] h-full">
-              <div className="flex gap-[19px] h-[50%]">
-                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative">
+            <div className="flex flex-col h-full justify-between">
+              <div className="flex gap-[19px] h-[48%] ">
+                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     friends
                   </h1>
@@ -173,14 +173,14 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <p className="capitalize text-black/50 font-regular font-medium text-[10px] mr-[9px]">
+                        <p className="capitalize text-black/50 font-regular font-medium text-[10px]">
                           {friends.time}
                         </p>
                       </div>
                     ))}
                   </div>
                 </div>{" "}
-                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative">
+                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     user list
                   </h1>
@@ -205,7 +205,7 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="h-[30px] w-[30px] rounded-[5px] bg-primary flex items-center justify-center cursor-pointer mr-[9px]">
+                        <div className="h-[30px] w-[30px] rounded-[5px] bg-primary flex items-center justify-center cursor-pointer">
                           <FaPlus className="text-white" size={14} />
                         </div>
                       </div>
@@ -213,8 +213,8 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-[19px] h-[50%]">
-                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px]  relative">
+              <div className="flex gap-[19px] h-[48%]">
+                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px]  relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
                     my groups
                   </h1>
@@ -239,14 +239,14 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <p className="capitalize text-black/50 font-regular font-medium text-[10px] mr-[9px]">
+                        <p className="capitalize text-black/50 font-regular font-medium text-[10px]">
                           {myGroup.time}
                         </p>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative ">
+                <div className="w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
                     blocked users
                   </h1>
@@ -271,7 +271,7 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer mr-[9px]">
+                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer">
                           <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[16px]">
                             unblock
                           </p>

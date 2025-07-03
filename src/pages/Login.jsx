@@ -78,7 +78,7 @@ function Login() {
         setTimeout(() => {
           setLoading(false);
           setTimeout(() => {
-            navigate("/");
+            navigate("/home");
           }, 1000);
         }, 2000);
         setEmail("");

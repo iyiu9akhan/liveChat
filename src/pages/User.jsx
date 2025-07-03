@@ -45,6 +45,14 @@ export const groupList = [
     img: group_three,
     title: "Crazy Cousins",
     subtitle: "What plans today?",
+  },  {
+    img: group_three,
+    title: "Crazy Cousins",
+    subtitle: "What plans today?",
+  },  {
+    img: group_three,
+    title: "Crazy Cousins",
+    subtitle: "What plans today?",
   },
 ];
 
@@ -65,6 +73,14 @@ export const friendRqst = [
     subtitle: "hi...",
   },
   {
+    img: friendRqst_four,
+    title: "Tejeshwini C",
+    subtitle: "i will call him today.",
+  },{
+    img: friendRqst_four,
+    title: "Tejeshwini C",
+    subtitle: "i will call him today.",
+  },{
     img: friendRqst_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
@@ -91,6 +107,16 @@ export const friends = [
     time: "Yesterday, 6:22pm",
   },
   {
+    img: friend_four,
+    title: "Tejeshwini C",
+    subtitle: "i will call him today.",
+    time: "Today, 12:22pm",
+  },  {
+    img: friend_four,
+    title: "Tejeshwini C",
+    subtitle: "i will call him today.",
+    time: "Today, 12:22pm",
+  },  {
     img: friend_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
@@ -122,6 +148,14 @@ export const userList = [
     img: user_five,
     title: "Marvin McKinney",
     time: "Today, 12:22pm",
+  },  {
+    img: user_five,
+    title: "Marvin McKinney",
+    time: "Today, 12:22pm",
+  },  {
+    img: user_five,
+    title: "Marvin McKinney",
+    time: "Today, 12:22pm",
   },
 ];
 
@@ -145,6 +179,16 @@ export const myGroup = [
     time: "Yesterday, 6:22pm",
   },
   {
+    img: myGroup_four,
+    title: "Tejeshwini C",
+    subtitle: "i will call him today.",
+    time: "Today, 12:22pm",
+  },  {
+    img: myGroup_four,
+    title: "Tejeshwini C",
+    subtitle: "i will call him today.",
+    time: "Today, 12:22pm",
+  },  {
     img: myGroup_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
@@ -174,6 +218,14 @@ export const blockedUsers = [
     time: "Today, 12:22pm",
   },
   {
+    img: blockedUser_five,
+    title: "Marvin ",
+    time: "Today, 8:56pm",
+  }, {
+    img: blockedUser_five,
+    title: "Marvin ",
+    time: "Today, 8:56pm",
+  }, {
     img: blockedUser_five,
     title: "Marvin ",
     time: "Today, 8:56pm",
