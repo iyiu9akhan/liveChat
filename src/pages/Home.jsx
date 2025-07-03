@@ -21,17 +21,17 @@ function Home() {
   return (
     <>
       <Container>
-        <div className="flex h-screen py-[35px]">
-          <div className="w-[186px] h-full bg-primary rounded-[20px] flex flex-col  py-[38px] justify-between">
-            <div>
-              <div className="mb-[78px] flex justify-center">
+        <div className="md:flex h-screen py-[35px]">
+          <div className="h-[150px] md:w-[186px] md:h-full bg-primary rounded-[20px] flex md:flex-col  py-[38px] justify-between">
+            <div className="">
+              <div className="mb-[78px] md:flex md:justify-center">
                 <img
                   src={profilePic}
                   alt="#profile_pic"
                   className="h-[100px] w-[100px] rounded-full object-cover cursor-pointer"
                 />
               </div>
-              <div className="flex flex-col items-end relative">
+              <div className="md:flex md:flex-col items-end relative">
                 <div className="relative cursor-pointer h-[89px] text-[#C3C3C3] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
                   <GoHomeFill size={46} />
                   <div className="absolute w-[8px] h-[89px] bg-[#1e1e1e] top-0 right-0 rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
