@@ -78,14 +78,14 @@ function ResetPassword() {
         pauseOnHover
         theme="dark"
       />
-      <div className="h-screen flex flex-col justify-center items-center">
+      <div className="px-3 md:px-0 h-screen flex flex-col justify-center items-center">
         <div className="flex flex-col items-center">
           <MdOutlinePublishedWithChanges className="text-orange text-[150px] mb-6" />
-          <p className="capitalize font-regular text-[35px] font-medium text-heading mb-10">
+          <p className="capitalize font-regular text-[28px] md:text-[35px] font-medium text-heading mb-10">
             forget your password?
           </p>
         </div>
-        <div className="w-[500px] flex flex-col justify-center">
+        <div className="w-full md:w-[500px] flex flex-col justify-center">
           <TextField
             value={email}
             className={shakeEmail ? "shake" : ""}

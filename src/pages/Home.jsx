@@ -22,9 +22,9 @@ function Home() {
     <>
       <Container>
         <div className="md:flex md:h-screen md:py-[35px]">
-          <div className="p-[25px] md:p-0 h-[100px] md:w-[186px] md:h-full bg-primary md:rounded-[20px] md:flex md:flex-col md:py-[38px] md:justify-between mb-[90px] md:mb-0">
-            <div className="">
-              <div className="mb-[25px] md:mb-[78px] flex justify-between md:justify-center items-center">
+          <div className="p-[25px] md:p-0 h-[100px] md:w-[186px] md:h-full bg-primary md:rounded-[20px] md:flex md:flex-col md:py-[38px] md:justify-between mb-[46px] md:mb-0">
+            <div>
+              <div className="mb-[9px] md:mb-[78px] flex justify-between md:justify-center items-center">
                 <p className="block md:hidden text-white font-primary text-[30px]">
                   liveChat
                 </p>
@@ -34,25 +34,29 @@ function Home() {
                   className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer"
                 />
               </div>
-              <div className="flex md:flex-col items-end relative">
-                <div className="relative cursor-pointer h-[89px] text-[#C3C3C3] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
-                  <GoHomeFill size={36} md:size={46} />
-                  <div className="absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
+              <div className="flex md:flex-col items-end relative justify-between">
+                <div className="relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group">
+                  <GoHomeFill className="text-[33px] md:text-[46px]" />
+                  <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
                 </div>
-                <div className="relative cursor-pointer h-[89px] text-[#C3C3C3] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
-                  <AiFillMessage size={36} md:size={46} />
-                  <div className="absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
+                <div className="relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group">
+                  <AiFillMessage className="text-[33px] md:text-[46px]" />
+                  <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
                 </div>
-                <div className="relative cursor-pointer h-[89px] text-[#C3C3C3] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
-                  <IoSettingsSharp size={36} md:size={46} />
-                  <div className="absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
+                <div className="relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group">
+                  <IoSettingsSharp className="text-[33px] md:text-[46px]" />
+                  <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
+                </div>
+                <div className="md:hidden relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group">
+                  <FaSignOutAlt className="text-[33px] md:text-[46px]" />
+                  <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
                 </div>
               </div>
             </div>
-            <div className="md:flex items-end flex-col hidden">
-              <div className="relative cursor-pointer h-[89px] text-[#ffffff] hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] group">
-                <FaSignOutAlt size={46} />
-                <div className="absolute w-[8px] h-[89px] bg-[#1e1e1e] top-0 right-0 rounded-l-[25px] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
+            <div className="md:flex items-end md:flex-col hidden">
+              <div className="relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] md:group">
+                <FaSignOutAlt className="text-[33px] md:text-[46px]" />
+                <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
               </div>
             </div>
           </div>
@@ -90,7 +94,7 @@ function Home() {
                         className="flex items-center mt-[17px] justify-between"
                       >
                         <div className="flex items-center">
-                          <img src={group.img} alt="#group_img" />
+                          <img src={group.img} alt="#group_img" className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"/>
                           <div className="mx-[14px] ">
                             <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
                               {group.title}
@@ -100,8 +104,8 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer">
-                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[20px]">
+                        <div className="bg-primary rounded-[5px] h-[23px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
+                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[20px]">
                             join
                           </p>
                         </div>
@@ -111,7 +115,7 @@ function Home() {
                 </div>
               </div>
 
-              <div className="md:w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
+              <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:shadow-none md:w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
                 <div>
                   <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
                     friend request
@@ -127,7 +131,7 @@ function Home() {
                         className="flex items-center mt-[17px] justify-between"
                       >
                         <div className="flex items-center">
-                          <img src={friendRqst.img} alt="#profile_img" />
+                          <img src={friendRqst.img} alt="#profile_img" className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"/>
                           <div className="mx-[14px]">
                             <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
                               {friendRqst.title}
@@ -137,8 +141,8 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer">
-                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[16px]">
+                        <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
+                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
                             Accept
                           </p>
                         </div>
@@ -274,8 +278,8 @@ function Home() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-primary rounded-[5px] h-[30px] w-[87px] flex justify-center items-center cursor-pointer">
-                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[16px]">
+                        <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
+                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
                             unblock
                           </p>
                         </div>
