@@ -8,14 +8,20 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa";
+import GroupList from "../components/home/groupList/GroupList";
 import {
-  groupList,
+  // groupList,
   friendRqst,
   friends,
   userList,
   myGroup,
   blockedUsers,
 } from "./User";
+import FriendList from "../components/home/friendList/FriendList";
+import Friends from "../components/home/friends/Friends";
+import UserList from "../components/home/userList/UserList";
+import Groups from "../components/home/groups/Groups";
+import BlockedUser from "../components/home/blockedUser/BlockedUser";
 
 function Home() {
   return (
@@ -79,214 +85,19 @@ function Home() {
                     size={20}
                   />
                 </div>
-                <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] md:w-[427px] h-full relative overflow-y-scroll">
-                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
-                    group list
-                  </h1>
-                  <PiDotsThreeOutlineVerticalFill
-                    className="absolute right-[23px] top-[20px] cursor-pointer mt-1"
-                    size={20}
-                  />
-                  <div>
-                    {groupList.map((group, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center mt-[17px] justify-between"
-                      >
-                        <div className="flex items-center">
-                          <img src={group.img} alt="#group_img" className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"/>
-                          <div className="mx-[14px] ">
-                            <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
-                              {group.title}
-                            </h1>
-                            <p className="font-regular font-medium text-[14px] text-[#4D4D4D]">
-                              {group.subtitle}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="bg-primary rounded-[5px] h-[23px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
-                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[20px]">
-                            join
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <GroupList />
               </div>
-
-              <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:shadow-none md:w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
-                <div>
-                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
-                    friend request
-                  </h1>
-                  <PiDotsThreeOutlineVerticalFill
-                    className="absolute right-[23px] top-[20px] cursor-pointer mt-1"
-                    size={20}
-                  />
-                  <div>
-                    {friendRqst.map((friendRqst, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center mt-[17px] justify-between"
-                      >
-                        <div className="flex items-center">
-                          <img src={friendRqst.img} alt="#profile_img" className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"/>
-                          <div className="mx-[14px]">
-                            <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
-                              {friendRqst.title}
-                            </h1>
-                            <p className="font-regular font-medium text-[14px] text-[#4D4D4D] capitalize">
-                              {friendRqst.subtitle}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
-                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
-                            Accept
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <FriendList />
             </div>
 
             <div className="flex flex-col h-full justify-between">
               <div className="md:flex gap-[19px] h-[48%] ">
-                <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
-                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
-                    friends
-                  </h1>
-                  <PiDotsThreeOutlineVerticalFill
-                    className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
-                    size={20}
-                  />
-                  <div>
-                    {friends.map((friends, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center mt-[17px] justify-between cursor-pointer"
-                      >
-                        <div className="flex items-center">
-                          <img src={friends.img} alt="#friend_img" />
-                          <div className="mx-[14px] ">
-                            <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
-                              {friends.title}
-                            </h1>
-                            <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                              {friends.subtitle}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="capitalize text-black/50 font-regular font-medium text-[10px]">
-                          {friends.time}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>{" "}
-                <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
-                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
-                    user list
-                  </h1>
-                  <PiDotsThreeOutlineVerticalFill
-                    className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
-                    size={20}
-                  />
-                  <div>
-                    {userList.map((userList, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center mt-[17px] justify-between"
-                      >
-                        <div className="flex items-center">
-                          <img src={userList.img} alt="#friend_img" />
-                          <div className="mx-[14px] ">
-                            <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
-                              {userList.title}
-                            </h1>
-                            <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                              {userList.time}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="h-[30px] w-[30px] rounded-[5px] bg-primary flex items-center justify-center cursor-pointer">
-                          <FaPlus className="text-white" size={14} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <Friends />
+                <UserList />
               </div>
               <div className="md:flex gap-[19px] h-[48%]">
-                <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px]  relative overflow-y-scroll">
-                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
-                    my groups
-                  </h1>
-                  <PiDotsThreeOutlineVerticalFill
-                    className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
-                    size={20}
-                  />
-                  <div>
-                    {myGroup.map((myGroup, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center mt-[17px] justify-between cursor-pointer"
-                      >
-                        <div className="flex items-center">
-                          <img src={myGroup.img} alt="#friend_img" />
-                          <div className="mx-[14px] ">
-                            <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
-                              {myGroup.title}
-                            </h1>
-                            <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                              {myGroup.subtitle}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="capitalize text-black/50 font-regular font-medium text-[10px]">
-                          {myGroup.time}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
-                  <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
-                    blocked users
-                  </h1>
-                  <PiDotsThreeOutlineVerticalFill
-                    className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
-                    size={20}
-                  />
-                  <div>
-                    {blockedUsers.map((blockedUsers, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center mt-[17px] justify-between"
-                      >
-                        <div className="flex items-center">
-                          <img src={blockedUsers.img} alt="#friend_img" />
-                          <div className="mx-[14px] ">
-                            <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
-                              {blockedUsers.title}
-                            </h1>
-                            <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                              {blockedUsers.time}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
-                          <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
-                            unblock
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <Groups />
+                <BlockedUser />
               </div>
             </div>
           </div>
