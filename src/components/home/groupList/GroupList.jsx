@@ -1,6 +1,6 @@
 import React from "react";
-import { groupList } from "../../../pages/User";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+import { groupList } from "../User";
 
 function GroupList() {
   return (

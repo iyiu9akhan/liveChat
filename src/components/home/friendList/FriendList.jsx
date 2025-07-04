@@ -1,6 +1,6 @@
 import React from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
-import { friendRqst } from "../../../pages/User";
+import { friendRqst } from "../User";
 
 function FriendList() {
   return (

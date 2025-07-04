@@ -1,33 +1,33 @@
-import group_one from "../assets/home/groupList/group_one.png";
-import group_two from "../assets/home/groupList/group_two.png";
-import group_three from "../assets/home/groupList/group_three.png";
+import group_one from "../../assets/home/groupList/group_one.png";
+import group_two from "../../assets/home/groupList/group_two.png";
+import group_three from "../../assets/home/groupList/group_three.png";
 
-import friendRqst_one from "../assets/home/friendRqst/frdRqst_one.png";
-import friendRqst_two from "../assets/home/friendRqst/frdRqst_two.png";
-import friendRqst_three from "../assets/home/friendRqst/frdRqst_three.png";
-import friendRqst_four from "../assets/home/friendRqst/frdRqst_four.png";
+import friendRqst_one from "../../assets/home/friendRqst/frdRqst_one.png";
+import friendRqst_two from "../../assets/home/friendRqst/frdRqst_two.png";
+import friendRqst_three from "../../assets/home/friendRqst/frdRqst_three.png";
+import friendRqst_four from "../../assets/home/friendRqst/frdRqst_four.png";
 
-import friend_one from "../assets/home/friends/friend_one.png";
-import friend_two from "../assets/home/friends/friend_two.png";
-import friend_three from "../assets/home/friends/friend_three.png";
-import friend_four from "../assets/home/friends/friend_four.png";
+import friend_one from "../../assets/home/friends/friend_one.png";
+import friend_two from "../../assets/home/friends/friend_two.png";
+import friend_three from "../../assets/home/friends/friend_three.png";
+import friend_four from "../../assets/home/friends/friend_four.png";
 
-import user_one from "../assets/home/userList/user_one.png";
-import user_two from "../assets/home/userList/user_two.png";
-import user_three from "../assets/home/userList/user_three.png";
-import user_four from "../assets/home/userList/user_four.png";
-import user_five from "../assets/home/userList/user_five.png";
+import user_one from "../../assets/home/userList/user_one.png";
+import user_two from "../../assets/home/userList/user_two.png";
+import user_three from "../../assets/home/userList/user_three.png";
+import user_four from "../../assets/home/userList/user_four.png";
+import user_five from "../../assets/home/userList/user_five.png";
 
-import myGroup_one from "../assets/home/myGroup/myGroup_one.png";
-import myGroup_two from "../assets/home/myGroup/myGroup_two.png";
-import myGroup_three from "../assets/home/myGroup/myGroup_three.png";
-import myGroup_four from "../assets/home/myGroup/myGroup_four.png";
+import myGroup_one from "../../assets/home/myGroup/myGroup_one.png";
+import myGroup_two from "../../assets/home/myGroup/myGroup_two.png";
+import myGroup_three from "../../assets/home/myGroup/myGroup_three.png";
+import myGroup_four from "../../assets/home/myGroup/myGroup_four.png";
 
-import blockedUser_one from "../assets/home/blockedUsers/blockedUser_one.png";
-import blockedUser_two from "../assets/home/blockedUsers/blockedUser_two.png";
-import blockedUser_three from "../assets/home/blockedUsers/blockedUser_three.png";
-import blockedUser_four from "../assets/home/blockedUsers/blockedUser_four.png";
-import blockedUser_five from "../assets/home/blockedUsers/blockedUser_five.png";
+import blockedUser_one from "../../assets/home/blockedUsers/blockedUser_one.png";
+import blockedUser_two from "../../assets/home/blockedUsers/blockedUser_two.png";
+import blockedUser_three from "../../assets/home/blockedUsers/blockedUser_three.png";
+import blockedUser_four from "../../assets/home/blockedUsers/blockedUser_four.png";
+import blockedUser_five from "../../assets/home/blockedUsers/blockedUser_five.png";
 
 
 export const groupList = [

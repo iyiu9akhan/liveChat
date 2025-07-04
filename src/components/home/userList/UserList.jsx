@@ -1,7 +1,8 @@
 import React from 'react'
 import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi'
-import { userList } from '../../../pages/User'
+// import { userList } from '../../../pages/User'
 import { FaPlus } from 'react-icons/fa'
+import { userList } from '../User'
 
 function UserList() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi'
-import { blockedUsers } from '../../../pages/User'
+import { blockedUsers } from '../User'
 
 function BlockedUser() {
   return (

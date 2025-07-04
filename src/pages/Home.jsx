@@ -7,16 +7,8 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
-import { FaPlus } from "react-icons/fa";
 import GroupList from "../components/home/groupList/GroupList";
-import {
-  // groupList,
-  friendRqst,
-  friends,
-  userList,
-  myGroup,
-  blockedUsers,
-} from "./User";
+
 import FriendList from "../components/home/friendList/FriendList";
 import Friends from "../components/home/friends/Friends";
 import UserList from "../components/home/userList/UserList";
