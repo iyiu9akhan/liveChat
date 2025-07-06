@@ -77,8 +77,8 @@ function Login() {
     signInWithEmailAndPassword(auth, email, pass)
       .then((user) => {
         toast.success("Login Successfully");
-        dispatch(userLoginInfo(user))
-        localStorage.setItem("userLoginInfo", JSON.stringify(user))
+        dispatch(userLoginInfo(user));
+        localStorage.setItem("userLoginInfo", JSON.stringify(user));
         setTimeout(() => {
           setLoading(false);
           setTimeout(() => {
