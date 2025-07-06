@@ -1,4 +1,3 @@
-import { ClassNames } from "@emotion/react";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { MdOutlinePublishedWithChanges } from "react-icons/md";
@@ -6,7 +5,6 @@ import { FaChevronLeft } from "react-icons/fa";
 import { Await, Link, Navigate, useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import {
-  fetchSignInMethodsForEmail,
   getAuth,
   sendPasswordResetEmail,
 } from "firebase/auth";
