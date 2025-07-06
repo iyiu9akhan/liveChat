@@ -10,10 +10,13 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast, ToastContainer } from "react-toastify";
 import { getAuth } from "firebase/auth";
 import { HashLoader } from "react-spinners";
+import { useDispatch } from "react-redux";
+import { userLoginInfo } from "../slice/userSlice";
 
 function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [loginErr, setLoginErr] = useState(false);
   const [disableErr, setDisbleErr] = useState(false);
   const auth = getAuth();
@@ -72,9 +75,10 @@ function Login() {
     setLoading(true);
 
     signInWithEmailAndPassword(auth, email, pass)
-      .then(() => {
-        console.log(auth.currentUser);
+      .then((user) => {
         toast.success("Login Successfully");
+        dispatch(userLoginInfo(user))
+        localStorage.setItem("userLoginInfo", JSON.stringify(user))
         setTimeout(() => {
           setLoading(false);
           setTimeout(() => {
