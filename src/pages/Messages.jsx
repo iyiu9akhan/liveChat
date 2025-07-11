@@ -11,9 +11,9 @@ function Messages() {
       <Container>
         <div className="md:flex md:h-screen md:py-[35px] gap-[43px]">
           <SideBar />
-          <div className="flex ">
-            <div>
-              <div className="relative mb-[43px]">
+          <div className="flex">
+            <div className="w-[427px] flex flex-col h-[100%] justify-between">
+              <div className="relative">
                 <input
                   type="text"
                   className="w-full h-[59px] rounded-[20px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] pl-[65px] border-none focus:outline-none placeholder:text-iconGray placeholder:font-regular placeholder:font-medium placeholder:text-base text-primary text-[19px] font-medium font-regular capitalize"
@@ -29,7 +29,7 @@ function Messages() {
                   size={20}
                 />
               </div>
-              <Friends />
+              <Friends className="md:w-[427px] h-[90%]"/>
             </div>
           </div>
         </div>

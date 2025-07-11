@@ -29,7 +29,6 @@ import blockedUser_three from "../../assets/home/blockedUsers/blockedUser_three.
 import blockedUser_four from "../../assets/home/blockedUsers/blockedUser_four.png";
 import blockedUser_five from "../../assets/home/blockedUsers/blockedUser_five.png";
 
-
 export const groupList = [
   {
     img: group_one,
@@ -45,11 +44,13 @@ export const groupList = [
     img: group_three,
     title: "Crazy Cousins",
     subtitle: "What plans today?",
-  },  {
+  },
+  {
     img: group_three,
     title: "Crazy Cousins",
     subtitle: "What plans today?",
-  },  {
+  },
+  {
     img: group_three,
     title: "Crazy Cousins",
     subtitle: "What plans today?",
@@ -76,11 +77,13 @@ export const friendRqst = [
     img: friendRqst_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
-  },{
+  },
+  {
     img: friendRqst_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
-  },{
+  },
+  {
     img: friendRqst_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
@@ -111,16 +114,42 @@ export const friends = [
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
     time: "Today, 12:22pm",
-  },  {
+  },
+  {
+    img: friend_one,
+    title: "raghav",
+    subtitle: "dinner?",
+    time: "Today, 8:56pm",
+  },
+  {
+    img: friend_two,
+    title: "swathi",
+    subtitle: "sure!",
+    time: "Today, 2:31pm",
+  },
+  {
+    img: friend_three,
+    title: "kiran",
+    subtitle: "hi...",
+    time: "Yesterday, 6:22pm",
+  },
+  {
+    img: friend_one,
+    title: "raghav",
+    subtitle: "dinner?",
+    time: "Today, 8:56pm",
+  },
+  {
     img: friend_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
     time: "Today, 12:22pm",
-  },  {
-    img: friend_four,
-    title: "Tejeshwini C",
-    subtitle: "i will call him today.",
-    time: "Today, 12:22pm",
+  },
+  {
+    img: friend_two,
+    title: "swathi",
+    subtitle: "sure!",
+    time: "Today, 2:31pm",
   },
 ];
 export const userList = [
@@ -148,11 +177,13 @@ export const userList = [
     img: user_five,
     title: "Marvin McKinney",
     time: "Today, 12:22pm",
-  },  {
+  },
+  {
     img: user_five,
     title: "Marvin McKinney",
     time: "Today, 12:22pm",
-  },  {
+  },
+  {
     img: user_five,
     title: "Marvin McKinney",
     time: "Today, 12:22pm",
@@ -183,12 +214,14 @@ export const myGroup = [
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
     time: "Today, 12:22pm",
-  },  {
+  },
+  {
     img: myGroup_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
     time: "Today, 12:22pm",
-  },  {
+  },
+  {
     img: myGroup_four,
     title: "Tejeshwini C",
     subtitle: "i will call him today.",
@@ -221,11 +254,13 @@ export const blockedUsers = [
     img: blockedUser_five,
     title: "Marvin ",
     time: "Today, 8:56pm",
-  }, {
+  },
+  {
     img: blockedUser_five,
     title: "Marvin ",
     time: "Today, 8:56pm",
-  }, {
+  },
+  {
     img: blockedUser_five,
     title: "Marvin ",
     time: "Today, 8:56pm",

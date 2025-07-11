@@ -2,9 +2,9 @@ import React from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { friends } from "../User";
 
-function Friends() {
+function Friends({className=""}) {
   return (
-    <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
+    <div className={`md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll ${className}`}>
       <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
         friends
       </h1>
