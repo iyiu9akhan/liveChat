@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { toast, ToastContainer } from "react-toastify";
+import SideBar from "../components/Layout/SideBar";
 
 const Home = () => {
   const auth = getAuth();
@@ -41,15 +42,7 @@ const Home = () => {
     return null;
   }
 
-  const handleLogout = () => {
-    signOut(auth).then(() => {
-      localStorage.removeItem("userLoginInfo");
-      toast.info("Logout successful. See you soon!");
-      setTimeout(() => {
-        navigate("/login");
-      }, 2500);
-    });
-  };
+
 
   return (
     <>
@@ -68,7 +61,8 @@ const Home = () => {
             theme="dark"
           />
           <div className="md:flex md:h-screen md:py-[35px]">
-            <div className="p-[25px] md:p-0 h-[100px] md:w-[186px] md:h-full bg-primary md:rounded-[20px] md:flex md:flex-col md:py-[38px] md:justify-between mb-[46px] md:mb-0">
+            <SideBar/>
+            {/* <div className="p-[25px] md:p-0 h-[100px] md:w-[186px] md:h-full bg-primary md:rounded-[20px] md:flex md:flex-col md:py-[38px] md:justify-between mb-[46px] md:mb-0">
               <div>
                 <div className="mb-[9px] md:mb-[78px] flex justify-between md:justify-center items-center">
                   <p className="block md:hidden text-white font-primary text-[30px]">
@@ -108,7 +102,7 @@ const Home = () => {
                   <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="md:flex ">
               <div className="flex flex-col md:ml-[43px] md:mr-[22px] h-full justify-between">
                 <div className="h-[48%] flex flex-col md:gap-[40px]">
@@ -128,19 +122,19 @@ const Home = () => {
                       size={20}
                     />
                   </div>
-                  <GroupList />
+                  <GroupList /> {/* group list component */}
                 </div>
-                <FriendList />
+                <FriendList /> {/* friend list component */}
               </div>
 
               <div className="flex flex-col h-full justify-between">
                 <div className="md:flex gap-[19px] h-[48%] ">
-                  <Friends />
-                  <UserList />
+                  <Friends /> {/* friendList component */}
+                  <UserList /> {/* userList component */}
                 </div>
                 <div className="md:flex gap-[19px] h-[48%]">
-                  <Groups />
-                  <BlockedUser />
+                  <Groups /> {/*my group component*/}
+                  <BlockedUser /> {/*blocked user component  */}
                 </div>
               </div>
             </div>
