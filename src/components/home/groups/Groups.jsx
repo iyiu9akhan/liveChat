@@ -14,24 +14,24 @@ function Groups() {
                        size={20}
                      />
                      <div>
-                       {myGroup.map((myGroup, index) => (
+                       {myGroup.map((Group, index) => (
                          <div
                            key={index}
-                           className="flex items-center mt-[17px] justify-between cursor-pointer"
+                           className={`flex items-center mt-[17px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none`}
                          >
-                           <div className="flex items-center">
-                             <img src={myGroup.img} alt="#friend_img" />
+                           <div className="flex items-center mb-[13px]">
+                             <img src={Group.img} alt="#friend_img" />
                              <div className="mx-[14px] ">
                                <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
-                                 {myGroup.title}
+                                 {Group.title}
                                </h1>
                                <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                                 {myGroup.subtitle}
+                                 {Group.subtitle}
                                </p>
                              </div>
                            </div>
                            <p className="capitalize text-black/50 font-regular font-medium text-[10px]">
-                             {myGroup.time}
+                             {Group.time}
                            </p>
                          </div>
                        ))}

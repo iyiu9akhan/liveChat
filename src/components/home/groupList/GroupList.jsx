@@ -16,9 +16,9 @@ function GroupList() {
         {groupList.map((group, index) => (
           <div
             key={index}
-            className="flex items-center mt-[17px] justify-between"
+            className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none"
           >
-            <div className="flex items-center">
+            <div className="flex items-center mb-[13px]">
               <img
                 src={group.img}
                 alt="#group_img"

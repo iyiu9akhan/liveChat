@@ -18,9 +18,9 @@ function UserList() {
                        {userList.map((userList, index) => (
                          <div
                            key={index}
-                           className="flex items-center mt-[17px] justify-between"
+                           className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none"
                          >
-                           <div className="flex items-center">
+                           <div className="flex items-center mb-[13px]">
                              <img src={userList.img} alt="#friend_img" />
                              <div className="mx-[14px] ">
                                <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">

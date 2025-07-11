@@ -31,6 +31,8 @@ import Home from "./pages/Home";
 // import PathProtector from "./components/Layout/PathProtector";
 import store from "./Store";
 import { Provider } from "react-redux";
+import Messages from "./pages/Messages";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
             //  </PathProtector>
           }
         />
+        <Route path="/messages" element={<Messages />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Provider>
   );
