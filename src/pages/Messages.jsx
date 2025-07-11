@@ -9,7 +9,7 @@ function Messages() {
   return (
     <div>
       <Container>
-        <div className="md:flex md:h-screen md:py-[35px] gap-[43px]">
+        <div className="md:flex md:h-screen md:py-[35px] gap-[43px] mb-5 md:mb-0">
           <SideBar />
           <div className="flex">
             <div className="w-[427px] flex flex-col h-[100%] justify-between">
@@ -29,7 +29,7 @@ function Messages() {
                   size={20}
                 />
               </div>
-              <Friends className="md:w-[427px] h-[90%]"/>
+              <Friends className="md:w-[427px] h-[90%]" />
             </div>
           </div>
         </div>

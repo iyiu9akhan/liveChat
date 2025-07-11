@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Container from "../components/Layout/Container";
-import profilePic from "../assets/home/profilePic.jpg";
-import { GoHomeFill } from "react-icons/go";
-import { AiFillMessage } from "react-icons/ai";
-import { IoSettingsSharp } from "react-icons/io5";
-import { FaSignOutAlt } from "react-icons/fa";
+// import profilePic from "../assets/home/profilePic.jpg";
+// import { GoHomeFill } from "react-icons/go";
+// import { AiFillMessage } from "react-icons/ai";
+// import { IoSettingsSharp } from "react-icons/io5";
+// import { FaSignOutAlt } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import GroupList from "../components/home/groupList/GroupList";
