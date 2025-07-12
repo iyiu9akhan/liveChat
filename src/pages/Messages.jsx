@@ -9,10 +9,10 @@ function Messages() {
   return (
     <div>
       <Container>
-        <div className="md:flex md:h-screen md:py-[35px] gap-[43px] mb-5 md:mb-0">
+        <div className="md:flex md:h-screen md:py-[35px] gap-[43px] mb-5 md:mb-0 md:justify-between">
           <SideBar />
-          <div className="flex">
-            <div className="w-[427px] flex flex-col h-[100%] justify-between">
+          <div className="md:flex md:justify-between">
+            <div className="md:w-[427px] flex flex-col h-[100%] justify-between">
               <div className="relative">
                 <input
                   type="text"
@@ -32,6 +32,7 @@ function Messages() {
               <Friends className="md:w-[427px] h-[90%]" />
             </div>
           </div>
+          <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-[689px] rounded-[20px]"></div>
         </div>
       </Container>
     </div>

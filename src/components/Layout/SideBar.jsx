@@ -5,10 +5,12 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { FaSignOutAlt } from "react-icons/fa";
 import profilePic from "../../assets/home/profilepic.jpg";
 import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 function SideBar() {
+  const location = useLocation();
+  const currentPath = location.pathname;
   const auth = getAuth();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -35,19 +37,46 @@ function SideBar() {
             />
           </div>
           <div className="flex md:flex-col items-end relative justify-between">
-            <div className="relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group">
-              <GoHomeFill className="text-[33px] md:text-[46px]" onClick={()=> navigate("/home")}/>
+            <div
+              className={`relative cursor-pointer h-[89px]  ${
+                currentPath === "/home"
+                  ? "md:bg-white text-[#1e1e1e] "
+                  : "text-[#C3C3C3]"
+              } duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group`}
+            >
+              <GoHomeFill
+                className="text-[33px] md:text-[46px]"
+                onClick={() => navigate("/home")}
+              />
               <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
             </div>
-            <div className="relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group">
-              <AiFillMessage className="text-[33px] md:text-[46px]" onClick={()=> navigate("/messages")}/>
+            <div
+              className={`relative cursor-pointer h-[89px]  ${
+                currentPath === "/messages"
+                  ? "md:bg-white text-[#1e1e1e]"
+                  : "text-[#C3C3C3]"
+              } duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group`}
+            >
+              <AiFillMessage
+                className="text-[33px] md:text-[46px]"
+                onClick={() => navigate("/messages")}
+              />
               <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
             </div>
-            <div className="relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group">
-              <IoSettingsSharp className="text-[33px] md:text-[46px]" onClick={()=> navigate("/settings")}/>
+            <div
+              className={`relative cursor-pointer h-[89px]    ${
+                currentPath === "/settings"
+                  ? "md:bg-white text-[#1e1e1e]"
+                  : "text-[#C3C3C3]"
+              } duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group`}
+            >
+              <IoSettingsSharp
+                className="text-[33px] md:text-[46px]"
+                onClick={() => navigate("/settings")}
+              />
               <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
             </div>
-            <div className="md:hidden relative cursor-pointer h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group">
+            <div className="md:hidden relative cursor-pointer h-[89px] text-[#C3C3C3]  md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center" onClick={handleLogout}>
               <FaSignOutAlt className="text-[33px] md:text-[46px]" />
               <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
             </div>
