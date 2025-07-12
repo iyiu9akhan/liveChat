@@ -32,7 +32,6 @@ const Home = () => {
     }
   });
   onAuthStateChanged(auth, (user) => {
-    console.log(user);
     if (user.emailVerified) {
       setVerify(true);
     }

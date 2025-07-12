@@ -1,20 +1,24 @@
 import React from "react";
 import { GoHomeFill } from "react-icons/go";
 import { AiFillMessage } from "react-icons/ai";
-import { IoSettingsSharp } from "react-icons/io5";
+import { IoPhonePortrait, IoSettingsSharp } from "react-icons/io5";
 import { FaSignOutAlt } from "react-icons/fa";
 import profilePic from "../../assets/home/profilepic.jpg";
 import { getAuth, signOut } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { userLoginInfo } from "../../slice/userSlice";
 
 function SideBar() {
   const location = useLocation();
   const currentPath = location.pathname;
   const auth = getAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleLogout = () => {
     signOut(auth).then(() => {
+      dispatch(userLoginInfo(null));
       localStorage.removeItem("userLoginInfo");
       toast.info("Logout successful. See you soon!");
       setTimeout(() => {
@@ -76,7 +80,10 @@ function SideBar() {
               />
               <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
             </div>
-            <div className="md:hidden relative cursor-pointer h-[89px] text-[#C3C3C3]  md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center" onClick={handleLogout}>
+            <div
+              className="md:hidden relative cursor-pointer h-[89px] text-[#C3C3C3]  md:hover:bg-white hover:text-[#1e1e1e] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center"
+              onClick={handleLogout}
+            >
               <FaSignOutAlt className="text-[33px] md:text-[46px]" />
               <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
             </div>

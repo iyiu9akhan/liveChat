@@ -152,43 +152,43 @@ export const friends = [
     time: "Today, 2:31pm",
   },
 ];
-export const userList = [
-  {
-    img: user_one,
-    title: "raghav",
-    time: "Today, 8:56pm",
-  },
-  {
-    img: user_two,
-    title: "swathi",
-    time: "Today, 2:31pm",
-  },
-  {
-    img: user_three,
-    title: "kiran",
-    time: "Yesterday, 6:22pm",
-  },
-  {
-    img: user_four,
-    title: "Tejeshwini C",
-    time: "Today, 12:22pm",
-  },
-  {
-    img: user_five,
-    title: "Marvin McKinney",
-    time: "Today, 12:22pm",
-  },
-  {
-    img: user_five,
-    title: "Marvin McKinney",
-    time: "Today, 12:22pm",
-  },
-  {
-    img: user_five,
-    title: "Marvin McKinney",
-    time: "Today, 12:22pm",
-  },
-];
+// export const userList = [
+//   {
+//     img: user_one,
+//     title: "raghav",
+//     time: "Today, 8:56pm",
+//   },
+//   {
+//     img: user_two,
+//     title: "swathi",
+//     time: "Today, 2:31pm",
+//   },
+//   {
+//     img: user_three,
+//     title: "kiran",
+//     time: "Yesterday, 6:22pm",
+//   },
+//   {
+//     img: user_four,
+//     title: "Tejeshwini C",
+//     time: "Today, 12:22pm",
+//   },
+//   {
+//     img: user_five,
+//     title: "Marvin McKinney",
+//     time: "Today, 12:22pm",
+//   },
+//   {
+//     img: user_five,
+//     title: "Marvin McKinney",
+//     time: "Today, 12:22pm",
+//   },
+//   {
+//     img: user_five,
+//     title: "Marvin McKinney",
+//     time: "Today, 12:22pm",
+//   },
+// ];
 
 export const myGroup = [
   {
