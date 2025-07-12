@@ -1,4 +1,4 @@
-import"./@firebase/auth-ypRukuiR.js";import{r}from"./@firebase/app-CQyijaq4.js";import"./@firebase/logger-CNz1B4Yj.js";var e="firebase",i="11.9.1";/**
+import"./@firebase/auth-B-KUfBZ_.js";import{r}from"./@firebase/app-CHo1YO-Z.js";import"./@firebase/logger-CNz1B4Yj.js";import"./@firebase/database-C_bXbqct.js";var i="firebase",e="11.9.1";/**
  * @license
  * Copyright 2020 Google LLC
  *
@@ -13,4 +13,4 @@ import"./@firebase/auth-ypRukuiR.js";import{r}from"./@firebase/app-CQyijaq4.js";
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */r(e,i,"app");
+ */r(i,e,"app");
