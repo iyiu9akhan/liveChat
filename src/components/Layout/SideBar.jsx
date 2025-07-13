@@ -7,10 +7,12 @@ import profilePic from "../../assets/home/profilepic.jpg";
 import { getAuth, signOut } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLoginInfo } from "../../slice/userSlice";
 
 function SideBar() {
+  const data = useSelector((state) => state.userInfo.value);
+  // console.log(data);
   const location = useLocation();
   const currentPath = location.pathname;
   const auth = getAuth();
@@ -34,11 +36,16 @@ function SideBar() {
             <p className="block md:hidden text-white font-primary text-[30px]">
               liveChat
             </p>
-            <img
-              src={profilePic}
-              alt="#profile_pic"
-              className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer"
-            />
+            <div className="flex flex-col items-center">
+              <img
+                src={profilePic}
+                alt="#profile_pic"
+                className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer"
+              />
+              <p className="text-white font-regular font-semibold text-[22px] mt-5 capitalize">
+                {data.user.displayName}
+              </p>
+            </div>
           </div>
           <div className="flex md:flex-col items-end relative justify-between">
             <div

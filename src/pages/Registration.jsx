@@ -10,6 +10,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import { getDatabase, ref, set } from "firebase/database";
@@ -116,23 +117,28 @@ function Registration() {
 
     createUserWithEmailAndPassword(auth, email, pass)
       .then((user) => {
-        sendEmailVerification(auth.currentUser);
-        console.log(user, "user");
-        console.log(name + ": name");
-        set(ref(db, "users/" + user.user.uid), {
-          username: name,
-          email: email,
-        });
-        toast.success("registration done");
-        setTimeout(() => {
-          setLoading(false);
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        }).then(() => {
+
+          sendEmailVerification(auth.currentUser);
+          console.log(user, "user");
+          console.log(name + ": name");
+          set(ref(db, "users/" + user.user.uid), {
+            username: user.user.displayName,
+            email: user.user.email,
+          });
+          toast.success("registration done");
           setTimeout(() => {
-            navigate("/login");
-          }, 1000);
-        }, 2000);
-        setEmail("");
-        setName("");
-        setPass("");
+            setLoading(false);
+            setTimeout(() => {
+              navigate("/login");
+            }, 1000);
+          }, 2000);
+          setEmail("");
+          setName("");
+          setPass("");
+        });
       })
       .catch((error) => {
         setLoading(false);
