@@ -120,7 +120,6 @@ function Registration() {
         updateProfile(auth.currentUser, {
           displayName: name,
         }).then(() => {
-
           sendEmailVerification(auth.currentUser);
           console.log(user, "user");
           console.log(name + ": name");

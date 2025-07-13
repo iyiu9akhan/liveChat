@@ -1,34 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 // import { userList } from '../../../pages/User'
-import { FaPlus } from "react-icons/fa";
+import { FaMinus, FaPlus } from "react-icons/fa";
 // import { userList } from "../User";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set, remove } from "firebase/database";
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
 
 function UserList() {
-  const data = useSelector(state => state.userInfo.value.user)
+  const data = useSelector((state) => state.userInfo.value.user);
   const db = getDatabase();
   const [userList, setUserList] = useState([]);
+  const [sentRequests, setSentRequests] = useState([]);
   useEffect(() => {
     const userRef = ref(db, "users/");
-    onValue(userRef, (snapshot) => {
+    // onValue(userRef, (snapshot) => {
       // console.log(snapshot.val());
       onValue(userRef, (snapshot) => {
         let array = [];
         snapshot.forEach((item) => {
-          if(data.uid !== item.key){
-
-            array.push(item.val());
+          if (data.uid !== item.key) {
+            array.push({ ...item.val(), userid: item.key });
           }
         });
-        setUserList(array)
+        setUserList(array);
       });
+    // });
+  }, []);
+  // const [sentRqst, setSendRqst] = useState([]);
+  useEffect(() => {
+    const rqstRef = ref(db, "friendRqst/");
+    onValue(rqstRef, (snapshot) => {
+      let array = [];
+      snapshot.forEach((item) => {
+        const rqst = item.val();
+        if (rqst.senderId == data.uid) {
+          array.push(rqst.receiverId);
+        }
+      });
+      setSentRequests(array);
     });
   }, []);
   // console.log(userList);
-  
+  const sendRqst = (userList) => {
+    // console.log(userList);
+    set(ref(db, "friendRqst/" + userList.userid + data.uid), {
+      senderId: data.uid,
+      senderNam: data.displayName,
+      receiverId: userList.userid,
+      receiverName: userList.username,
+    });
+  };
+  const cancelRqst = (userList) => {
+    // console.log(userList);
+   remove(ref(db, "friendRqst/" + userList.userid + data.uid));
+  };
+
   return (
     <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
       <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
@@ -45,7 +72,11 @@ function UserList() {
             className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none"
           >
             <div className="flex items-center mb-[13px]">
-              <img src={random_profile} alt="#profile" className="h-[52px] w-[52px]"/>
+              <img
+                src={random_profile}
+                alt="#profile"
+                className="h-[52px] w-[52px]"
+              />
               <div className="mx-[14px] ">
                 <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
                   {userList.username}
@@ -55,9 +86,21 @@ function UserList() {
                 </p>
               </div>
             </div>
-            <div className="h-[30px] w-[30px] rounded-[5px] bg-primary flex items-center justify-center cursor-pointer">
-              <FaPlus className="text-white" size={14} />
-            </div>
+            {sentRequests.includes(userList.userid) ? (
+              <div
+                onClick={() => cancelRqst(userList)}
+                className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-pointer"
+              >
+                <FaMinus className="text-white" size={14} />
+              </div>
+            ) : (
+              <div
+                onClick={() => sendRqst(userList)}
+                className="h-[30px] w-[30px] rounded-[5px] bg-teal-600 flex items-center justify-center cursor-pointer"
+              >
+                <FaPlus className="text-white" size={14} />
+              </div>
+            )}
           </div>
         ))}
       </div>

@@ -45,6 +45,9 @@ function SideBar() {
               <p className="text-white font-regular font-semibold text-[22px] mt-5 capitalize">
                 {data.user.displayName}
               </p>
+              <p className="text-white font-regular font-semibold text-[11px] mt-2 capitalize">
+                {data.user.email}
+              </p>
             </div>
           </div>
           <div className="flex md:flex-col items-end relative justify-between">
