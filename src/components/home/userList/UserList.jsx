@@ -14,8 +14,6 @@ function UserList() {
   const [sentRequests, setSentRequests] = useState([]);
   useEffect(() => {
     const userRef = ref(db, "users/");
-    // onValue(userRef, (snapshot) => {
-      // console.log(snapshot.val());
       onValue(userRef, (snapshot) => {
         let array = [];
         snapshot.forEach((item) => {
@@ -25,9 +23,7 @@ function UserList() {
         });
         setUserList(array);
       });
-    // });
   }, []);
-  // const [sentRqst, setSendRqst] = useState([]);
   useEffect(() => {
     const rqstRef = ref(db, "friendRqst/");
     onValue(rqstRef, (snapshot) => {
@@ -41,7 +37,6 @@ function UserList() {
       setSentRequests(array);
     });
   }, []);
-  // console.log(userList);
   const sendRqst = (userList) => {
     // console.log(userList);
     set(ref(db, "friendRqst/" + userList.userid + data.uid), {
