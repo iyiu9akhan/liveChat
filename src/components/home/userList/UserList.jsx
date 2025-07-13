@@ -38,7 +38,6 @@ function UserList() {
     });
   }, []);
   const sendRqst = (userList) => {
-    // console.log(userList);
     set(ref(db, "friendRqst/" + userList.userid + data.uid), {
       senderId: data.uid,
       senderNam: data.displayName,
@@ -47,7 +46,6 @@ function UserList() {
     });
   };
   const cancelRqst = (userList) => {
-    // console.log(userList);
    remove(ref(db, "friendRqst/" + userList.userid + data.uid));
   };
 
