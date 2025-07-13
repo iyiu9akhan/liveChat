@@ -12,6 +12,7 @@ import { userLoginInfo } from "../../slice/userSlice";
 
 function SideBar() {
   const data = useSelector((state) => state.userInfo.value);
+  // console.log(data);
   const location = useLocation();
   const currentPath = location.pathname;
   const auth = getAuth();
