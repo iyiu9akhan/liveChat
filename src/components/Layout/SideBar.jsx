@@ -20,10 +20,10 @@ function SideBar() {
   const dispatch = useDispatch();
   const handleLogout = () => {
     signOut(auth).then(() => {
-      dispatch(userLoginInfo(null));
-      localStorage.removeItem("userLoginInfo");
       toast.info("Logout successful. See you soon!");
       setTimeout(() => {
+        dispatch(userLoginInfo(null));
+        localStorage.removeItem("userLoginInfo");
         navigate("/login");
       }, 2500);
     });
