@@ -3,7 +3,14 @@ import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 // import { userList } from '../../../pages/User'
 import { FaMinus, FaPlus } from "react-icons/fa";
 // import { userList } from "../User";
-import { getDatabase, ref, onValue, set, remove } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  onValue,
+  set,
+  remove,
+  push,
+} from "firebase/database";
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
 
@@ -14,15 +21,15 @@ function UserList() {
   const [sentRequests, setSentRequests] = useState([]);
   useEffect(() => {
     const userRef = ref(db, "users/");
-      onValue(userRef, (snapshot) => {
-        let array = [];
-        snapshot.forEach((item) => {
-          if (data.uid !== item.key) {
-            array.push({ ...item.val(), userid: item.key });
-          }
-        });
-        setUserList(array);
+    onValue(userRef, (snapshot) => {
+      let array = [];
+      snapshot.forEach((item) => {
+        if (data.uid !== item.key) {
+          array.push({ ...item.val(), userid: item.key });
+        }
       });
+      setUserList(array);
+    });
   }, []);
   useEffect(() => {
     const rqstRef = ref(db, "friendRqst/");
@@ -37,16 +44,31 @@ function UserList() {
       setSentRequests(array);
     });
   }, []);
+  // const sendRqst = (userList) => {
+  //   set(ref(db, "friendRqst/" + userList.userid + data.uid), {
+  //     senderId: data.uid,
+  //     senderNam: data.displayName,
+  //     receiverId: userList.userid,
+  //     receiverName: userList.username,
+  //   });
+  // };
+
+  let rqstKey = "";
   const sendRqst = (userList) => {
-    set(ref(db, "friendRqst/" + userList.userid + data.uid), {
+    const rqstRef = push(ref(db, "friendRqst/"));
+    rqstKey = rqstRef.key;
+    console.log(rqstKey);
+    set(rqstRef, {
       senderId: data.uid,
       senderNam: data.displayName,
       receiverId: userList.userid,
       receiverName: userList.username,
     });
   };
-  const cancelRqst = (userList) => {
-   remove(ref(db, "friendRqst/" + userList.userid + data.uid));
+
+  const cancelRqst = () => {
+    remove(ref(db, `friendRqst/${rqstKey}`));
+    console.log(rqstKey);
   };
 
   return (
