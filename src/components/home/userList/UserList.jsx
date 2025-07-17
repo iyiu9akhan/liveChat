@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
-// import { userList } from '../../../pages/User'
 import { FaMinus, FaPlus } from "react-icons/fa";
 // import { userList } from "../User";
 import {
