@@ -46,7 +46,7 @@ function FriendList() {
                   <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
                     {item.senderName}
                   </h1>
-                  <p className="font-regular font-medium text-[14px] text-[#4D4D4D] capitalize">
+                  <p className="font-regular font-medium text-[13px] text-[#4D4D4D] capitalize">
                     {item.senderEmail}
                   </p>
                 </div>

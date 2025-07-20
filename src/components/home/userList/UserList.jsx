@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 import {
   getDatabase,
   ref,
@@ -17,6 +18,7 @@ function UserList() {
   const db = getDatabase();
   const [userList, setUserList] = useState([]);
   const [sentRequests, setSentRequests] = useState([]);
+
   useEffect(() => {
     const userRef = ref(db, "users/");
     onValue(userRef, (snapshot) => {
@@ -28,52 +30,43 @@ function UserList() {
       });
       setUserList(array);
     });
-  }, []);
+  }, [data.uid]);
+
   useEffect(() => {
     const rqstRef = ref(db, "friendRqst/");
     onValue(rqstRef, (snapshot) => {
       let array = [];
       snapshot.forEach((item) => {
         const rqst = item.val();
-        if (rqst.senderId == data.uid) {
-          array.push(rqst.receiverId);
+        if (rqst.senderId === data.uid) {
+          array.push({
+            receiverId: rqst.receiverId,
+            key: item.key,
+          });
         }
       });
       setSentRequests(array);
     });
-  }, []);
-  // const sendRqst = (userList) => {
-  //   set(ref(db, "friendRqst/" + userList.userid + data.uid), {
-  //     senderId: data.uid,
-  //     senderNam: data.displayName,
-  //     receiverId: userList.userid,
-  //     receiverName: userList.username,
-  //   });
-  // };
+  }, [data.uid]);
 
-  let rqstKey = "";
-  const sendRqst = (userList) => {
+  const sendRqst = (user) => {
     const rqstRef = push(ref(db, "friendRqst/"));
-    rqstKey = rqstRef.key;
-    console.log(rqstKey);
     set(rqstRef, {
       senderId: data.uid,
       senderName: data.displayName,
       senderEmail: data.email,
-      receiverId: userList.userid,
-      receiverName: userList.username,
+      receiverId: user.userid,
+      receiverName: user.username,
     });
-    return rqstKey;
   };
 
-  const cancelRqst = () => {
+  const cancelRqst = (rqstKey) => {
     remove(ref(db, `friendRqst/${rqstKey}`));
-    console.log(rqstKey);
   };
 
   return (
     <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
-      <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
+      <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
         user list
       </h1>
       <PiDotsThreeOutlineVerticalFill
@@ -81,43 +74,49 @@ function UserList() {
         size={20}
       />
       <div>
-        {userList.map((userList, index) => (
-          <div
-            key={index}
-            className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none"
-          >
-            <div className="flex items-center mb-[13px]">
-              <img
-                src={random_profile}
-                alt="#profile"
-                className="h-[52px] w-[52px]"
-              />
-              <div className="mx-[14px] ">
-                <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
-                  {userList.username}
-                </h1>
-                <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                  {userList.email}
-                </p>
+        {userList.map((user, index) => {
+          const request = sentRequests.find(
+            (rq) => rq.receiverId === user.userid
+          );
+
+          return (
+            <div
+              key={index}
+              className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none"
+            >
+              <div className="flex items-center mb-[13px]">
+                <img
+                  src={random_profile}
+                  alt="#profile"
+                  className="h-[52px] w-[52px]"
+                />
+                <div className="mx-[14px] ">
+                  <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
+                    {user.username}
+                  </h1>
+                  <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
+                    {user.email}
+                  </p>
+                </div>
               </div>
+              {request ? (
+                <div
+                  onClick={() => cancelRqst(request.key)}
+                  className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-pointer"
+                >
+                  <ImCross className="text-white" size={13} />
+                </div>
+              ) : (
+                <div
+                  onClick={() => sendRqst(user)}
+                  className="h-[30px] w-[30px] rounded-[5px] bg-teal-600 flex items-center justify-center cursor-pointer"
+                >
+                  <FaPlus className="text-white" size={16} />
+                </div>
+              )}
             </div>
-            {sentRequests.includes(userList.userid) ? (
-              <div
-                onClick={() => cancelRqst(userList)}
-                className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-pointer"
-              >
-                <FaMinus className="text-white" size={14} />
-              </div>
-            ) : (
-              <div
-                onClick={() => sendRqst(userList)}
-                className="h-[30px] w-[30px] rounded-[5px] bg-teal-600 flex items-center justify-center cursor-pointer"
-              >
-                <FaPlus className="text-white" size={14} />
-              </div>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
