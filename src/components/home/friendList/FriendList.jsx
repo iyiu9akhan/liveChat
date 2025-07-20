@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
-import { friendRqst } from "../User";
+// import { friendRqst } from "../User";
+import { getDatabase, onValue, ref } from "firebase/database";
+import random_profile from "../../../assets/home/random_profile.jpg";
+import { useSelector } from "react-redux";
+// import { data } from "react-router";
 
 function FriendList() {
+  const data = useSelector((state) => state.userInfo.value.user);
+  const db = getDatabase();
+  const [friendRqst, setFriendRqst] = useState([]);
+  useEffect(() => {
+    const friendRqstRef = ref(db, "friendRqst/");
+    onValue(friendRqstRef, (snapshot) => {
+      let array = [];
+      snapshot.forEach((item) => {
+        if (data.uid == item.val().receiverId) {
+          array.push(item.val());
+        }
+      });
+      setFriendRqst(array);
+    });
+  }, []);
   return (
     <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:shadow-none md:w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
       <div>
@@ -14,23 +33,23 @@ function FriendList() {
           size={20}
         />
         <div>
-          {friendRqst.map((friendRqst, index) => (
+          {friendRqst.map((item, index) => (
             <div
               key={index}
               className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none"
             >
               <div className="flex items-center mb-[13px]">
                 <img
-                  src={friendRqst.img}
-                  alt="#profile_img"
+                  src={random_profile}
+                  alt="#"
                   className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"
                 />
                 <div className="mx-[14px]">
                   <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
-                    {friendRqst.title}
+                    {item.senderName}
                   </h1>
                   <p className="font-regular font-medium text-[14px] text-[#4D4D4D] capitalize">
-                    {friendRqst.subtitle}
+                    {item.senderEmail}
                   </p>
                 </div>
               </div>

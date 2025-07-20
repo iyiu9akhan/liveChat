@@ -57,38 +57,38 @@ export const groupList = [
   },
 ];
 
-export const friendRqst = [
-  {
-    img: friendRqst_one,
-    title: "raghav",
-    subtitle: "dinner?",
-  },
-  {
-    img: friendRqst_two,
-    title: "swathi",
-    subtitle: "sure!",
-  },
-  {
-    img: friendRqst_three,
-    title: "kiran",
-    subtitle: "hi...",
-  },
-  {
-    img: friendRqst_four,
-    title: "Tejeshwini C",
-    subtitle: "i will call him today.",
-  },
-  {
-    img: friendRqst_four,
-    title: "Tejeshwini C",
-    subtitle: "i will call him today.",
-  },
-  {
-    img: friendRqst_four,
-    title: "Tejeshwini C",
-    subtitle: "i will call him today.",
-  },
-];
+// export const friendRqst = [
+//   {
+//     img: friendRqst_one,
+//     title: "raghav",
+//     subtitle: "dinner?",
+//   },
+//   {
+//     img: friendRqst_two,
+//     title: "swathi",
+//     subtitle: "sure!",
+//   },
+//   {
+//     img: friendRqst_three,
+//     title: "kiran",
+//     subtitle: "hi...",
+//   },
+//   {
+//     img: friendRqst_four,
+//     title: "Tejeshwini C",
+//     subtitle: "i will call him today.",
+//   },
+//   {
+//     img: friendRqst_four,
+//     title: "Tejeshwini C",
+//     subtitle: "i will call him today.",
+//   },
+//   {
+//     img: friendRqst_four,
+//     title: "Tejeshwini C",
+//     subtitle: "i will call him today.",
+//   },
+// ];
 
 export const friends = [
   {

@@ -58,10 +58,12 @@ function UserList() {
     console.log(rqstKey);
     set(rqstRef, {
       senderId: data.uid,
-      senderNam: data.displayName,
+      senderName: data.displayName,
+      senderEmail: data.email,
       receiverId: userList.userid,
       receiverName: userList.username,
     });
+    return rqstKey;
   };
 
   const cancelRqst = () => {
