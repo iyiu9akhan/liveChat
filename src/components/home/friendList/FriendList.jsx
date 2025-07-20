@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
-// import { friendRqst } from "../User";
 import { getDatabase, onValue, ref } from "firebase/database";
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
-// import { data } from "react-router";
 
 function FriendList() {
   const data = useSelector((state) => state.userInfo.value.user);
