@@ -1,4 +1,4 @@
-import"./@firebase/auth-IP45k9Zv.js";import{r}from"./@firebase/app-CHo1YO-Z.js";import"./@firebase/logger-CNz1B4Yj.js";import"./@firebase/database-pCA1N0yI.js";var i="firebase",e="11.9.1";/**
+import"./@firebase/auth-IP45k9Zv.js";import{r}from"./@firebase/app-CHo1YO-Z.js";import"./@firebase/logger-CNz1B4Yj.js";import"./@firebase/database-BQGea8hV.js";var i="firebase",e="11.9.1";/**
  * @license
  * Copyright 2020 Google LLC
  *
