@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import {
   getDatabase,
@@ -37,17 +37,12 @@ function UserList() {
     onValue(rqstRef, (snapshot) => {
       let array = [];
       snapshot.forEach((item) => {
-        const rqst = item.val();
-        if (rqst.senderId === data.uid) {
-          array.push({
-            receiverId: rqst.receiverId,
-            key: item.key,
-          });
-        }
+        const req = item.val();
+        array.push(req.receiverId + req.senderId); 
       });
       setSentRequests(array);
     });
-  }, [data.uid]);
+  }, []);
 
   const sendRqst = (user) => {
     const rqstRef = push(ref(db, "friendRqst/"));
@@ -58,10 +53,6 @@ function UserList() {
       receiverId: user.userid,
       receiverName: user.username,
     });
-  };
-
-  const cancelRqst = (rqstKey) => {
-    remove(ref(db, `friendRqst/${rqstKey}`));
   };
 
   return (
@@ -75,10 +66,6 @@ function UserList() {
       />
       <div>
         {userList.map((user, index) => {
-          const request = sentRequests.find(
-            (rq) => rq.receiverId === user.userid
-          );
-
           return (
             <div
               key={index}
@@ -90,7 +77,7 @@ function UserList() {
                   alt="#profile"
                   className="h-[52px] w-[52px]"
                 />
-                <div className="mx-[14px] ">
+                <div className="mx-[14px]">
                   <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
                     {user.username}
                   </h1>
@@ -99,11 +86,10 @@ function UserList() {
                   </p>
                 </div>
               </div>
-              {request ? (
-                <div
-                  onClick={() => cancelRqst(request.key)}
-                  className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-pointer"
-                >
+
+              {sentRequests.includes(data.uid + user.userid) ||
+              sentRequests.includes(user.userid + data.uid) ? (
+                <div className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-not-allowed">
                   <ImCross className="text-white" size={13} />
                 </div>
               ) : (
