@@ -30,29 +30,76 @@ function UserList() {
       });
       setUserList(array);
     });
-  }, [data.uid]);
+  }, []);
 
+  // useEffect(() => {
+  //   const rqstRef = ref(db, "friendRqst/");
+  //   onValue(rqstRef, (snapshot) => {
+  //     let array = [];
+  //     snapshot.forEach((item) => {
+  //       const req = item.val();
+  //       array.push(req.receiverId + req.senderId);
+  //     });
+  //     setSentRequests(array);
+  //   });
+  // }, []);
   useEffect(() => {
     const rqstRef = ref(db, "friendRqst/");
     onValue(rqstRef, (snapshot) => {
       let array = [];
       snapshot.forEach((item) => {
         const req = item.val();
-        array.push(req.receiverId + req.senderId); 
+        array.push({
+          combo: req.receiverId + req.senderId,
+          requestId: item.key, // this is the Firebase push key
+        });
       });
       setSentRequests(array);
     });
   }, []);
 
+  // const sendRqst = (user) => {
+  //   const rqstRef = push(ref(db, "friendRqst/"));
+  //   const key = rqstRef.key;
+  //   // console.log(key);
+  //   set(rqstRef, {
+  //     senderId: data.uid,
+  //     senderName: data.displayName,
+  //     senderEmail: data.email,
+  //     receiverId: user.userid,
+  //     receiverName: user.username,
+  //     requestId: key,
+  //   });
+  // };
   const sendRqst = (user) => {
     const rqstRef = push(ref(db, "friendRqst/"));
+    const key = rqstRef.key;
+
     set(rqstRef, {
       senderId: data.uid,
       senderName: data.displayName,
       senderEmail: data.email,
       receiverId: user.userid,
       receiverName: user.username,
+      requestId: key,
+    }).then(() => {
+      setSentRequests((prev) => [
+        ...prev,
+        {
+          combo: data.uid + user.userid,
+          requestId: key,
+        },
+      ]);
     });
+  };
+
+  // const cancelRqst = (user) => {
+  //   remove(ref(db, "friendRqst/" + user.requestId));
+  //   console.log(user.requestId);
+  // };
+  const cancelRqst = (req) => {
+    remove(ref(db, "friendRqst/" + req.requestId));
+    // console.log(req.requestId);
   };
 
   return (
@@ -87,9 +134,49 @@ function UserList() {
                 </div>
               </div>
 
-              {sentRequests.includes(data.uid + user.userid) ||
+              {/* {sentRequests.includes(data.uid + user.userid) ||
               sentRequests.includes(user.userid + data.uid) ? (
-                <div className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-not-allowed">
+                <div
+                  // onClick={() => cancelRqst(user)}
+                  onClick={() => {
+                    const matchedRequest = sentRequests.find(
+                      (req) =>
+                        req.combo === data.uid + user.userid ||
+                        req.combo === user.userid + data.uid
+                    );
+                    if (matchedRequest) {
+                      cancelRqst(matchedRequest);
+                    }
+                  }}
+                  className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-pointer"
+                >
+                  <ImCross className="text-white" size={13} />
+                </div>
+              ) : (
+                <div
+                  onClick={() => sendRqst(user)}
+                  className="h-[30px] w-[30px] rounded-[5px] bg-teal-600 flex items-center justify-center cursor-pointer"
+                >
+                  <FaPlus className="text-white" size={16} />
+                </div>
+              )} */}
+
+              {sentRequests.some(
+                (req) =>
+                  req.combo === data.uid + user.userid ||
+                  req.combo === user.userid + data.uid
+              ) ? (
+                <div
+                  onClick={() => {
+                    const matchedRequest = sentRequests.find(
+                      (req) =>
+                        req.combo === data.uid + user.userid ||
+                        req.combo === user.userid + data.uid
+                    );
+                    if (matchedRequest) cancelRqst(matchedRequest);
+                  }}
+                  className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-pointer"
+                >
                   <ImCross className="text-white" size={13} />
                 </div>
               ) : (
