@@ -33,16 +33,18 @@ import store from "./Store";
 import { Provider } from "react-redux";
 import Messages from "./pages/Messages";
 import Settings from "./pages/Settings";
+// import home from "./pages/Home"
 
 function App() {
   return (
     <Provider store={store}>
       <Routes>
+        {/* <Route path="/" element={<Home/>}/> */}
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route
-          path="/home"
+          path="/"
           element={
             // <PathProtector>
             <Home />

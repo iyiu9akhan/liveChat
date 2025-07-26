@@ -90,68 +90,68 @@ export const groupList = [
 //   },
 // ];
 
-export const friends = [
-  {
-    img: friend_one,
-    title: "raghav",
-    subtitle: "dinner?",
-    time: "Today, 8:56pm",
-  },
-  {
-    img: friend_two,
-    title: "swathi",
-    subtitle: "sure!",
-    time: "Today, 2:31pm",
-  },
-  {
-    img: friend_three,
-    title: "kiran",
-    subtitle: "hi...",
-    time: "Yesterday, 6:22pm",
-  },
-  {
-    img: friend_four,
-    title: "Tejeshwini C",
-    subtitle: "i will call him today.",
-    time: "Today, 12:22pm",
-  },
-  {
-    img: friend_one,
-    title: "raghav",
-    subtitle: "dinner?",
-    time: "Today, 8:56pm",
-  },
-  {
-    img: friend_two,
-    title: "swathi",
-    subtitle: "sure!",
-    time: "Today, 2:31pm",
-  },
-  {
-    img: friend_three,
-    title: "kiran",
-    subtitle: "hi...",
-    time: "Yesterday, 6:22pm",
-  },
-  {
-    img: friend_one,
-    title: "raghav",
-    subtitle: "dinner?",
-    time: "Today, 8:56pm",
-  },
-  {
-    img: friend_four,
-    title: "Tejeshwini C",
-    subtitle: "i will call him today.",
-    time: "Today, 12:22pm",
-  },
-  {
-    img: friend_two,
-    title: "swathi",
-    subtitle: "sure!",
-    time: "Today, 2:31pm",
-  },
-];
+// export const friends = [
+//   {
+//     img: friend_one,
+//     title: "raghav",
+//     subtitle: "dinner?",
+//     time: "Today, 8:56pm",
+//   },
+//   {
+//     img: friend_two,
+//     title: "swathi",
+//     subtitle: "sure!",
+//     time: "Today, 2:31pm",
+//   },
+//   {
+//     img: friend_three,
+//     title: "kiran",
+//     subtitle: "hi...",
+//     time: "Yesterday, 6:22pm",
+//   },
+//   {
+//     img: friend_four,
+//     title: "Tejeshwini C",
+//     subtitle: "i will call him today.",
+//     time: "Today, 12:22pm",
+//   },
+//   {
+//     img: friend_one,
+//     title: "raghav",
+//     subtitle: "dinner?",
+//     time: "Today, 8:56pm",
+//   },
+//   {
+//     img: friend_two,
+//     title: "swathi",
+//     subtitle: "sure!",
+//     time: "Today, 2:31pm",
+//   },
+//   {
+//     img: friend_three,
+//     title: "kiran",
+//     subtitle: "hi...",
+//     time: "Yesterday, 6:22pm",
+//   },
+//   {
+//     img: friend_one,
+//     title: "raghav",
+//     subtitle: "dinner?",
+//     time: "Today, 8:56pm",
+//   },
+//   {
+//     img: friend_four,
+//     title: "Tejeshwini C",
+//     subtitle: "i will call him today.",
+//     time: "Today, 12:22pm",
+//   },
+//   {
+//     img: friend_two,
+//     title: "swathi",
+//     subtitle: "sure!",
+//     time: "Today, 2:31pm",
+//   },
+// ];
 // export const userList = [
 //   {
 //     img: user_one,

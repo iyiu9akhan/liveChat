@@ -81,6 +81,7 @@ function UserList() {
       senderEmail: data.email,
       receiverId: user.userid,
       receiverName: user.username,
+      receiverEmail:user.email,
       requestId: key,
     }).then(() => {
       setSentRequests((prev) => [

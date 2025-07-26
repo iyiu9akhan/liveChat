@@ -1,6 +1,7 @@
 import React from 'react'
 import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi'
 import { blockedUsers } from '../User'
+import { FaUserCheck } from "react-icons/fa";
 
 function BlockedUser() {
   return (
@@ -29,10 +30,12 @@ function BlockedUser() {
                                </p>
                              </div>
                            </div>
-                           <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
-                             <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
+                           <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer">
+                             {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
                                unblock
-                             </p>
+                             </p> */}
+                             <FaUserCheck  className="text-white text-[18px]"/>
+
                            </div>
                          </div>
                        ))}

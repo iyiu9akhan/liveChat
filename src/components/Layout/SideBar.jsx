@@ -59,7 +59,7 @@ function SideBar() {
             >
               <GoHomeFill
                 className="text-[33px] md:text-[46px]"
-                onClick={() => navigate("/home")}
+                onClick={() => navigate("/")}
               />
               <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-[#1e1e1e] bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
             </div>

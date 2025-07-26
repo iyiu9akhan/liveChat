@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
-import { getDatabase, onValue, ref } from "firebase/database";
+import {
+  getDatabase,
+  onValue,
+  push,
+  ref,
+  remove,
+  set,
+} from "firebase/database";
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
 
-function FriendList() {
+function FriendRqst() {
   const data = useSelector((state) => state.userInfo.value.user);
   const db = getDatabase();
   const [friendRqst, setFriendRqst] = useState([]);
@@ -20,6 +27,15 @@ function FriendList() {
       setFriendRqst(array);
     });
   }, []);
+
+  const friendRqstAccept = (item) => {
+    console.log(item);
+    set(push(ref(db, "friends/")), {
+      ...item,
+    }).then(() => {
+      remove(ref(db, "friendRqst/" + item.requestId));
+    });
+  };
   return (
     <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:shadow-none md:w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
       <div>
@@ -51,7 +67,10 @@ function FriendList() {
                   </p>
                 </div>
               </div>
-              <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
+              <div
+                onClick={() => friendRqstAccept(item)}
+                className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer"
+              >
                 <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
                   Accept
                 </p>
@@ -64,4 +83,4 @@ function FriendList() {
   );
 }
 
-export default FriendList;
+export default FriendRqst;

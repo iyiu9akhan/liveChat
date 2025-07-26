@@ -82,7 +82,7 @@ function Login() {
         setTimeout(() => {
           setLoading(false);
           setTimeout(() => {
-            navigate("/home");
+            navigate("/");
           }, 1000);
         }, 2000);
         setEmail("");
