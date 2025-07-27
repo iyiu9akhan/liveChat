@@ -47,6 +47,7 @@ function Friends({ className = "" }) {
       blockedId: data.uid === item.senderId ? item.receiverId : item.senderId,
       blockedName:
         data.uid === item.senderId ? item.receiverName : item.senderName,
+        blockedEmail: data.uid === item.senderEmail ? item.receiverEmail : item.senderEmail,
 
       // blocker: friend.receiverName,
       // blockerId: friend.receiverId,

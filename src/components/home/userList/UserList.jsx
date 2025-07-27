@@ -13,6 +13,7 @@ import {
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
 import { FaUserFriends } from "react-icons/fa";
+import { FaUserAltSlash } from "react-icons/fa";
 
 function UserList() {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -75,6 +76,22 @@ function UserList() {
       setFriends(array);
     });
   }, []);
+
+  const [blockedUsers, setBlockedUsers] = useState([]);
+  
+  useEffect(() => {
+    const blockRef = ref(db, "blockedUsers/");
+    onValue(blockRef, (snapshot) => {
+      let array = [];
+      snapshot.forEach((item) => {
+        const val = item.val();
+        if (val.blockerId === data.uid) {
+          array.push(val.blockedId);
+        }
+      });
+      setBlockedUsers(array);
+    });
+  }, []);
   // const sendRqst = (user) => {
   //   const rqstRef = push(ref(db, "friendRqst/"));
   //   const key = rqstRef.key;
@@ -132,6 +149,7 @@ function UserList() {
       <div>
         {userList.map((user, index) => {
           const isFriend = friends.includes(user.userid);
+          const isBlocked = blockedUsers.includes(user.userid);
 
           return (
             <div
@@ -181,7 +199,14 @@ function UserList() {
                 </div>
               )} */}
 
-              {isFriend ? (
+              {isBlocked ? (
+                <div
+                  title="Blocked"
+                  className="bg-gray-500 rounded-[5px] h-[30px] w-[30px] flex justify-center items-center cursor-not-allowed"
+                >
+                  <FaUserAltSlash className="text-white text-[16px]" />
+                </div>
+              ) : isFriend ? (
                 <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
                   {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
@@ -194,6 +219,7 @@ function UserList() {
                     req.combo === user.userid + data.uid
                 ) ? (
                 <div
+                  title="Cancel"
                   onClick={() => {
                     const matchedRequest = sentRequests.find(
                       (req) =>
@@ -208,6 +234,7 @@ function UserList() {
                 </div>
               ) : (
                 <div
+                  title="Send"
                   onClick={() => sendRqst(user)}
                   className="h-[30px] w-[30px] rounded-[5px] bg-teal-600 flex items-center justify-center cursor-pointer"
                 >

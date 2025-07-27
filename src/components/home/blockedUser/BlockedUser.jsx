@@ -53,7 +53,7 @@ function BlockedUser() {
                   {item.blockedName}
                 </h1>
                 <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                  {/* {blockedUsers.time} */}
+                  {item.blockedEmail}
                 </p>
               </div>
             </div>
