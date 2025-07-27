@@ -41,9 +41,9 @@ function Friends({ className = "" }) {
         {friendList.map((item, index) => (
           <div
             key={index}
-            className="flex items-center mt-[17px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none"
+            className="flex items-center mt-[17px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none pb-[13px]"
           >
-            <div className="flex items-center mb-[13px]">
+            <div className="flex items-center ">
               <img
                 src={random_profile}
                 alt="#"

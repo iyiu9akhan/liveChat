@@ -17,9 +17,9 @@ function BlockedUser() {
                        {blockedUsers.map((blockedUsers, index) => (
                          <div
                            key={index}
-                           className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none"
+                           className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
                          >
-                           <div className="flex items-center mb-[13px]">
+                           <div className="flex items-center ">
                              <img src={blockedUsers.img} alt="#friend_img" />
                              <div className="mx-[14px] ">
                                <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
