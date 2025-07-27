@@ -52,7 +52,7 @@ function SideBar() {
           <div className="flex md:flex-col items-end relative justify-between">
             <div
               className={`relative cursor-pointer h-[89px]  ${
-                currentPath === "/home"
+                currentPath === "/"
                   ? "md:bg-white text-[#1e1e1e] "
                   : "text-[#C3C3C3]"
               } duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group`}

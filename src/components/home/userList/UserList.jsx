@@ -98,8 +98,8 @@ function UserList() {
   //   remove(ref(db, "friendRqst/" + user.requestId));
   //   console.log(user.requestId);
   // };
-  const cancelRqst = (req) => {
-    remove(ref(db, "friendRqst/" + req.requestId));
+  const cancelRqst = (requestId) => {
+    remove(ref(db, "friendRqst/" + requestId));
     // console.log(req.requestId);
   };
 
