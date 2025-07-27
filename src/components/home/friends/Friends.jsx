@@ -28,26 +28,28 @@ function Friends({ className = "" }) {
           data.uid == item.val().receiverId ||
           data.uid == item.val().senderId
         ) {
-           array.push({
-          ...item.val(),
-          friendKey: item.key,
-        });
-      }
-      // console.log(item.key);
+          array.push({
+            ...item.val(),
+            friendKey: item.key,
+          });
+        }
+        // console.log(item.key);
+      });
+      setFriendList(array);
     });
-    setFriendList(array);
-  });
-}, []);
+  }, []);
 
   const handleBlock = (item) => {
     const blockRef = push(ref(db, "blockedUsers/"));
+    
     set(blockRef, {
-      blockerId: data.uid,
-      blockerName: data.displayName,
+      blockById: data.uid,
+      blockByName: data.displayName,
       blockedId: data.uid === item.senderId ? item.receiverId : item.senderId,
       blockedName:
         data.uid === item.senderId ? item.receiverName : item.senderName,
-        blockedEmail: data.uid === item.senderEmail ? item.receiverEmail : item.senderEmail,
+      blockedEmail:
+        data.uid === item.senderEmail ? item.receiverEmail : item.senderEmail,
 
       // blocker: friend.receiverName,
       // blockerId: friend.receiverId,

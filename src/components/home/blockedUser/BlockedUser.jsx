@@ -3,7 +3,7 @@ import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 // import { blockedUsers } from "../User";
 import { FaUserCheck } from "react-icons/fa";
 import random_profile from "../../../assets/home/random_profile.jpg";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, onValue, ref, remove } from "firebase/database";
 import { useSelector } from "react-redux";
 
 function BlockedUser() {
@@ -16,7 +16,7 @@ function BlockedUser() {
     onValue(blockRef, (snapshot) => {
       let array = [];
       snapshot.forEach((item) => {
-        if (item.val().blockerId === data.uid) {
+        if (item.val().blockById === data.uid) {
           array.push({
             ...item.val(),
             blockKey: item.key,
@@ -26,6 +26,10 @@ function BlockedUser() {
       setBlockedList(array);
     });
   }, []);
+
+  const unblockUser = (blockKey) => {
+      remove(ref(db, "blockedUsers/" + blockKey));
+    };
 
   return (
     <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
@@ -58,6 +62,7 @@ function BlockedUser() {
               </div>
             </div>
             <div
+            onClick={() => unblockUser(item.blockKey)}
               className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
               title="Unblock"
             >

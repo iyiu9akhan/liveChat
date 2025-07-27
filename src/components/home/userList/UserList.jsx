@@ -78,15 +78,17 @@ function UserList() {
   }, []);
 
   const [blockedUsers, setBlockedUsers] = useState([]);
-  
+
   useEffect(() => {
     const blockRef = ref(db, "blockedUsers/");
     onValue(blockRef, (snapshot) => {
       let array = [];
       snapshot.forEach((item) => {
         const val = item.val();
-        if (val.blockerId === data.uid) {
-          array.push(val.blockedId);
+        if (val.blockById === data.uid || val.blockedId === data.uid) {
+          array.push(
+            val.blockById === data.uid ? val.blockedId : val.blockById
+          );
         }
       });
       setBlockedUsers(array);
