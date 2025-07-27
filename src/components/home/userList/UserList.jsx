@@ -115,8 +115,8 @@ function UserList() {
   //   remove(ref(db, "friendRqst/" + user.requestId));
   //   console.log(user.requestId);
   // };
-  const cancelRqst = (requestId) => {
-    remove(ref(db, "friendRqst/" + requestId));
+  const cancelRqst = (req) => {
+    remove(ref(db, "friendRqst/" + req.requestId));
     // console.log(req.requestId);
   };
 

@@ -229,40 +229,40 @@ export const myGroup = [
   },
 ];
 
-export const blockedUsers = [
-  {
-    img: blockedUser_one,
-    title: "raghav",
-    time: "Today, 8:56pm",
-  },
-  {
-    img: blockedUser_two,
-    title: "swathi",
-    time: "Today, 2:31pm",
-  },
-  {
-    img: blockedUser_three,
-    title: "kiran",
-    time: "Yesterday, 6:22pm",
-  },
-  {
-    img: blockedUser_four,
-    title: "Tejeshwini C",
-    time: "Today, 12:22pm",
-  },
-  {
-    img: blockedUser_five,
-    title: "Marvin ",
-    time: "Today, 8:56pm",
-  },
-  {
-    img: blockedUser_five,
-    title: "Marvin ",
-    time: "Today, 8:56pm",
-  },
-  {
-    img: blockedUser_five,
-    title: "Marvin ",
-    time: "Today, 8:56pm",
-  },
-];
+// export const blockedUsers = [
+//   {
+//     img: blockedUser_one,
+//     title: "raghav",
+//     time: "Today, 8:56pm",
+//   },
+//   {
+//     img: blockedUser_two,
+//     title: "swathi",
+//     time: "Today, 2:31pm",
+//   },
+//   {
+//     img: blockedUser_three,
+//     title: "kiran",
+//     time: "Yesterday, 6:22pm",
+//   },
+//   {
+//     img: blockedUser_four,
+//     title: "Tejeshwini C",
+//     time: "Today, 12:22pm",
+//   },
+//   {
+//     img: blockedUser_five,
+//     title: "Marvin ",
+//     time: "Today, 8:56pm",
+//   },
+//   {
+//     img: blockedUser_five,
+//     title: "Marvin ",
+//     time: "Today, 8:56pm",
+//   },
+//   {
+//     img: blockedUser_five,
+//     title: "Marvin ",
+//     time: "Today, 8:56pm",
+//   },
+// ];

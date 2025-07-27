@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 // import { friends } from "../User";
 import { useSelector } from "react-redux";
-import { getDatabase, onValue, ref } from "firebase/database";
+import {
+  getDatabase,
+  onValue,
+  push,
+  ref,
+  remove,
+  set,
+} from "firebase/database";
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { FaUserAltSlash } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
@@ -11,6 +18,7 @@ function Friends({ className = "" }) {
   const data = useSelector((state) => state.userInfo.value.user);
   const db = getDatabase();
   const [friendList, setFriendList] = useState([]);
+
   useEffect(() => {
     const friendListRef = ref(db, "friends/");
     onValue(friendListRef, (snapshot) => {
@@ -20,12 +28,35 @@ function Friends({ className = "" }) {
           data.uid == item.val().receiverId ||
           data.uid == item.val().senderId
         ) {
-          array.push(item.val());
-        }
-      });
-      setFriendList(array);
+           array.push({
+          ...item.val(),
+          friendKey: item.key,
+        });
+      }
+      // console.log(item.key);
     });
-  }, []);
+    setFriendList(array);
+  });
+}, []);
+
+  const handleBlock = (item) => {
+    const blockRef = push(ref(db, "blockedUsers/"));
+    set(blockRef, {
+      blockerId: data.uid,
+      blockerName: data.displayName,
+      blockedId: data.uid === item.senderId ? item.receiverId : item.senderId,
+      blockedName:
+        data.uid === item.senderId ? item.receiverName : item.senderName,
+
+      // blocker: friend.receiverName,
+      // blockerId: friend.receiverId,
+      // blocked: friend.senderName,
+      // blockedId: friend.senderId,
+    }).then(() => {
+      remove(ref(db, "friends/" + item.friendKey));
+    });
+  };
+
   return (
     <div
       className={`md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll ${className}`}
@@ -64,13 +95,22 @@ function Friends({ className = "" }) {
               </div>
             </div>
             <div className="flex gap-x-3">
-              <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer" title="Message">
+              <div
+                className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                title="Message"
+              >
                 {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}
                 <AiFillMessage className="text-white text-[18px]" />
               </div>
-              <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer" title="Block">
+              <div
+                onClick={() => {
+                  handleBlock(item);
+                }}
+                className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                title="Block"
+              >
                 {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}
