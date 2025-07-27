@@ -30,7 +30,7 @@ function BlockedUser() {
                                </p>
                              </div>
                            </div>
-                           <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer">
+                           <div className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer" title='Unblock'>
                              {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
                                unblock
                              </p> */}

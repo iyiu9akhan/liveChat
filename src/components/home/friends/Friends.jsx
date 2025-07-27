@@ -41,7 +41,7 @@ function Friends({ className = "" }) {
         {friendList.map((item, index) => (
           <div
             key={index}
-            className="flex items-center mt-[17px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none pb-[13px]"
+            className="flex items-center mt-[17px] justify-between  border-b-1 border-black/25 last:border-none pb-[13px]"
           >
             <div className="flex items-center ">
               <img
@@ -64,13 +64,13 @@ function Friends({ className = "" }) {
               </div>
             </div>
             <div className="flex gap-x-3">
-              <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer">
+              <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer" title="Message">
                 {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}
                 <AiFillMessage className="text-white text-[18px]" />
               </div>
-              <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer">
+              <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer" title="Block">
                 {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}

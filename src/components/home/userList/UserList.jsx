@@ -12,12 +12,14 @@ import {
 } from "firebase/database";
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
+import { FaUserFriends } from "react-icons/fa";
 
 function UserList() {
   const data = useSelector((state) => state.userInfo.value.user);
   const db = getDatabase();
   const [userList, setUserList] = useState([]);
   const [sentRequests, setSentRequests] = useState([]);
+  const [friends, setFriends] = useState([]);
 
   useEffect(() => {
     const userRef = ref(db, "users/");
@@ -58,6 +60,21 @@ function UserList() {
     });
   }, []);
 
+  useEffect(() => {
+    const friendRef = ref(db, "friends/");
+    onValue(friendRef, (snapshot) => {
+      let array = [];
+      snapshot.forEach((item) => {
+        const val = item.val();
+        if (val.senderId === data.uid || val.receiverId === data.uid) {
+          const friendId =
+            val.senderId === data.uid ? val.receiverId : val.senderId;
+          array.push(friendId);
+        }
+      });
+      setFriends(array);
+    });
+  }, []);
   // const sendRqst = (user) => {
   //   const rqstRef = push(ref(db, "friendRqst/"));
   //   const key = rqstRef.key;
@@ -81,7 +98,7 @@ function UserList() {
       senderEmail: data.email,
       receiverId: user.userid,
       receiverName: user.username,
-      receiverEmail:user.email,
+      receiverEmail: user.email,
       requestId: key,
     }).then(() => {
       setSentRequests((prev) => [
@@ -114,6 +131,8 @@ function UserList() {
       />
       <div>
         {userList.map((user, index) => {
+          const isFriend = friends.includes(user.userid);
+
           return (
             <div
               key={index}
@@ -162,11 +181,18 @@ function UserList() {
                 </div>
               )} */}
 
-              {sentRequests.some(
-                (req) =>
-                  req.combo === data.uid + user.userid ||
-                  req.combo === user.userid + data.uid
-              ) ? (
+              {isFriend ? (
+                <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
+                  {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
+                block
+              </p> */}
+                  <FaUserFriends className="text-white text-[18px]" />
+                </div>
+              ) : sentRequests.some(
+                  (req) =>
+                    req.combo === data.uid + user.userid ||
+                    req.combo === user.userid + data.uid
+                ) ? (
                 <div
                   onClick={() => {
                     const matchedRequest = sentRequests.find(
