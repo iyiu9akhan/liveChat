@@ -72,7 +72,13 @@ function Friends({ className = "" }) {
         size={20}
       />
       <div>
-        {friendList.map((item, index) => (
+       
+           {friendList.length === 0 ? (
+            <p className="text-center text-gray-500 mt-6 text-[17px] font-regular">
+              No friends in your network
+            </p>
+          ) : 
+        (friendList.map((item, index) => (
           <div
             key={index}
             className="flex items-center mt-[17px] justify-between  border-b-1 border-black/25 last:border-none pb-[13px]"
@@ -121,7 +127,8 @@ function Friends({ className = "" }) {
               </div>
             </div>
           </div>
-        ))}
+        )))
+        }
       </div>
     </div>
   );

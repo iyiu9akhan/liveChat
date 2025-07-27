@@ -41,7 +41,13 @@ function BlockedUser() {
         size={20}
       />
       <div>
-        {blockedList.map((item, index) => (
+         {blockedList.length === 0 ? (
+            <p className="text-center text-gray-500 mt-6 text-[17px] font-regular">
+              No blocked users
+            </p>
+          ) : 
+
+          (blockedList.map((item, index) => (
           <div
             key={index}
             className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
@@ -72,7 +78,8 @@ function BlockedUser() {
               <FaUserCheck className="text-white text-[18px]" />
             </div>
           </div>
-        ))}
+        )))
+        }
       </div>
     </div>
   );

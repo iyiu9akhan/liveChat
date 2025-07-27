@@ -29,7 +29,7 @@ function FriendRqst() {
   }, []);
 
   const friendRqstAccept = (item) => {
-    console.log(item);
+    // console.log(item);
     set(push(ref(db, "friends/")), {
       ...item,
     }).then(() => {
@@ -47,36 +47,42 @@ function FriendRqst() {
           size={20}
         />
         <div>
-          {friendRqst.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
-            >
-              <div className="flex items-center ">
-                <img
-                  src={random_profile}
-                  alt="#"
-                  className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"
-                />
-                <div className="mx-[14px]">
-                  <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
-                    {item.senderName}
-                  </h1>
-                  <p className="font-regular font-medium text-[13px] text-[#4D4D4D] capitalize">
-                    {item.senderEmail}
+          {friendRqst.length === 0 ? (
+            <p className="text-center text-gray-500 mt-6 text-[17px] font-regular">
+              No requests detected
+            </p>
+          ) : (
+            friendRqst.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
+              >
+                <div className="flex items-center ">
+                  <img
+                    src={random_profile}
+                    alt="#"
+                    className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"
+                  />
+                  <div className="mx-[14px]">
+                    <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
+                      {item.senderName}
+                    </h1>
+                    <p className="font-regular font-medium text-[13px] text-[#4D4D4D] capitalize">
+                      {item.senderEmail}
+                    </p>
+                  </div>
+                </div>
+                <div
+                  onClick={() => friendRqstAccept(item)}
+                  className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer"
+                >
+                  <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
+                    Accept
                   </p>
                 </div>
               </div>
-              <div
-                onClick={() => friendRqstAccept(item)}
-                className="bg-primary rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer"
-              >
-                <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
-                  Accept
-                </p>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>
