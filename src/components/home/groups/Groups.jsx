@@ -4,25 +4,28 @@ import { myGroup } from "../User";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { MdGroupAdd } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
+import Search from "../../search/Search";
+
 function Groups() {
   return (
     <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px]  relative">
-      <div className="flex justify-between pr-6">
+      <div className="flex justify-between pr-5">
         <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
-        my groups
-      </h1>
-      <div className="flex gap-7 items-center justify-center">
-          <FaSearch
+          my groups
+        </h1>
+        <div className="flex gap-2 items-center justify-center">
+          {/* <FaSearch
             className=" right-[18px] top-[20px] cursor-pointer mt-1"
             size={20}
-          />
+          /> */}
+          <Search/>
           <IoNotificationsSharp
             className=" right-[18px] top-[20px] cursor-pointer mt-1"
             size={25}
           />
         </div>
       </div>
-      <div className="overflow-y-scroll h-[97%] pr-2">
+      <div className="overflow-y-scroll h-[95%] pr-2">
         {myGroup.map((Group, index) => (
           <div
             key={index}

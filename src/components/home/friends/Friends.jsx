@@ -14,6 +14,7 @@ import random_profile from "../../../assets/home/random_profile.jpg";
 import { FaUserAltSlash } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
+import Search from "../../search/Search";
 
 function Friends({ className = "" }) {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -65,14 +66,17 @@ function Friends({ className = "" }) {
     <div
       className={`md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px] relative  ${className}`}
     >
-      <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
+      <div className="flex justify-between items-center pr-[18px]">
+        <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
         friends
       </h1>
-      <FaSearch
+      {/* <FaSearch
         className="absolute right-[40px] top-[20px] cursor-pointer mt-2"
         size={20}
-      />
-      <div className="overflow-y-scroll h-[97%] pr-2">
+      /> */}
+      <Search/>
+      </div>
+      <div className="overflow-y-scroll h-[95%] pr-2">
         {friendList.length === 0 ? (
           <p className="text-center text-gray-500 mt-6 text-[17px] font-regular">
             No friends in your network

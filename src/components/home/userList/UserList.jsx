@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { FaUserFriends } from "react-icons/fa";
 import { FaUserAltSlash } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import Search from "../../search/Search";
 
 function UserList() {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -142,14 +143,17 @@ function UserList() {
 
   return (
     <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px] relative">
-      <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
+     <div className="flex justify-between items-center pr-[18px]">
+       <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
         user list
       </h1>
-      <FaSearch
+      {/* <FaSearch
         className="absolute right-[40px] top-[20px] cursor-pointer mt-2"
         size={20}
-      />
-      <div className="overflow-y-scroll h-[97%] pr-2">
+      /> */}
+      <Search/>
+     </div>
+      <div className="overflow-y-scroll h-[95%] pr-2">
         {userList.map((user, index) => {
           const isFriend = friends.includes(user.userid);
           const isBlocked = blockedUsers.includes(user.userid);

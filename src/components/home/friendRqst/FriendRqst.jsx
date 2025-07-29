@@ -11,6 +11,7 @@ import {
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
 import { FaSearch } from "react-icons/fa";
+import Search from "../../search/Search";
 
 function FriendRqst() {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -40,13 +41,16 @@ function FriendRqst() {
   return (
     <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:shadow-none md:w-[427px]  rounded-[20px] h-[48%] p-[20px] relative overflow-y-scroll">
       <div>
-        <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
+        <div className="flex  justify-between items-center">
+          <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
           friend request
         </h1>
-        <FaSearch
+        {/* <FaSearch
           className="absolute right-[23px] top-[20px] cursor-pointer mt-1"
           size={20}
-        />
+        /> */}
+        <Search/>
+        </div>
         <div>
           {friendRqst.length === 0 ? (
             <p className="text-center text-gray-500 mt-6 text-[17px] font-regular">

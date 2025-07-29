@@ -3,6 +3,7 @@ import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { groupList } from "../User";
 import { MdGroupAdd } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
+import Search from "../../search/Search";
 
 function GroupList() {
   return (
@@ -11,18 +12,19 @@ function GroupList() {
         <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
           group list
         </h1>
-        <div className="flex gap-7 items-center justify-center">
-          <FaSearch
+        <div className="flex gap-3 items-center justify-center">
+          {/* <FaSearch
             className=" right-[18px] top-[20px] cursor-pointer mt-1"
             size={20}
-          />
+          /> */}
+          <Search/>
           <MdGroupAdd
             className=" right-[18px] top-[20px] cursor-pointer mt-1"
             size={25}
           />
         </div>
       </div>
-      <div className="overflow-y-scroll h-[97%] pr-2">
+      <div className="overflow-y-scroll h-[95%] pr-2">
         {groupList.map((group, index) => (
           <div
             key={index}
