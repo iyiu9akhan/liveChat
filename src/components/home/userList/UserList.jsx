@@ -14,6 +14,7 @@ import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
 import { FaUserFriends } from "react-icons/fa";
 import { FaUserAltSlash } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 function UserList() {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -144,7 +145,7 @@ function UserList() {
       <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
         user list
       </h1>
-      <PiDotsThreeOutlineVerticalFill
+      <FaSearch
         className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
         size={20}
       />
@@ -209,7 +210,7 @@ function UserList() {
                   <FaUserAltSlash className="text-white text-[16px]" />
                 </div>
               ) : isFriend ? (
-                <div className="bg-primary rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
+                <div className="bg-[#10B981] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
                   {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}
@@ -230,7 +231,7 @@ function UserList() {
                     );
                     if (matchedRequest) cancelRqst(matchedRequest);
                   }}
-                  className="h-[30px] w-[30px] rounded-[5px] bg-red-700 flex items-center justify-center cursor-pointer"
+                  className="h-[30px] w-[30px] rounded-[5px] bg-[#EF4444] flex items-center justify-center cursor-pointer"
                 >
                   <ImCross className="text-white" size={13} />
                 </div>
