@@ -33,15 +33,15 @@ function BlockedUser() {
   };
 
   return (
-    <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
+    <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px] relative">
       <h1 className="capitalize font-regular font-semibold text-[20px] text-black ">
         blocked users
       </h1>
       <FaSearch
-        className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
+        className="absolute right-[40px] top-[20px] cursor-pointer mt-2"
         size={20}
       />
-      <div>
+      <div className="overflow-y-scroll h-[97%] pr-2">
         {blockedList.length === 0 ? (
           <p className="text-center text-gray-500 mt-6 text-[17px] font-regular">
             No blocked users

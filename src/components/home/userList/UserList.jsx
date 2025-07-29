@@ -141,15 +141,15 @@ function UserList() {
   };
 
   return (
-    <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] relative overflow-y-scroll">
+    <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px] relative">
       <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
         user list
       </h1>
       <FaSearch
-        className="absolute right-[23px] top-[20px] cursor-pointer mt-2"
+        className="absolute right-[40px] top-[20px] cursor-pointer mt-2"
         size={20}
       />
-      <div>
+      <div className="overflow-y-scroll h-[97%] pr-2">
         {userList.map((user, index) => {
           const isFriend = friends.includes(user.userid);
           const isBlocked = blockedUsers.includes(user.userid);
@@ -210,7 +210,7 @@ function UserList() {
                   <FaUserAltSlash className="text-white text-[16px]" />
                 </div>
               ) : isFriend ? (
-                <div className="bg-[#478C5C] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
+                <div className="bg-[#16A34A] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
                   {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}
@@ -239,7 +239,7 @@ function UserList() {
                 <div
                   title="Send"
                   onClick={() => sendRqst(user)}
-                  className="h-[30px] w-[30px] rounded-[5px] bg-[#10B981] hover:bg-[#059669] flex items-center justify-center cursor-pointer"
+                  className="h-[30px] w-[30px] rounded-[5px] bg-[#3D77BE] hover:bg-[#3164A5] flex items-center justify-center cursor-pointer"
                 >
                   <FaPlus className="text-white" size={16} />
                 </div>

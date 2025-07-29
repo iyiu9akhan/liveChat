@@ -6,7 +6,7 @@ import { FaSearch } from "react-icons/fa";
 
 function GroupList() {
   return (
-    <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] md:w-[427px] h-full relative">
+    <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] pr-[10px] md:w-[427px] h-full relative">
       <div className="flex justify-between pr-6">
         <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
           group list
