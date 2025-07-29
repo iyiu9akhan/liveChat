@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 
-function Search() {
+function Search({ onChange }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const inputRef = useRef(null);
   const containerRef = useRef(null);
@@ -24,9 +24,13 @@ function Search() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+
+
+
   return (
     <div ref={containerRef} className="relative">
       <input
+        onChange={ onChange }
         ref={inputRef}
         type="text"
         placeholder="Search . . ."
