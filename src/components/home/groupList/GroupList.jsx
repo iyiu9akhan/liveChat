@@ -33,7 +33,7 @@ function GroupList() {
                 </p>
               </div>
             </div>
-            <div className="bg-primary rounded-[5px] h-[23px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
+            <div className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[23px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
               <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[20px]">
                 join
               </p>

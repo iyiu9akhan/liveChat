@@ -106,7 +106,7 @@ function Friends({ className = "" }) {
             </div>
             <div className="flex gap-x-3">
               <div
-                className="bg-[#3D77BE] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                 title="Message"
               >
                 {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
@@ -118,7 +118,7 @@ function Friends({ className = "" }) {
                 onClick={() => {
                   handleBlock(item);
                 }}
-                className="bg-[#EF4444] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                className="bg-[#EF4444] hover:bg-[#DC2626] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                 title="Block"
               >
                 {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">

@@ -4,7 +4,7 @@ import { IoSearch } from "react-icons/io5";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import GroupList from "../components/home/groupList/GroupList";
 
-import FriendList from "../components/home/friendList/FriendRqst";
+import FriendList from "../components/home/friendRqst/FriendRqst";
 import Friends from "../components/home/friends/Friends";
 import UserList from "../components/home/userList/UserList";
 import Groups from "../components/home/groups/Groups";

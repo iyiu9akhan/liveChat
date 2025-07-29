@@ -210,7 +210,7 @@ function UserList() {
                   <FaUserAltSlash className="text-white text-[16px]" />
                 </div>
               ) : isFriend ? (
-                <div className="bg-[#10B981] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
+                <div className="bg-[#478C5C] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
                   {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}
@@ -231,7 +231,7 @@ function UserList() {
                     );
                     if (matchedRequest) cancelRqst(matchedRequest);
                   }}
-                  className="h-[30px] w-[30px] rounded-[5px] bg-[#EF4444] flex items-center justify-center cursor-pointer"
+                  className="h-[30px] w-[30px] rounded-[5px] bg-[#9CA3AF] flex items-center justify-center cursor-pointer hover:bg-[#6B7280]"
                 >
                   <ImCross className="text-white" size={13} />
                 </div>
