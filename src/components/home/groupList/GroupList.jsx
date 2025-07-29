@@ -1,18 +1,28 @@
 import React from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { groupList } from "../User";
+import { MdGroupAdd } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
 
 function GroupList() {
   return (
-    <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] md:w-[427px] h-full relative overflow-y-scroll">
-      <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
-        group list
-      </h1>
-      <PiDotsThreeOutlineVerticalFill
-        className="absolute right-[23px] top-[20px] cursor-pointer mt-1"
-        size={20}
-      />
-      <div>
+    <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[20px] md:w-[427px] h-full relative">
+      <div className="flex justify-between pr-6">
+        <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
+          group list
+        </h1>
+        <div className="flex gap-7 items-center justify-center">
+          <FaSearch
+            className=" right-[18px] top-[20px] cursor-pointer mt-1"
+            size={20}
+          />
+          <MdGroupAdd
+            className=" right-[18px] top-[20px] cursor-pointer mt-1"
+            size={25}
+          />
+        </div>
+      </div>
+      <div className="overflow-y-scroll h-[97%] pr-2">
         {groupList.map((group, index) => (
           <div
             key={index}
@@ -34,7 +44,7 @@ function GroupList() {
               </div>
             </div>
             <div className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[23px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
-              <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[20px]">
+              <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
                 join
               </p>
             </div>

@@ -205,7 +205,7 @@ function UserList() {
               {isBlocked ? (
                 <div
                   title="Blocked"
-                  className="bg-gray-500 rounded-[5px] h-[30px] w-[30px] flex justify-center items-center cursor-not-allowed"
+                  className="bg-[#9CA3AF] rounded-[5px] h-[30px] w-[30px] flex justify-center items-center cursor-not-allowed"
                 >
                   <FaUserAltSlash className="text-white text-[16px]" />
                 </div>
@@ -239,7 +239,7 @@ function UserList() {
                 <div
                   title="Send"
                   onClick={() => sendRqst(user)}
-                  className="h-[30px] w-[30px] rounded-[5px] bg-teal-600 flex items-center justify-center cursor-pointer"
+                  className="h-[30px] w-[30px] rounded-[5px] bg-[#10B981] hover:bg-[#059669] flex items-center justify-center cursor-pointer"
                 >
                   <FaPlus className="text-white" size={16} />
                 </div>

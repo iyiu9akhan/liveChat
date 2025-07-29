@@ -10,6 +10,7 @@ import {
 } from "firebase/database";
 import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
+import { FaSearch } from "react-icons/fa";
 
 function FriendRqst() {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -42,7 +43,7 @@ function FriendRqst() {
         <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
           friend request
         </h1>
-        <PiDotsThreeOutlineVerticalFill
+        <FaSearch
           className="absolute right-[23px] top-[20px] cursor-pointer mt-1"
           size={20}
         />

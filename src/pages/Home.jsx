@@ -57,7 +57,7 @@ const Home = () => {
             <div className="md:flex ">
               <div className="flex flex-col md:ml-[43px] md:mr-[22px] h-full justify-between">
                 <div className="h-[48%] flex flex-col md:gap-[40px]">
-                  <div className="relative">
+                  {/* <div className="relative">
                     <input
                       type="text"
                       className="w-full h-[59px] rounded-[20px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] pl-[65px] border-none focus:outline-none placeholder:text-iconGray placeholder:font-regular placeholder:font-medium placeholder:text-base text-primary text-[19px] font-medium font-regular capitalize"
@@ -72,7 +72,7 @@ const Home = () => {
                       className="absolute right-[23px] top-[20px] cursor-pointer"
                       size={20}
                     />
-                  </div>
+                  </div> */}
                   <GroupList /> {/* group list component */}
                 </div>
                 <FriendList /> {/* friend list component */}

@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoginInfo } from "../../slice/userSlice";
+import random_profile from "../../assets/home/random_profile.jpg";
 
 function SideBar() {
   const data = useSelector((state) => state.userInfo.value);
@@ -37,9 +38,9 @@ function SideBar() {
             </p>
             <div className="flex flex-col items-end md:items-center">
               <img
-                src={profilePic}
+                src={random_profile}
                 alt="#profile_pic"
-                className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer "
+                className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer"
               />
               <p className="text-white font-regular font-semibold text-[22px] mt-5 capitalize hidden md:block">
                 {data.user.displayName}
