@@ -36,7 +36,7 @@ function Groups() {
           /> */}
           <Search onChange={searchHandler} />
           <IoNotificationsSharp
-            className=" right-[18px] top-[20px] cursor-pointer mt-1"
+            className=" right-[18px] top-[20px] cursor-pointer"
             size={25}
           />
         </div>
