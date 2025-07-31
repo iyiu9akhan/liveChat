@@ -5,13 +5,17 @@ import { IoIosBackspace } from "react-icons/io";
 import Search from "../../search/Search";
 import TextField from "@mui/material/TextField";
 import random_profile from "../../../assets/home/random_profile.jpg";
-
+import { set, getDatabase, ref, push } from "firebase/database";
+import { useSelector } from "react-redux";
 function GroupList() {
+  const db = getDatabase();
   const [searchUser, setSearchUser] = useState([]);
   const [show, setShow] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [groupNameErr, setGroupNameErr] = useState("");
   const [shakeGroupName, setShakeGroupName] = useState(false);
+  const data = useSelector((state) => state.userInfo.value.user);
+  console.log(data);
 
   const triggerShakeEmail = () => {
     setShakeGroupName(false);
@@ -50,6 +54,13 @@ function GroupList() {
     if (!groupName) {
       setGroupNameErr("Group name is required !");
       triggerShakeEmail();
+    }
+    if (groupName) {
+      set(push(ref(db, "groups/")), {
+        groupName: groupName,
+        creatorId: data.uid,
+        createName: data.displayName,
+      });
     }
   };
   return (
