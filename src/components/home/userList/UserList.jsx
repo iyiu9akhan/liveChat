@@ -158,7 +158,7 @@ function UserList() {
       });
     }
   };
-  console.log(searchUser);
+  // console.log(searchUser);
 
   return (
     <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px] relative">
@@ -198,7 +198,7 @@ function UserList() {
                       </p>
                     </div>
                   </div>
-                  
+
                   {isBlocked ? (
                     <div
                       title="Blocked"
