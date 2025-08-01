@@ -16,6 +16,7 @@ import { FaUserFriends } from "react-icons/fa";
 import { FaUserAltSlash } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import Search from "../../search/Search";
+import { FaUser } from "react-icons/fa";
 
 function UserList() {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -184,11 +185,14 @@ function UserList() {
                   className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
                 >
                   <div className="flex items-center">
-                    <img
+                    {/* <img
                       src={random_profile}
                       alt="#profile"
                       className="h-[52px] w-[52px]"
-                    />
+                    /> */}
+                    <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                  <FaUser className="text-[29px] text-white" />
+                </div>
                     <div className="mx-[14px]">
                       <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
                         {user.username}
@@ -254,11 +258,14 @@ function UserList() {
                   className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
                 >
                   <div className="flex items-center">
-                    <img
+                    {/* <img
                       src={random_profile}
                       alt="#profile"
                       className="h-[52px] w-[52px]"
-                    />
+                    /> */}
+                    <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                      <FaUser className="text-[29px] text-white" />
+                    </div>
                     <div className="mx-[14px]">
                       <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
                         {user.username}

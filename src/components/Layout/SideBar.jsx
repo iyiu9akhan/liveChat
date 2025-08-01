@@ -58,7 +58,7 @@ function SideBar() {
             <div
               className={`relative  h-[89px]  ${
                 currentPath === "/"
-                  ? "md:bg-white text-[#E88D67] "
+                  ? "md:bg-white text-confirmBtn "
                   : "text-[#C3C3C3]"
               } duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group`}
             >
@@ -71,7 +71,7 @@ function SideBar() {
             <div
               className={`relative  h-[89px]  ${
                 currentPath === "/messages"
-                  ? "md:bg-white text-[#E88D67]"
+                  ? "md:bg-white text-confirmBtn"
                   : "text-[#C3C3C3]"
               } duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group`}
             >
@@ -84,7 +84,7 @@ function SideBar() {
             <div
               className={`relative x h-[89px]  ${
                 currentPath === "/settings"
-                  ? "md:bg-white text-[#E88D67]"
+                  ? "md:bg-white text-confirmBtn"
                   : "text-[#C3C3C3]"
               } duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center md:pl-[45px] md:group`}
             >

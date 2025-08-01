@@ -68,29 +68,37 @@ function Groups() {
       </div>
       <div className="overflow-y-scroll h-[95%] pr-2">
         {searchUser.length > 0
-          ? searchUser.map((Group, index) => (
+          ?  searchUser.map((Group, index) => (
               <div
                 key={index}
-                className={`flex items-center mt-[17px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none`}
+                className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none`}
               >
-                <div className="flex items-center mb-[13px]">
-                  <img
+                <div className="flex items-center ">
+                  {/* <img
                     src={random_profile}
                     alt="#"
                     className="h-[50px] w-[50px] md:h-[60px] md:w-[60px]"
-                  />
+                  /> */}
+                  <div className="bg-[#3D77BE]  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+                    <MdGroups className="text-[35px] text-white"/>
+                  </div>
                   <div className="mx-[14px] ">
                     <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
                       {Group.groupName}
                     </h1>
                     <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                      {Group.adminName}
+                      <p>demo msg</p>
                     </p>
                   </div>
                 </div>
-                {/* <p className="capitalize text-black/50 font-regular font-medium text-[10px]">
-                  {Group.time}
-                </p> */}
+                <div
+                  title="Join Request"
+                  className="bg-[#6B7280] hover:bg-[#374151] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                >
+                  <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
+                    <MdOutlineNotificationAdd className="text-white text-[20px]" />
+                  </p>
+                </div>
               </div>
             ))
           : myGroup.map((Group, index) => (

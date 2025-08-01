@@ -12,6 +12,7 @@ import random_profile from "../../../assets/home/random_profile.jpg";
 import { useSelector } from "react-redux";
 import { FaSearch } from "react-icons/fa";
 import Search from "../../search/Search";
+import { FaUser } from "react-icons/fa";
 
 function FriendRqst() {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -82,11 +83,14 @@ function FriendRqst() {
                   className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
                 >
                   <div className="flex items-center ">
-                    <img
+                    {/* <img
                       src={random_profile}
                       alt="#"
                       className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"
-                    />
+                    /> */}
+                    <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                      <FaUser className="text-[29px] text-white" />
+                    </div>
                     <div className="mx-[14px]">
                       <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
                         {item.senderName}
@@ -118,11 +122,14 @@ function FriendRqst() {
                 className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
               >
                 <div className="flex items-center ">
-                  <img
+                  {/* <img
                     src={random_profile}
                     alt="#"
                     className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"
-                  />
+                  /> */}
+                  <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                    <FaUser className="text-[29px] text-white" />
+                  </div>
                   <div className="mx-[14px]">
                     <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
                       {item.senderName}
