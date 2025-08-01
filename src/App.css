@@ -6,10 +6,17 @@
   --font-secondary: "Open Sans", sans-serif;
   --font-regular: "Poppins", sans-serif;
   --color-heading: #11175d;
-  --color-primary: #1e1e1e;
+  --color-primary: #005C78;
   --color-secondary: #03014c;
   --color-orange: #ea6c00;
   --color-iconGray: #c3c3c3;
+
+
+
+  --color-sideBar:#343F56;
+  --color-confirmBtn:#E9896A;
+  --color-hoverConfirmBtn: #D97659;
+  --color-friendsIcon:#387C6D;
 }
 
 

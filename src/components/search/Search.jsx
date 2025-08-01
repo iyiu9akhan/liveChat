@@ -34,7 +34,7 @@ function Search({ onChange }) {
         ref={inputRef}
         type="text"
         placeholder="Search . . ."
-        className={`transition-all duration-300 ease-in-out border border-gray-300 rounded-full pl-4 pr-10 py-2 text-sm outline-none
+        className={`font-regular transition-all duration-300 ease-in-out border border-gray-300 rounded-full pl-4 pr-10 py-2 text-sm outline-none
         placeholder:text-gray-400 placeholder:font-regular
         ${isExpanded ? "w-[130px] opacity-100" : "w-0 opacity-0"} 
       `}

@@ -304,7 +304,7 @@ function UserList() {
                       <FaUserAltSlash className="text-white text-[16px]" />
                     </div>
                   ) : isFriend ? (
-                    <div className="bg-[#2E6F40] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
+                    <div className="bg-friendsIcon rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
                       {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}

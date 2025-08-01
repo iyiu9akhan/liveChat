@@ -131,7 +131,7 @@ function BlockedUser() {
               </div>
               <div
                 onClick={() => unblockUser(item.blockKey)}
-                className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                 title="Unblock"
               >
                 {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">

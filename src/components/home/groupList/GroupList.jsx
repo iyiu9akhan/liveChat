@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { groupList } from "../User";
 import { MdGroupAdd } from "react-icons/md";
 import { IoIosBackspace } from "react-icons/io";
 import Search from "../../search/Search";
 import TextField from "@mui/material/TextField";
 import random_profile from "../../../assets/home/random_profile.jpg";
-import { set, getDatabase, ref, push } from "firebase/database";
+import { set, getDatabase, ref, push, onValue } from "firebase/database";
 import { useSelector } from "react-redux";
+import { MdGroups } from "react-icons/md";
+
 function GroupList() {
   const db = getDatabase();
   const [searchUser, setSearchUser] = useState([]);
@@ -15,7 +17,22 @@ function GroupList() {
   const [groupNameErr, setGroupNameErr] = useState("");
   const [shakeGroupName, setShakeGroupName] = useState(false);
   const data = useSelector((state) => state.userInfo.value.user);
-  console.log(data);
+  const [groupList, setGroupList] = useState([]);
+
+  // console.log(data);
+
+  useEffect(() => {
+    const groupRef = ref(db, "groups/");
+    onValue(groupRef, (snapshot) => {
+      let arr = [];
+      snapshot.forEach((item) => {
+        if (data.uid !== item.val().adminId) {
+          arr.push(item.val());
+        }
+      });
+      setGroupList(arr);
+    });
+  }, []);
 
   const triggerShakeEmail = () => {
     setShakeGroupName(false);
@@ -32,7 +49,7 @@ function GroupList() {
       setSearchUser([]);
     } else {
       const filtered = groupList.filter((item) =>
-        item.title.toLowerCase().includes(value)
+        item.groupName.toLowerCase().includes(value)
       );
       setSearchUser(filtered);
     }
@@ -58,8 +75,11 @@ function GroupList() {
     if (groupName) {
       set(push(ref(db, "groups/")), {
         groupName: groupName,
-        creatorId: data.uid,
-        createName: data.displayName,
+        adminId: data.uid,
+        adminName: data.displayName,
+      }).then(() => {
+        setGroupName("");
+        setGroupNameErr("");
       });
     }
   };
@@ -95,7 +115,7 @@ function GroupList() {
           size={35}
         />
       ) : (
-        <div className="flex justify-between pr-6">
+        <div className="flex justify-between items-center pr-6">
           <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
             group list
           </h1>
@@ -103,6 +123,7 @@ function GroupList() {
             <Search onChange={searchHandler} />
             <div>
               <MdGroupAdd
+                title="Create Group"
                 onClick={CreateGroupIconHandler}
                 className="cursor-pointer w-[27px]"
                 size={25}
@@ -115,12 +136,16 @@ function GroupList() {
       {show ? (
         <div className="flex flex-col items-center h-full">
           <div className="flex flex-col justify-center items-center w-full gap-[40px]">
-            <img
+            {/* <img
               src={random_profile}
               alt="#profile_pic"
               className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer"
-            />
+            /> */}
+            <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full flex justify-center items-center cursor-pointer">
+              <MdGroups className="text-[60px] text-white" />
+            </div>
             <TextField
+              value={groupName}
               className={shakeGroupName ? "shake" : ""}
               label="Group Name"
               variant="standard"
@@ -210,27 +235,30 @@ function GroupList() {
       ) : (
         <div className="overflow-y-scroll h-[94%] pr-2">
           {(searchUser.length > 0 ? searchUser : groupList).map(
-            (group, index) => (
+            (Group, index) => (
               <div
                 key={index}
-                className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none"
+                className="flex items-center py-[13px] justify-between border-b-1 border-black/25 last:border-none"
               >
-                <div className="flex items-center mb-[13px]">
-                  <img
-                    src={group.img}
-                    alt="#group_img"
-                    className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"
-                  />
-                  <div className="mx-[14px]">
-                    <h1 className="capitalize font-regular text-[18px] text-black font-semibold">
-                      {group.title}
+                <div className="flex items-center ">
+                  {/* <img
+                    src={random_profile}
+                    alt="#"
+                    className="h-[50px] w-[50px] md:h-[60px] md:w-[60px]"
+                  /> */}
+                  <div className="bg-[#3D77BE]  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+                    <MdGroups className="text-[35px] text-white" />
+                  </div>
+                  <div className="mx-[14px] ">
+                    <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
+                      {Group.groupName}
                     </h1>
-                    <p className="font-regular font-medium text-[14px] text-[#4D4D4D]">
-                      {group.subtitle}
+                    <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
+                      {Group.adminName}
                     </p>
                   </div>
                 </div>
-                <div className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[23px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
+                <div className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[23px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
                   <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
                     join
                   </p>
