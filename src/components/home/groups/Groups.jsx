@@ -49,8 +49,8 @@ function Groups() {
   };
 
   return (
-    <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px]  relative">
-      <div className="flex justify-between items-center pr-5">
+    <div className="md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] py-[22px]  relative">
+      <div className="flex justify-between items-center px-[22px]">
         <h1 className="capitalize font-regular font-semibold text-[20px] text-black">
           my groups
         </h1>
@@ -60,10 +60,10 @@ function Groups() {
             size={20}
           /> */}
           <Search onChange={searchHandler} />
-          <IoNotificationsSharp
-            className=" right-[18px] top-[20px] cursor-pointer"
+          {/* <IoNotificationsSharp
+            className=" right-[18px] top-[20px] cursor-pointer text-sideBar"
             size={25}
-          />
+          /> */}
         </div>
       </div>
       <div className="overflow-y-scroll h-[95%] pr-2">
@@ -71,7 +71,7 @@ function Groups() {
           ?  searchUser.map((Group, index) => (
               <div
                 key={index}
-                className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none`}
+                  className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none hover:bg-[#c3c3c3]/15 hover:rounded-[10px] rounded-[10px] pl-[22px] pr-[11px]`}
               >
                 <div className="flex items-center ">
                   {/* <img
@@ -79,7 +79,7 @@ function Groups() {
                     alt="#"
                     className="h-[50px] w-[50px] md:h-[60px] md:w-[60px]"
                   /> */}
-                  <div className="bg-[#3D77BE]  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+                  <div className="bg-groupBg  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
                     <MdGroups className="text-[35px] text-white"/>
                   </div>
                   <div className="mx-[14px] ">
@@ -93,7 +93,7 @@ function Groups() {
                 </div>
                 <div
                   title="Join Request"
-                  className="bg-[#6B7280] hover:bg-[#374151] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                  className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                 >
                   <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
                     <MdOutlineNotificationAdd className="text-white text-[20px]" />
@@ -104,15 +104,15 @@ function Groups() {
           : myGroup.map((Group, index) => (
               <div
                 key={index}
-                className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none`}
+                className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none hover:bg-[#c3c3c3]/15 hover:rounded-[10px] rounded-[10px] pl-[22px] pr-[11px]`}
               >
-                <div className="flex items-center ">
+                <div className="flex items-center">
                   {/* <img
                     src={random_profile}
                     alt="#"
                     className="h-[50px] w-[50px] md:h-[60px] md:w-[60px]"
                   /> */}
-                  <div className="bg-[#3D77BE]  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+                  <div className="bg-groupBg  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
                     <MdGroups className="text-[35px] text-white"/>
                   </div>
                   <div className="mx-[14px] ">
@@ -126,7 +126,7 @@ function Groups() {
                 </div>
                 <div
                   title="Join Request"
-                  className="bg-[#6B7280] hover:bg-[#374151] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                  className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                 >
                   <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
                     <MdOutlineNotificationAdd className="text-white text-[20px]" />

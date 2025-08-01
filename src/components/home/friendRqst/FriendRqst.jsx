@@ -88,7 +88,7 @@ function FriendRqst() {
                       alt="#"
                       className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"
                     /> */}
-                    <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                    <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
                       <FaUser className="text-[29px] text-white" />
                     </div>
                     <div className="mx-[14px]">
@@ -102,9 +102,9 @@ function FriendRqst() {
                   </div>
                   <div
                     onClick={() => friendRqstAccept(item)}
-                    className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer"
+                    className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer"
                   >
-                    <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
+                    <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[14px]">
                       Accept
                     </p>
                   </div>
@@ -127,7 +127,7 @@ function FriendRqst() {
                     alt="#"
                     className="h-[50px] w-[50px] md:h-[70px] md:w-[70px]"
                   /> */}
-                  <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                  <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
                     <FaUser className="text-[29px] text-white" />
                   </div>
                   <div className="mx-[14px]">

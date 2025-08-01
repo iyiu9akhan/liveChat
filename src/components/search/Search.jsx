@@ -41,7 +41,7 @@ function Search({ onChange }) {
       />
 
       <FaSearch
-        className="absolute right-[10px] top-1/2 -translate-y-1/2 cursor-pointer"
+        className="absolute right-[10px] top-1/2 -translate-y-1/2 cursor-pointer text-sideBar"
         size={19}
         onClick={() => setIsExpanded((prev) => !prev)}
       />

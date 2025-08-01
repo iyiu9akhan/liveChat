@@ -81,7 +81,7 @@ function BlockedUser() {
                   alt="#"
                   className="h-[40px] w-[40px] md:h-[50px] md:w-[50px]"
                 /> */}
-                  <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                  <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
                     <FaUser className="text-[29px] text-white" />
                   </div>
                   <div className="mx-[14px] ">
@@ -95,7 +95,7 @@ function BlockedUser() {
                 </div>
                 <div
                   onClick={() => unblockUser(item.blockKey)}
-                  className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                  className="bg-confirmBtn hover:bg-[#3164A5] rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                   title="Unblock"
                 >
                   {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
@@ -122,7 +122,7 @@ function BlockedUser() {
                   alt="#"
                   className="h-[40px] w-[40px] md:h-[50px] md:w-[50px]"
                 /> */}
-                <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
                   <FaUser className="text-[29px] text-white" />
                 </div>
                 <div className="mx-[14px] ">
@@ -136,12 +136,12 @@ function BlockedUser() {
               </div>
               <div
                 onClick={() => unblockUser(item.blockKey)}
-                className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[70px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[29px] w-[29px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                 title="Unblock"
               >
                 {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px]">
-                               unblock
-                             </p> */}
+                  unblock
+                </p> */}
                 <FaUserCheck className="text-white text-[18px]" />
               </div>
             </div>

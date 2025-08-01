@@ -43,7 +43,7 @@ function SideBar() {
                 alt="#profile_pic"
                 className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer"
               /> */}
-              <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full flex justify-center items-center cursor-pointer">
+              <div className="bg-groupBg  h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full flex justify-center items-center cursor-pointer">
                 <FaUser className="text-[60px] text-white" />
               </div>
               <p className="text-white font-regular font-semibold text-[22px] mt-5 capitalize hidden md:block">
@@ -95,7 +95,7 @@ function SideBar() {
               <div className="hidden md:block absolute w-[46px] h-[8px] md:w-[8px] md:h-[89px] bg-sideBar bottom-0  md:top-0 md:right-0 rounded-b-2xl md:rounded-l-[25px] md:rounded-br-[0] group-hover:shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.25)] duration-300"></div>
             </div>
             <div
-              className="md:hidden relative  h-[89px] text-[#C3C3C3]  md:hover:bg-white  md:hover:text-[#E88D67] hover:text-[#E88D67] duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center"
+              className="md:hidden relative  h-[89px] text-[#C3C3C3]  md:hover:bg-white  md:hover:text-confirmBtn hover:text-confirmBtn duration-300 mb-[26px] md:w-[161px] rounded-l-[20px] flex items-center"
               onClick={handleLogout}
             >
               <FaSignOutAlt className="text-[33px] md:text-[46px] cursor-pointer" />
@@ -105,7 +105,7 @@ function SideBar() {
         </div>
         <div className="md:flex items-end md:flex-col hidden">
           <div
-            className="relative  h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-[#E88D67] md:hover:text-[#E88D67] duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] md:group"
+            className="relative  h-[89px] text-[#4D4D4D] md:text-[#C3C3C3] md:hover:bg-white hover:text-confirmBtn md:hover:text-confirmBtn duration-300 mb-[26px] w-[161px] rounded-l-[20px] flex items-center pl-[45px] md:group"
             onClick={handleLogout}
           >
             <FaSignOutAlt className="text-[33px] md:text-[46px] cursor-pointer" />

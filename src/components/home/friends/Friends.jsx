@@ -111,8 +111,8 @@ function Friends({ className = "" }) {
                   alt="#"
                   className="h-[40px] w-[40px] md:h-[50px] md:w-[50px]"
                 /> */}
-                  <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full flex justify-center items-center cursor-pointer">
-                    <FaUser className="text-[60px] text-white" />
+                  <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                    <FaUser className="text-[29px] text-white" />
                   </div>
                   <div className="mx-[14px] ">
                     <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
@@ -130,7 +130,7 @@ function Friends({ className = "" }) {
                 </div>
                 <div className="flex gap-x-3">
                   <div
-                    className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                    className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                     title="Message"
                   >
                     {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
@@ -142,7 +142,7 @@ function Friends({ className = "" }) {
                     onClick={() => {
                       handleBlock(item);
                     }}
-                    className="bg-[#EF4444] hover:bg-[#DC2626] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                    className="bg-cancel hover:bg-hoverCancel rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                     title="Block"
                   >
                     {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
@@ -170,7 +170,7 @@ function Friends({ className = "" }) {
                   alt="#"
                   className="h-[40px] w-[40px] md:h-[50px] md:w-[50px]"
                 /> */}
-                <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
                   <FaUser className="text-[29px] text-white" />
                 </div>
                 <div className="mx-[14px] ">
@@ -189,7 +189,7 @@ function Friends({ className = "" }) {
               </div>
               <div className="flex gap-x-3">
                 <div
-                  className="bg-[#3D77BE] hover:bg-[#3164A5] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                  className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                   title="Message"
                 >
                   {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
@@ -201,7 +201,7 @@ function Friends({ className = "" }) {
                   onClick={() => {
                     handleBlock(item);
                   }}
-                  className="bg-[#EF4444] hover:bg-[#DC2626] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+                  className="bg-cancel hover:bg-hoverCancel rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                   title="Block"
                 >
                   {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">

@@ -190,7 +190,7 @@ function UserList() {
                       alt="#profile"
                       className="h-[52px] w-[52px]"
                     /> */}
-                    <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                    <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
                   <FaUser className="text-[29px] text-white" />
                 </div>
                     <div className="mx-[14px]">
@@ -232,7 +232,7 @@ function UserList() {
                         );
                         if (matchedRequest) cancelRqst(matchedRequest);
                       }}
-                      className="h-[30px] w-[30px] rounded-[5px] bg-[#9CA3AF] flex items-center justify-center cursor-pointer hover:bg-[#6B7280]"
+                      className="h-[30px] w-[30px] rounded-[5px] bg-cancel hover:bg-hoverCancel flex items-center justify-center cursor-pointer "
                     >
                       <ImCross className="text-white" size={13} />
                     </div>
@@ -240,7 +240,7 @@ function UserList() {
                     <div
                       title="Send"
                       onClick={() => sendRqst(user)}
-                      className="h-[30px] w-[30px] rounded-[5px] bg-[#3D77BE] hover:bg-[#3164A5] flex items-center justify-center cursor-pointer"
+                      className="h-[30px] w-[30px] rounded-[5px] bg-confirmBtn hover:bg-hoverConfirmBtn flex items-center justify-center cursor-pointer"
                     >
                       <FaPlus className="text-white" size={16} />
                     </div>
@@ -263,7 +263,7 @@ function UserList() {
                       alt="#profile"
                       className="h-[52px] w-[52px]"
                     /> */}
-                    <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                    <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
                       <FaUser className="text-[29px] text-white" />
                     </div>
                     <div className="mx-[14px]">
@@ -332,7 +332,7 @@ function UserList() {
                         );
                         if (matchedRequest) cancelRqst(matchedRequest);
                       }}
-                      className="h-[30px] w-[30px] rounded-[5px] bg-[#9CA3AF] flex items-center justify-center cursor-pointer hover:bg-[#6B7280]"
+                      className="h-[30px] w-[30px] rounded-[5px] bg-cancel hover:bg-hoverCancel flex items-center justify-center cursor-pointer "
                     >
                       <ImCross className="text-white" size={13} />
                     </div>
@@ -340,7 +340,7 @@ function UserList() {
                     <div
                       title="Send"
                       onClick={() => sendRqst(user)}
-                      className="h-[30px] w-[30px] rounded-[5px] bg-[#3D77BE] hover:bg-[#3164A5] flex items-center justify-center cursor-pointer"
+                      className="h-[30px] w-[30px] rounded-[5px] bg-confirmBtn hover:bg-hoverConfirmBtn flex items-center justify-center cursor-pointer"
                     >
                       <FaPlus className="text-white" size={16} />
                     </div>

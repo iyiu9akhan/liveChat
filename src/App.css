@@ -5,18 +5,24 @@
   --font-primary: "Nunito", sans-serif;
   --font-secondary: "Open Sans", sans-serif;
   --font-regular: "Poppins", sans-serif;
+
   --color-heading: #11175d;
-  --color-primary: #005C78;
+  --color-primary: #005c78;
   --color-secondary: #03014c;
   --color-orange: #ea6c00;
   --color-iconGray: #c3c3c3;
 
-
-
-  --color-sideBar:#343F56;
-  --color-confirmBtn:#F38C79;
-  --color-hoverConfirmBtn: #D97659;
-  --color-friendsIcon:#387C6D;
+  --color-sideBar: #2c3333;
+  /* --color-confirmBtn:#F38C79; */
+  --color-confirmBtn: #395b64;
+  --color-groupBg: #a5c9ca;
+  --color-userBg: #a5c9ca;
+  /* --color-hoverConfirmBtn: #D97659; */
+  --color-cancel: #ef4444cc;
+  --color-hoverCancel: #ef4444;
+  --color-friendsIcon: #639A67;
+  --color-warningRed: #ef4444;
+  --color-hoverWarningRed: #dc2626;
+  /* --color-msg: #64748b; */
+  /* --color-hoverMsg: #4b8285; */
 }
-
-

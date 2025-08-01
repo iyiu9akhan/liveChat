@@ -110,7 +110,7 @@ function GroupList() {
       </div> */}
       {show ? (
         <IoIosBackspace
-          className="cursor-pointer text-[#EF4444]"
+          className="cursor-pointer text-cancel hover:text-hoverCancel"
           onClick={CreateGroupIconHandler}
           size={35}
         />
@@ -125,7 +125,7 @@ function GroupList() {
               <MdGroupAdd
                 title="Create Group"
                 onClick={CreateGroupIconHandler}
-                className="cursor-pointer w-[27px]"
+                className="cursor-pointer w-[27px] text-sideBar"
                 size={25}
               />
             </div>
@@ -141,8 +141,8 @@ function GroupList() {
               alt="#profile_pic"
               className="h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full object-cover cursor-pointer"
             /> */}
-            <div className="bg-[#3D77BE]  h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full flex justify-center items-center cursor-pointer">
-              <MdGroups className="text-[60px] text-white" />
+            <div className="bg-userBg  h-[50px] w-[50px] md:h-[100px] md:w-[100px] rounded-full flex justify-center items-center cursor-pointer">
+              <MdGroups className="text-[65px] text-white" />
             </div>
             <TextField
               value={groupName}
@@ -225,7 +225,7 @@ function GroupList() {
             />
             {/* <p>{groupNameErr}</p> */}
             <button
-              className="bg-[#3D77BE] hover:bg-[#3164A5] text-white px-4 py-2 rounded font-semibold cursor-pointer font-regular"
+              className="bg-confirmBtn hover:bg-hoverConfirmBtn text-white px-4 py-2 rounded font-semibold cursor-pointer font-regular"
               onClick={handleCreateGroup}
             >
               Create Group
@@ -246,7 +246,7 @@ function GroupList() {
                     alt="#"
                     className="h-[50px] w-[50px] md:h-[60px] md:w-[60px]"
                   /> */}
-                  <div className="bg-[#3D77BE]  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+                  <div className="bg-userBg  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
                     <MdGroups className="text-[35px] text-white" />
                   </div>
                   <div className="mx-[14px] ">
