@@ -65,7 +65,7 @@ function Messages() {
               </div>
               <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
             </div>
-            <div className="flex items-end h-[100%] bg-red-400">adfasdf</div>
+            <div className="flex items-end h-[100%]">adfasdf</div>
             <div className="border-gray-300 border-t-2 flex justify-between items-center">
               <div className="w-[90%] relative flex items-center">
                 <input
