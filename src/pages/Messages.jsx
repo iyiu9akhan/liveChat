@@ -15,6 +15,8 @@ import {
 } from "firebase/database";
 import { FaUser } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
+import { MdOutlineEmojiEmotions } from "react-icons/md";
+import { IoCameraOutline } from "react-icons/io5";
 
 function Messages() {
   const data = useSelector((state) => state.userInfo.value.user);
@@ -46,7 +48,7 @@ function Messages() {
               <Friends className="md:w-[450px] h-[100%]" />
             </div>
           </div>
-          <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-[700px] rounded-[20px] px-[50px] flex flex-col justify-between">
+          <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] md:w-[700px] rounded-[20px] px-[50px] flex flex-col justify-between">
             <div className="border-gray-300 border-b-2 flex items-center  justify-between">
               <div className="flex items-center">
                 <div className="bg-userBg  h-[50px] w-[50px] md:h-[75px] md:w-[75px] rounded-full flex justify-center items-center cursor-pointer my-[24px] mr-[33px]">
@@ -63,14 +65,26 @@ function Messages() {
               </div>
               <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
             </div>
-            <div className="bg-red-500">adf</div>
-            <div className="border-gray-300 border-t-2 flex justify-between items-center ">
-              <input
-                type="text"
-                className="h-[45px] w-[90%] bg-[#F1F1F1] rounded-[10px] my-[35px] outline-0 px-[20px]  font-regular"
-              />
-              <div className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer" title="send">
-                <FaTelegramPlane className="text-[25px] text-white"/>
+            <div className="flex items-end h-[100%] bg-red-400">adfasdf</div>
+            <div className="border-gray-300 border-t-2 flex justify-between items-center">
+              <div className="w-[90%] relative flex items-center">
+                <input
+                  type="text"
+                  className="h-[45px] w-full bg-[#F1F1F1] rounded-[10px] my-[35px] outline-0 pl-[20px] pr-[110px]  font-regular"
+                />
+                <div className="absolute flex gap-5 items-center right-5 opacity-60">
+                  <MdOutlineEmojiEmotions
+                    size={27}
+                    className="cursor-pointer"
+                  />
+                  <IoCameraOutline size={27} className="cursor-pointer" />
+                </div>
+              </div>
+              <div
+                className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer"
+                title="send"
+              >
+                <FaTelegramPlane className="text-[25px] text-white" />
               </div>
             </div>
           </div>
