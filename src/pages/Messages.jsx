@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../components/Layout/SideBar";
 import Container from "../components/Layout/Container";
 import Friends from "../components/home/friends/Friends";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { IoSearch } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import {
+  getDatabase,
+  onValue,
+  push,
+  ref,
+  remove,
+  set,
+} from "firebase/database";
+import { FaUser } from "react-icons/fa";
+import { FaTelegramPlane } from "react-icons/fa";
 
 function Messages() {
+  const data = useSelector((state) => state.userInfo.value.user);
+  const db = getDatabase();
+
   return (
     <div>
       <Container>
@@ -13,7 +27,7 @@ function Messages() {
           <SideBar />
           <div className="md:flex md:justify-between">
             <div className="md:w-[450px] flex flex-col h-[100%] justify-between">
-              <div className="relative">
+              {/* <div className="relative">
                 <input
                   type="text"
                   className="w-full h-[59px] rounded-[20px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] pl-[65px] border-none focus:outline-none placeholder:text-iconGrayplaceholder:font-regular placeholder:font-medium placeholder:text-base  text-[19px] font-medium font-regular"
@@ -28,11 +42,38 @@ function Messages() {
                   className="absolute right-[23px] top-[20px] cursor-pointer"
                   size={20}
                 />
-              </div>
-              <Friends className="md:w-[450px] h-[90%]" />
+              </div> */}
+              <Friends className="md:w-[450px] h-[100%]" />
             </div>
           </div>
-          <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-[700px] rounded-[20px]"></div>
+          <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-[700px] rounded-[20px] px-[50px] flex flex-col justify-between">
+            <div className="border-gray-300 border-b-2 flex items-center  justify-between">
+              <div className="flex items-center">
+                <div className="bg-userBg  h-[50px] w-[50px] md:h-[75px] md:w-[75px] rounded-full flex justify-center items-center cursor-pointer my-[24px] mr-[33px]">
+                  <FaUser className="text-[39px] text-white" />
+                </div>
+                <div>
+                  <h1 className="font-semibold font-regular text-[24px]">
+                    lorem ipsum
+                  </h1>
+                  <p className="font-regular font-normal text-[14px] capitalize">
+                    lorem
+                  </p>
+                </div>
+              </div>
+              <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
+            </div>
+            <div className="bg-red-500">adf</div>
+            <div className="border-gray-300 border-t-2 flex justify-between items-center ">
+              <input
+                type="text"
+                className="h-[45px] w-[90%] bg-[#F1F1F1] rounded-[10px] my-[35px] outline-0 px-[20px]  font-regular"
+              />
+              <div className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer" title="send">
+                <FaTelegramPlane className="text-[25px] text-white"/>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </div>
