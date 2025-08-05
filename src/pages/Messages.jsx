@@ -21,8 +21,6 @@ import { IoCameraOutline } from "react-icons/io5";
 function Messages() {
   const data = useSelector((state) => state.activeMsgBoxInfo.value);
   const db = getDatabase();
-console.log(data);
-
 
   return (
     <div>
@@ -58,7 +56,7 @@ console.log(data);
                 </div>
                 <div>
                   <h1 className="font-semibold font-regular text-[24px]">
-                   {data.senderName}
+                    {data.senderName}
                   </h1>
                   <p className="font-regular font-normal text-[14px] capitalize">
                     lorem
