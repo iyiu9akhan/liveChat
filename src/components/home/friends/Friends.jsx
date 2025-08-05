@@ -79,6 +79,11 @@ function Friends({ className = "" }) {
       });
     }
   };
+
+  const msgHandle =(item)=>{
+    console.log(item);
+    
+  }
   return (
     <div
       className={`md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px] relative  ${className}`}
@@ -189,6 +194,7 @@ function Friends({ className = "" }) {
               </div>
               <div className="flex gap-x-3">
                 <div
+                  onClick={() => msgHandle(item)}
                   className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
                   title="Message"
                 >
