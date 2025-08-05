@@ -7,9 +7,9 @@ export const activeMsgBox = createSlice({
   },
   reducers: {
     activeMsgBoxInfo: (state, action) => {
-      //   state.value = action.payload;
-      console.log(state.value);
-      console.log(action.payload);
+        state.value = action.payload;
+    //   console.log(state.value);
+    //   console.log(action.payload);
     },
   },
 });

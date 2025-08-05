@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 // import { friends } from "../User";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getDatabase,
   onValue,
@@ -16,11 +16,13 @@ import { AiFillMessage } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import Search from "../../search/Search";
 import { FaUser } from "react-icons/fa";
+import { activeMsgBoxInfo } from "../../../slice/activeMsgBox";
 
 function Friends({ className = "" }) {
   const data = useSelector((state) => state.userInfo.value.user);
   const db = getDatabase();
   const [friendList, setFriendList] = useState([]);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const friendListRef = ref(db, "friends/");
@@ -82,6 +84,7 @@ function Friends({ className = "" }) {
 
   const msgHandle =(item)=>{
     console.log(item);
+    dispatch(activeMsgBoxInfo(item))
     
   }
   return (

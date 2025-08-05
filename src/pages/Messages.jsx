@@ -19,8 +19,10 @@ import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { IoCameraOutline } from "react-icons/io5";
 
 function Messages() {
-  const data = useSelector((state) => state.userInfo.value.user);
+  const data = useSelector((state) => state.activeMsgBoxInfo.value);
   const db = getDatabase();
+console.log(data);
+
 
   return (
     <div>
@@ -56,7 +58,7 @@ function Messages() {
                 </div>
                 <div>
                   <h1 className="font-semibold font-regular text-[24px]">
-                    lorem ipsum
+                   {data.senderName}
                   </h1>
                   <p className="font-regular font-normal text-[14px] capitalize">
                     lorem
