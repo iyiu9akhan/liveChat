@@ -65,28 +65,19 @@ function Messages() {
               </div>
               <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
             </div>
-            <div className="flex-1 overflow-y-auto flex flex-col gap-3 font-regular text-[16px] py-3 hide-scrollbar justify-end">
-              <p className=" bg-gray-300  self-start  px-3 py-2 rounded-2xl rounded-bl-[6px] max-w-[70%]">
-                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Quasi, optio.
-              </p>
-              <p className=" bg-sideBar  self-end text-white px-3 py-2 rounded-2xl rounded-br-[6px] max-w-[70%]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem,
-                maiores!lorem5
-              </p>{" "}
-              <p className=" bg-gray-300  self-start  px-3 py-2 rounded-2xl rounded-bl-[6px] max-w-[70%]">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Doloremque iste omnis totam rerum provident?
-              </p>
-              <p className=" bg-sideBar  self-end text-white px-3 py-2 rounded-2xl rounded-br-[6px] max-w-[70%]">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque!
-              </p>{" "}
-              <p className=" bg-gray-300  self-start  px-3 py-2 rounded-2xl rounded-bl-[6px] max-w-[70%]">
-                Lorem ipsum dolor sit amet.
-              </p>
-              <p className=" bg-sideBar  self-end text-white px-3 py-2 rounded-2xl rounded-br-[6px] max-w-[70%]">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
-              </p>
+            <div className="flex-1 overflow-y-auto flex flex-col gap-3 font-regular text-[16px] py-3 hide-scrollbar justify-end group">
+              <div className="self-start max-w-[70%]">
+                <p className=" bg-gray-300    px-3 py-2 rounded-2xl rounded-bl-[6px] ">
+                  Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Quasi, optio.
+                </p>
+              </div>
+              <div className="self-end max-w-[70%]">
+                <p className=" bg-sideBar   text-white px-3 py-2 rounded-2xl rounded-br-[6px] ">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem,
+                  maiores!lorem5
+                </p>
+              </div>
             </div>
             <div className="border-gray-300 border-t-2 flex justify-between items-center">
               <div className="w-[90%] relative flex items-center">
