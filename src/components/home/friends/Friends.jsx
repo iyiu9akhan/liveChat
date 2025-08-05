@@ -22,7 +22,7 @@ function Friends({ className = "" }) {
   const data = useSelector((state) => state.userInfo.value.user);
   const db = getDatabase();
   const [friendList, setFriendList] = useState([]);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const friendListRef = ref(db, "friends/");
@@ -81,12 +81,38 @@ function Friends({ className = "" }) {
       });
     }
   };
+  // localStorage.setItem("activeMsgBoxInfo", JSON.stringify());
 
-  const msgHandle =(item)=>{
-    console.log(item);
-    dispatch(activeMsgBoxInfo(item))
-    
-  }
+  const msgHandle = (item) => {
+    // console.log(item);
+    dispatch(activeMsgBoxInfo(item));
+    if (data.uid == item.senderId) {
+      dispatch(
+        activeMsgBoxInfo({
+          id: item.receiverId,
+          name: item.receiverName,
+        })
+      );
+      localStorage.setItem(
+        "activeMsgBoxInfo",
+        JSON.stringify({
+          id: item.receiverId,
+          name: item.receiverName,
+        })
+      );
+    } else {
+      dispatch(
+        activeMsgBoxInfo({
+          id: item.senderId,
+          name: item.senderName,
+        })
+      );
+      localStorage.setItem(
+        "activeMsgBoxInfo",
+        JSON.stringify({ id: item.senderId, name: item.senderName })
+      );
+    }
+  };
   return (
     <div
       className={`md:w-[344px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-[22px] pr-[10px] relative  ${className}`}

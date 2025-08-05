@@ -17,10 +17,51 @@ import { FaUser } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { IoCameraOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { activeMsgBoxInfo } from "../slice/activeMsgBox";
 
 function Messages() {
-  const data = useSelector((state) => state.activeMsgBoxInfo.value);
+  const data = useSelector((state) => state.userInfo.value.user);
+  const activeData = useSelector((state) => state.activeMsgBoxInfo.value);
   const db = getDatabase();
+  const dispatch = useDispatch();
+  const [msg, setMsg] = useState("");
+  const [msgList, setMsgList] = useState([]);
+  // console.log(msg);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem("activeMsgBoxInfo");
+    if (savedUser && savedUser !== "undefined") {
+      dispatch(activeMsgBoxInfo(JSON.parse(savedUser)));
+    }
+  }, []);
+
+  const sendMsgHandler = () => {
+    set(push(ref(db, "message/")), {
+      msgSenderId: data.uid,
+      msgSenderName: data.displayName,
+      msg: msg,
+      msgReceiverId: activeData.id,
+      msgReceiverName: activeData.name,
+    });
+    setMsg("");
+  };
+
+  useEffect(() => {
+    const msgRef = ref(db, "message/");
+    onValue(msgRef, (snapshot) => {
+      let arr = [];
+      snapshot.forEach((item) => {
+        arr.push(item.val());
+      });
+      setMsgList(arr);
+    });
+  }, []);
+
+  console.log(msgList);
+
+  const messagesEndRef = React.useRef(null);
+
 
   return (
     <div>
@@ -56,7 +97,7 @@ function Messages() {
                 </div>
                 <div>
                   <h1 className="font-semibold font-regular text-[24px]">
-                    {data.senderName}
+                    {activeData.name}
                   </h1>
                   <p className="font-regular font-normal text-[14px] capitalize">
                     lorem
@@ -65,23 +106,28 @@ function Messages() {
               </div>
               <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
             </div>
-            <div className="flex-1 overflow-y-auto flex flex-col gap-3 font-regular text-[16px] py-3 hide-scrollbar justify-end group">
-              <div className="self-start max-w-[70%]">
-                <p className=" bg-gray-300    px-3 py-2 rounded-2xl rounded-bl-[6px] ">
-                  Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Quasi, optio.
-                </p>
-              </div>
-              <div className="self-end max-w-[70%]">
-                <p className=" bg-sideBar   text-white px-3 py-2 rounded-2xl rounded-br-[6px] ">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem,
-                  maiores!lorem5
-                </p>
-              </div>
+            <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-3 font-regular text-[16px] py-3 hide-scrollbar justify-end group" >
+              {msgList.map((item) =>
+                data.uid == item.msgSenderId ? (
+                  <div className="self-end max-w-[70%]">
+                    <p className=" bg-sideBar   text-white px-3 py-2 rounded-2xl rounded-br-[6px] ">
+                      {item.msg}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="self-start max-w-[70%]">
+                    <p className=" bg-gray-300    px-3 py-2 rounded-2xl rounded-bl-[6px] ">
+                      {item.msg}
+                    </p>
+                  </div>
+                )
+              )}
             </div>
             <div className="border-gray-300 border-t-2 flex justify-between items-center">
               <div className="w-[90%] relative flex items-center">
                 <input
+                  value={msg}
+                  onChange={(e) => setMsg(e.target.value)}
                   type="text"
                   className="h-[45px] w-full bg-[#F1F1F1] rounded-[10px] my-[35px] outline-0 pl-[20px] pr-[110px]  font-regular"
                 />
@@ -94,6 +140,7 @@ function Messages() {
                 </div>
               </div>
               <div
+                onClick={sendMsgHandler}
                 className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer"
                 title="send"
               >
