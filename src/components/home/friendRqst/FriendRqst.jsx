@@ -113,7 +113,7 @@ function FriendRqst() {
             )
           ) : friendRqst.length === 0 ? (
             <p className="text-center text-gray-500 mt-6 text-[17px] font-regular capitalize">
-              No friend requests
+              No friend request
             </p>
           ) : (
             friendRqst.map((item, index) => (
