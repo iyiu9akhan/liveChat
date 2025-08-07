@@ -174,109 +174,114 @@ function UserList() {
         <Search onChange={searchHandler} />
       </div>
       <div className="overflow-y-scroll h-[95%] pr-2">
-        {searchUser.length > 0
-          ? searchUser.map((user, index) => {
-              const isFriend = friends.includes(user.userid);
-              const isBlocked = blockedUsers.includes(user.userid);
+        {searchUser.length > 0 ? (
+          searchUser.map((user, index) => {
+            const isFriend = friends.includes(user.userid);
+            const isBlocked = blockedUsers.includes(user.userid);
 
-              return (
-                <div
-                  key={index}
-                  className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
-                >
-                  <div className="flex items-center">
-                    {/* <img
+            return (
+              <div
+                key={index}
+                className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
+              >
+                <div className="flex items-center">
+                  {/* <img
                       src={random_profile}
                       alt="#profile"
                       className="h-[52px] w-[52px]"
                     /> */}
-                    <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
-                  <FaUser className="text-[29px] text-white" />
-                </div>
-                    <div className="mx-[14px]">
-                      <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
-                        {user.username}
-                      </h1>
-                      <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                        {user.email}
-                      </p>
-                    </div>
+                  <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                    <FaUser className="text-[29px] text-white" />
                   </div>
+                  <div className="mx-[14px]">
+                    <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
+                      {user.username}
+                    </h1>
+                    <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
+                      {user.email}
+                    </p>
+                  </div>
+                </div>
 
-                  {isBlocked ? (
-                    <div
-                      title="Blocked"
-                      className="bg-[#9CA3AF] rounded-[5px] h-[30px] w-[30px] flex justify-center items-center cursor-not-allowed"
-                    >
-                      <FaUserAltSlash className="text-white text-[16px]" />
-                    </div>
-                  ) : isFriend ? (
-                    <div className="bg-[#16A34A] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
-                      {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
+                {isBlocked ? (
+                  <div
+                    title="Blocked"
+                    className="bg-[#9CA3AF] rounded-[5px] h-[30px] w-[30px] flex justify-center items-center cursor-not-allowed"
+                  >
+                    <FaUserAltSlash className="text-white text-[16px]" />
+                  </div>
+                ) : isFriend ? (
+                  <div className="bg-[#16A34A] rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
+                    {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}
-                      <FaUserFriends className="text-white text-[18px]" />
-                    </div>
-                  ) : sentRequests.some(
-                      (req) =>
-                        req.combo === data.uid + user.userid ||
-                        req.combo === user.userid + data.uid
-                    ) ? (
-                    <div
-                      title="Cancel"
-                      onClick={() => {
-                        const matchedRequest = sentRequests.find(
-                          (req) =>
-                            req.combo === data.uid + user.userid ||
-                            req.combo === user.userid + data.uid
-                        );
-                        if (matchedRequest) cancelRqst(matchedRequest);
-                      }}
-                      className="h-[30px] w-[30px] rounded-[5px] bg-cancel hover:bg-hoverCancel flex items-center justify-center cursor-pointer "
-                    >
-                      <ImCross className="text-white" size={13} />
-                    </div>
-                  ) : (
-                    <div
-                      title="Send"
-                      onClick={() => sendRqst(user)}
-                      className="h-[30px] w-[30px] rounded-[5px] bg-confirmBtn hover:bg-hoverConfirmBtn flex items-center justify-center cursor-pointer"
-                    >
-                      <FaPlus className="text-white" size={16} />
-                    </div>
-                  )}
-                </div>
-              );
-            })
-          : userList.map((user, index) => {
-              const isFriend = friends.includes(user.userid);
-              const isBlocked = blockedUsers.includes(user.userid);
+                    <FaUserFriends className="text-white text-[18px]" />
+                  </div>
+                ) : sentRequests.some(
+                    (req) =>
+                      req.combo === data.uid + user.userid ||
+                      req.combo === user.userid + data.uid
+                  ) ? (
+                  <div
+                    title="Cancel"
+                    onClick={() => {
+                      const matchedRequest = sentRequests.find(
+                        (req) =>
+                          req.combo === data.uid + user.userid ||
+                          req.combo === user.userid + data.uid
+                      );
+                      if (matchedRequest) cancelRqst(matchedRequest);
+                    }}
+                    className="h-[30px] w-[30px] rounded-[5px] bg-cancel hover:bg-hoverCancel flex items-center justify-center cursor-pointer "
+                  >
+                    <ImCross className="text-white" size={13} />
+                  </div>
+                ) : (
+                  <div
+                    title="Send"
+                    onClick={() => sendRqst(user)}
+                    className="h-[30px] w-[30px] rounded-[5px] bg-confirmBtn hover:bg-hoverConfirmBtn flex items-center justify-center cursor-pointer"
+                  >
+                    <FaPlus className="text-white" size={16} />
+                  </div>
+                )}
+              </div>
+            );
+          })
+        ) : userList.length === 0 ? (
+          <p className="text-center text-gray-500 mt-6 text-[17px] font-regular capitalize">
+            No user found
+          </p>
+        ) : (
+          userList.map((user, index) => {
+            const isFriend = friends.includes(user.userid);
+            const isBlocked = blockedUsers.includes(user.userid);
 
-              return (
-                <div
-                  key={index}
-                  className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
-                >
-                  <div className="flex items-center">
-                    {/* <img
+            return (
+              <div
+                key={index}
+                className="flex items-center mt-[17px] justify-between border-b-1 border-black/25 last:border-none pb-[13px]"
+              >
+                <div className="flex items-center">
+                  {/* <img
                       src={random_profile}
                       alt="#profile"
                       className="h-[52px] w-[52px]"
                     /> */}
-                    <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
-                      <FaUser className="text-[29px] text-white" />
-                    </div>
-                    <div className="mx-[14px]">
-                      <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
-                        {user.username}
-                      </h1>
-                      <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                        {user.email}
-                      </p>
-                    </div>
+                  <div className="bg-userBg  h-[50px] w-[50px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center cursor-pointer">
+                    <FaUser className="text-[29px] text-white" />
                   </div>
+                  <div className="mx-[14px]">
+                    <h1 className="capitalize font-regular text-[14px] text-black font-semibold">
+                      {user.username}
+                    </h1>
+                    <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
+                      {user.email}
+                    </p>
+                  </div>
+                </div>
 
-                  {/* {sentRequests.includes(data.uid + user.userid) ||
+                {/* {sentRequests.includes(data.uid + user.userid) ||
               sentRequests.includes(user.userid + data.uid) ? (
                 <div
                   // onClick={() => cancelRqst(user)}
@@ -303,51 +308,52 @@ function UserList() {
                 </div>
               )} */}
 
-                  {isBlocked ? (
-                    <div
-                      title="Blocked"
-                      className="bg-[#9CA3AF] rounded-[5px] h-[30px] w-[30px] flex justify-center items-center cursor-not-allowed"
-                    >
-                      <FaUserAltSlash className="text-white text-[16px]" />
-                    </div>
-                  ) : isFriend ? (
-                    <div className="bg-friendsIcon rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
-                      {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
+                {isBlocked ? (
+                  <div
+                    title="Blocked"
+                    className="bg-[#9CA3AF] rounded-[5px] h-[30px] w-[30px] flex justify-center items-center cursor-not-allowed"
+                  >
+                    <FaUserAltSlash className="text-white text-[16px]" />
+                  </div>
+                ) : isFriend ? (
+                  <div className="bg-friendsIcon rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-not-allowed">
+                    {/* <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[15px]">
                 block
               </p> */}
-                      <FaUserFriends className="text-white text-[18px]" />
-                    </div>
-                  ) : sentRequests.some(
-                      (req) =>
-                        req.combo === data.uid + user.userid ||
-                        req.combo === user.userid + data.uid
-                    ) ? (
-                    <div
-                      title="Cancel"
-                      onClick={() => {
-                        const matchedRequest = sentRequests.find(
-                          (req) =>
-                            req.combo === data.uid + user.userid ||
-                            req.combo === user.userid + data.uid
-                        );
-                        if (matchedRequest) cancelRqst(matchedRequest);
-                      }}
-                      className="h-[30px] w-[30px] rounded-[5px] bg-cancel hover:bg-hoverCancel flex items-center justify-center cursor-pointer "
-                    >
-                      <ImCross className="text-white" size={13} />
-                    </div>
-                  ) : (
-                    <div
-                      title="Send"
-                      onClick={() => sendRqst(user)}
-                      className="h-[30px] w-[30px] rounded-[5px] bg-confirmBtn hover:bg-hoverConfirmBtn flex items-center justify-center cursor-pointer"
-                    >
-                      <FaPlus className="text-white" size={16} />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                    <FaUserFriends className="text-white text-[18px]" />
+                  </div>
+                ) : sentRequests.some(
+                    (req) =>
+                      req.combo === data.uid + user.userid ||
+                      req.combo === user.userid + data.uid
+                  ) ? (
+                  <div
+                    title="Cancel"
+                    onClick={() => {
+                      const matchedRequest = sentRequests.find(
+                        (req) =>
+                          req.combo === data.uid + user.userid ||
+                          req.combo === user.userid + data.uid
+                      );
+                      if (matchedRequest) cancelRqst(matchedRequest);
+                    }}
+                    className="h-[30px] w-[30px] rounded-[5px] bg-cancel hover:bg-hoverCancel flex items-center justify-center cursor-pointer "
+                  >
+                    <ImCross className="text-white" size={13} />
+                  </div>
+                ) : (
+                  <div
+                    title="Send"
+                    onClick={() => sendRqst(user)}
+                    className="h-[30px] w-[30px] rounded-[5px] bg-confirmBtn hover:bg-hoverConfirmBtn flex items-center justify-center cursor-pointer"
+                  >
+                    <FaPlus className="text-white" size={16} />
+                  </div>
+                )}
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

@@ -7,11 +7,13 @@
   --font-regular: "Poppins", sans-serif;
 
   --color-heading: #11175d;
-  --color-primary: #005c78;
+  /* --color-primary: #005c78; */
+  --color-primary: #2c3333;
   --color-secondary: #03014c;
   --color-orange: #ea6c00;
   --color-iconGray: #c3c3c3;
 
+  
   --color-sideBar: #2c3333;
   /* --color-confirmBtn:#F38C79; */
   --color-confirmBtn: #395b64;

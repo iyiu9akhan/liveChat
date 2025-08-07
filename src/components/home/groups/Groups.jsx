@@ -67,73 +67,79 @@ function Groups() {
         </div>
       </div>
       <div className="overflow-y-scroll h-[95%] pr-2">
-        {searchUser.length > 0
-          ?  searchUser.map((Group, index) => (
-              <div
-                key={index}
-                  className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none hover:bg-[#c3c3c3]/15 hover:rounded-[10px] rounded-[10px] pl-[22px] pr-[11px]`}
-              >
-                <div className="flex items-center ">
-                  {/* <img
+        {searchUser.length > 0 ? (
+          searchUser.map((Group, index) => (
+            <div
+              key={index}
+              className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none hover:bg-[#c3c3c3]/15 hover:rounded-[10px] rounded-[10px] pl-[22px] pr-[11px]`}
+            >
+              <div className="flex items-center ">
+                {/* <img
                     src={random_profile}
                     alt="#"
                     className="h-[50px] w-[50px] md:h-[60px] md:w-[60px]"
                   /> */}
-                  <div className="bg-groupBg  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
-                    <MdGroups className="text-[35px] text-white"/>
-                  </div>
-                  <div className="mx-[14px] ">
-                    <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
-                      {Group.groupName}
-                    </h1>
-                    <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                      <p>demo msg</p>
-                    </p>
-                  </div>
+                <div className="bg-groupBg  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+                  <MdGroups className="text-[35px] text-white" />
                 </div>
-                <div
-                  title="Join Request"
-                  className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
-                >
-                  <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
-                    <MdOutlineNotificationAdd className="text-white text-[20px]" />
+                <div className="mx-[14px] ">
+                  <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
+                    {Group.groupName}
+                  </h1>
+                  <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
+                    <p>demo msg</p>
                   </p>
                 </div>
               </div>
-            ))
-          : myGroup.map((Group, index) => (
               <div
-                key={index}
-                className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none hover:bg-[#c3c3c3]/15 hover:rounded-[10px] rounded-[10px] pl-[22px] pr-[11px]`}
+                title="Join Request"
+                className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
               >
-                <div className="flex items-center">
-                  {/* <img
+                <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
+                  <MdOutlineNotificationAdd className="text-white text-[20px]" />
+                </p>
+              </div>
+            </div>
+          ))
+        ) : myGroup.length === 0 ? (
+          <p className="text-center text-gray-500 mt-6 text-[17px] font-regular capitalize">
+            No group exists
+          </p>
+        ) : (
+          myGroup.map((Group, index) => (
+            <div
+              key={index}
+              className={`flex items-center py-[13px] justify-between cursor-pointer border-b-1 border-black/25 last:border-none hover:bg-[#c3c3c3]/15 hover:rounded-[10px] rounded-[10px] pl-[22px] pr-[11px]`}
+            >
+              <div className="flex items-center">
+                {/* <img
                     src={random_profile}
                     alt="#"
                     className="h-[50px] w-[50px] md:h-[60px] md:w-[60px]"
                   /> */}
-                  <div className="bg-groupBg  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
-                    <MdGroups className="text-[35px] text-white"/>
-                  </div>
-                  <div className="mx-[14px] ">
-                    <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
-                      {Group.groupName}
-                    </h1>
-                    <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
-                      <p>demo msg</p>
-                    </p>
-                  </div>
+                <div className="bg-groupBg  h-[40px] w-[40px] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+                  <MdGroups className="text-[35px] text-white" />
                 </div>
-                <div
-                  title="Join Request"
-                  className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
-                >
-                  <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
-                    <MdOutlineNotificationAdd className="text-white text-[20px]" />
+                <div className="mx-[14px] ">
+                  <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
+                    {Group.groupName}
+                  </h1>
+                  <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
+                    <p>demo msg</p>
                   </p>
                 </div>
               </div>
-            ))}
+              <div
+                title="Join Request"
+                className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px] w-[25px] md:h-[30px] md:w-[30px] flex justify-center items-center cursor-pointer"
+              >
+                <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
+                  <MdOutlineNotificationAdd className="text-white text-[20px]" />
+                </p>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

@@ -232,7 +232,14 @@ function GroupList() {
             </button>
           </div>
         </div>
-      ) : (
+      ) : 
+       searchUser.length === 0 ? (
+            <p className="text-center text-gray-500 mt-6 text-[17px] font-regular capitalize">
+             No group exists
+            </p>
+          ) :
+      
+      (
         <div className="overflow-y-scroll h-[94%] pr-2">
           {(searchUser.length > 0 ? searchUser : groupList).map(
             (Group, index) => (
