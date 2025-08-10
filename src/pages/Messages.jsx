@@ -10,6 +10,7 @@ import { IoCameraOutline } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
 import { getDatabase, onValue, push, ref, remove } from "firebase/database";
 import { activeMsgBoxInfo } from "../slice/activeMsgBox";
+import EmojiPicker from "emoji-picker-react";
 
 function Messages() {
   const db = getDatabase();
@@ -21,6 +22,7 @@ function Messages() {
   const [msgList, setMsgList] = useState([]);
   const [blockedByList, setBlockedByList] = useState([]);
   const [blockedList, setBlockedList] = useState([]);
+  const [showEmoji, setShowEmoji] = useState(false);
 
   useEffect(() => {
     const savedUser = localStorage.getItem("activeMsgBoxInfo");
@@ -61,34 +63,29 @@ function Messages() {
   useEffect(() => {
     const blockRef = ref(db, "blockedUsers/");
     onValue(blockRef, (snapshot) => {
-      const list = [];
-      snapshot.forEach((item) => {
-        const val = item.val();
-        if (val.blockedId === user.uid) {
-          list.push({
-            ...val,
-            blockKey: item.key,
-          });
-        }
-      });
-      setBlockedByList(list);
-    });
-  }, [user.uid]);
+      const blockedBy = [];
+      const youBlocked = [];
 
-  useEffect(() => {
-    const blockRef = ref(db, "blockedUsers/");
-    onValue(blockRef, (snapshot) => {
-      const list = [];
       snapshot.forEach((item) => {
         const val = item.val();
+
+        if (val.blockedId === user.uid) {
+          blockedBy.push({
+            ...val,
+            blockKey: item.key,
+          });
+        }
+
         if (val.blockById === user.uid) {
-          list.push({
+          youBlocked.push({
             ...val,
             blockKey: item.key,
           });
         }
       });
-      setBlockedList(list);
+
+      setBlockedByList(blockedBy);
+      setBlockedList(youBlocked);
     });
   }, [user.uid]);
 
@@ -103,10 +100,10 @@ function Messages() {
     (item) => item.blockedId === activeData.id
   );
   const bottomRef = useRef(null);
-const scrollContainerRef = useRef(null);
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: "auto" });
   }, [msgList]);
 
   return (
@@ -125,14 +122,16 @@ const scrollContainerRef = useRef(null);
                 <FaUser className="text-[29px] md:text-[29px] text-white" />
               </div>
               <div>
-                <h1 className="font-semibold text-[24px]">{activeData.name}</h1>
+                <h1 className="font-semibold text-[24px] capitalize">
+                  {activeData.name}
+                </h1>
                 <p className="text-[14px] text-gray-500">Online</p>
               </div>
             </div>
             <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
           </div>
 
-          <div className="flex flex-col h-full overflow-hidden ">
+          <div className="flex flex-col h-full overflow-hidden">
             <div
               className="flex-1 overflow-y-auto flex flex-col gap-3 py-3 scrollbar-hidden pr-2 "
               ref={scrollContainerRef}
@@ -166,45 +165,59 @@ const scrollContainerRef = useRef(null);
               </p>
             ) : isBlockedUser ? (
               <div
-                className="flex justify-center items-center my-4 gap-3"
+                className="flex justify-center items-center my-3 gap-3"
                 title="Unblock"
               >
-                <p className="text-warningRed text-base font-semibold  font-regular capitalize">
-                  you've blocked this user
+                <p className="text-warningRed text-base font-semibold  font-regular capitalize text-center my-4 ">
+                  You've blocked this user
                 </p>
                 <button
                   onClick={() => unblockUser(isBlockedUser.blockKey)}
-                  className="bg-confirmBtn hover:bg-hoverConfirmBtn text-white text-sm px-5 py-1 rounded font-regular"
+                  className="bg-confirmBtn hover:bg-hoverConfirmBtn text-white text-sm px-5 py-1 rounded font-regular font-semibold"
                 >
                   Unblock
                 </button>
               </div>
             ) : (
-              <div className="flex items-center justify-between py-3">
-                <div className="relative w-[90%] flex items-center">
-                  <input
-                    type="text"
-                    value={msg}
-                    onChange={(e) => setMsg(e.target.value)}
-                    className="h-[45px] w-full bg-[#F1F1F1] rounded-[10px] outline-none pl-[20px] pr-[110px]"
-                    placeholder="Type a message..."
-                  />
-                  <div className="absolute flex gap-5 items-center right-5 opacity-60">
-                    <MdOutlineEmojiEmotions
-                      size={27}
-                      className="cursor-pointer"
-                    />
-                    <IoCameraOutline size={27} className="cursor-pointer" />
-                  </div>
-                </div>
-                <div
-                  onClick={sendMsgHandler}
-                  className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer ml-3"
-                  title="Send"
-                >
-                  <FaTelegramPlane className="text-[25px] text-white" />
-                </div>
-              </div>
+         <div className="relative">
+  {showEmoji && (
+    <div className="absolute bottom-[80px] right-[20px] z-50">
+      <EmojiPicker
+        emojiStyle="apple"
+        onEmojiClick={(emojiData) => setMsg((prev) => prev + emojiData.emoji)}
+      />
+    </div>
+  )}
+
+  <div className="flex items-center justify-between py-3">
+    <div className="relative w-[90%] flex items-center">
+      <input
+        type="text"
+        value={msg}
+        onChange={(e) => setMsg(e.target.value)}
+        className="h-[45px] w-full bg-[#F1F1F1] rounded-[10px] outline-none pl-[20px] pr-[110px] placeholder:font-primary placeholder:font-semibold"
+        placeholder="Type a message..."
+      />
+      <div className="absolute flex gap-5 items-center right-5 opacity-60">
+        <MdOutlineEmojiEmotions
+          onClick={() => setShowEmoji(!showEmoji)}
+          size={27}
+          className="cursor-pointer"
+        />
+        <IoCameraOutline size={27} className="cursor-pointer" />
+      </div>
+    </div>
+
+    <div
+      onClick={sendMsgHandler}
+      className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer ml-3"
+      title="Send"
+    >
+      <FaTelegramPlane className="text-[25px] text-white" />
+    </div>
+  </div>
+</div>
+
             )}
           </div>
         </div>
