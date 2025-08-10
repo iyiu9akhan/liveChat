@@ -39,7 +39,8 @@ function Messages() {
       msgSenderId: user.uid,
       msgSenderName: user.displayName,
       msg: msg,
-      time: moment().format(),
+      // time: moment().format(),
+      time:Date.now(),
       msgReceiverId: activeData.id,
       msgReceiverName: activeData.name,
     });
@@ -160,7 +161,7 @@ function Messages() {
                     }`}
                   >
                     {/* {moment(item.date).fromNow()} */}
-                    {moment(item.date).format("hh:mm A")}
+                    {moment(item.time).format("hh : mm A")}
                   </p>
                 </div>
               ))}
