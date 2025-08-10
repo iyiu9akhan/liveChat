@@ -118,11 +118,11 @@ const scrollContainerRef = useRef(null);
           <Friends className="md:w-[450px] h-[100%]" />
         </div>
 
-        <div className="shadow-md md:w-[700px] rounded-[20px] px-[50px] flex flex-col justify-between">
+        <div className="shadow-md md:w-[700px] rounded-[20px] px-[15px] md:px-[50px] flex flex-col justify-between h-[100vh] md:h-full">
           <div className="border-b-2 border-gray-300 flex items-center justify-between">
             <div className="flex items-center">
               <div className="bg-userBg h-[50px] w-[50px] md:h-[75px] md:w-[75px] rounded-full flex justify-center items-center my-[24px] mr-[33px]">
-                <FaUser className="text-[39px] text-white" />
+                <FaUser className="text-[29px] md:text-[29px] text-white" />
               </div>
               <div>
                 <h1 className="font-semibold text-[24px]">{activeData.name}</h1>
@@ -132,9 +132,9 @@ const scrollContainerRef = useRef(null);
             <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
           </div>
 
-          <div className="flex flex-col h-full overflow-hidden">
+          <div className="flex flex-col h-full overflow-hidden ">
             <div
-              className="flex-1 overflow-y-auto flex flex-col gap-3 py-3 scrollbar-hidden"
+              className="flex-1 overflow-y-auto flex flex-col gap-3 py-3 scrollbar-hidden pr-2 "
               ref={scrollContainerRef}
             >
               {msgList.map((item) => (
