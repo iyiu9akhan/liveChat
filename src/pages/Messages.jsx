@@ -27,7 +27,7 @@ function Messages() {
   const dispatch = useDispatch();
   const [msg, setMsg] = useState("");
   const [msgList, setMsgList] = useState([]);
-  // console.log(msg);
+  console.log(activeData);
 
   useEffect(() => {
     const savedUser = localStorage.getItem("activeMsgBoxInfo");
@@ -52,16 +52,22 @@ function Messages() {
     onValue(msgRef, (snapshot) => {
       let arr = [];
       snapshot.forEach((item) => {
-        arr.push(item.val());
+        if (
+          (data.uid == item.val().msgSenderId &&
+            activeData.id == item.val().msgReceiverId) ||
+          (activeData.id == item.val().msgSenderId &&
+            data.uid == item.val().msgReceiverId)
+        ) {
+          arr.push(item.val());
+        }
       });
       setMsgList(arr);
     });
-  }, []);
+  }, [activeData.id]);
 
   console.log(msgList);
 
-  const messagesEndRef = React.useRef(null);
-
+  // const messagesEndRef = React.useRef(null);
 
   return (
     <div>
@@ -106,7 +112,7 @@ function Messages() {
               </div>
               <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
             </div>
-            <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-3 font-regular text-[16px] py-3 hide-scrollbar justify-end group" >
+            <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-3 font-regular text-[16px] py-3 hide-scrollbar justify-end group">
               {msgList.map((item) =>
                 data.uid == item.msgSenderId ? (
                   <div className="self-end max-w-[70%]">
