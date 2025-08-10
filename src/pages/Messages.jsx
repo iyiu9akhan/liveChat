@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getDatabase, onValue, push, ref, remove } from "firebase/database";
 import { activeMsgBoxInfo } from "../slice/activeMsgBox";
 import EmojiPicker from "emoji-picker-react";
+import moment from "moment/moment";
 
 function Messages() {
   const db = getDatabase();
@@ -38,6 +39,7 @@ function Messages() {
       msgSenderId: user.uid,
       msgSenderName: user.displayName,
       msg: msg,
+      time: moment().format(),
       msgReceiverId: activeData.id,
       msgReceiverName: activeData.name,
     });
@@ -152,6 +154,14 @@ function Messages() {
                   >
                     {item.msg}
                   </p>
+                  <p
+                    className={`text-xs text-gray-500 mt-1 ${
+                      user.uid === item.msgSenderId ? "text-right" : "text-left"
+                    }`}
+                  >
+                    {/* {moment(item.date).fromNow()} */}
+                    {moment(item.date).format("hh:mm A")}
+                  </p>
                 </div>
               ))}
               <div ref={bottomRef} />
@@ -181,8 +191,10 @@ function Messages() {
             ) : (
               <div className="relative">
                 {showEmoji && (
-                  <div className="absolute bottom-[80px] right-[20px] z-50">
+                  <div className="absolute bottom-[80px] md:right-[20px] z-50">
                     <EmojiPicker
+                      searchDisabled={true}
+                      // height={300}
                       emojiStyle="apple"
                       onEmojiClick={(emojiData) =>
                         setMsg((prev) => prev + emojiData.emoji)
