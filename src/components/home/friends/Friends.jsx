@@ -60,9 +60,11 @@ function Friends({ className = "" }) {
       // blockerId: friend.receiverId,
       // blocked: friend.senderName,
       // blockedId: friend.senderId,
-    }).then(() => {
-      remove(ref(db, "friends/" + item.friendKey));
-    });
+    })
+    
+    // .then(() => {
+    //   remove(ref(db, "friends/" + item.friendKey));
+    // });
   };
   const [searchUser, setSearchUser] = useState([]);
 

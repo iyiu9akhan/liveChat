@@ -170,8 +170,8 @@ function Messages() {
             </div>
             <div className="border-gray-300 border-t-2 flex justify-between items-center">
               {blocked ? (
-                <p className="w-full text-center text-red-500 py-5 font-semibold capitalize font-regular">
-                  You are blocked
+                <p className="w-full text-center text-warningRed py-5 font-semibold capitalize font-regular">
+                 you're blocked
                 </p>
               ) : blocker ? (
                 <div
