@@ -13,7 +13,7 @@ import {
   remove,
   set,
 } from "firebase/database";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaUserCheck } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { IoCameraOutline } from "react-icons/io5";
@@ -68,6 +68,45 @@ function Messages() {
   console.log(msgList);
 
   // const messagesEndRef = React.useRef(null);
+
+  const [blockedByList, setBlockedByList] = useState([]);
+  const blocked = blockedByList.includes(activeData.id);
+
+  useEffect(() => {
+    const blockRef = ref(db, "blockedUsers/");
+    onValue(blockRef, (snapshot) => {
+      let array = [];
+      snapshot.forEach((item) => {
+        if (item.val().blockedId === data.uid) {
+          array.push(item.val().blockById);
+        }
+      });
+      setBlockedByList(array);
+    });
+  }, []);
+
+  const [blockedList, setBlockedList] = useState([]);
+  const blocker = blockedList.find((item) => item.blockedId === activeData.id); // I blocked them
+
+  useEffect(() => {
+    const blockRef = ref(db, "blockedUsers/");
+    onValue(blockRef, (snapshot) => {
+      let array = [];
+      snapshot.forEach((item) => {
+        if (item.val().blockById === data.uid) {
+          array.push({
+            ...item.val(),
+            blockKey: item.key,
+          });
+        }
+      });
+      setBlockedList(array);
+    });
+  }, []);
+
+  const unblockUser = (blockKey) => {
+    remove(ref(db, "blockedUsers/" + blockKey));
+  };
 
   return (
     <div>
@@ -130,28 +169,47 @@ function Messages() {
               )}
             </div>
             <div className="border-gray-300 border-t-2 flex justify-between items-center">
-              <div className="w-[90%] relative flex items-center">
-                <input
-                  value={msg}
-                  onChange={(e) => setMsg(e.target.value)}
-                  type="text"
-                  className="h-[45px] w-full bg-[#F1F1F1] rounded-[10px] my-[35px] outline-0 pl-[20px] pr-[110px]  font-regular"
-                />
-                <div className="absolute flex gap-5 items-center right-5 opacity-60">
-                  <MdOutlineEmojiEmotions
-                    size={27}
-                    className="cursor-pointer"
-                  />
-                  <IoCameraOutline size={27} className="cursor-pointer" />
+              {blocked ? (
+                <p className="w-full text-center text-red-500 py-5 font-semibold capitalize font-regular">
+                  You are blocked
+                </p>
+              ) : blocker ? (
+                <div
+                  onClick={() => unblockUser(blocker.blockKey)}
+                  className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[25px]  md:h-[30px] flex justify-center items-center cursor-pointer my-[20px] mx-auto"
+                  title="Unblock"
+                >
+                  <p className="capitalize cursor-pointer text-white font-regular font-semibold text-[13px] md:text-[16px] px-5">
+                    unblock
+                  </p>
+                  {/* <FaUserCheck className="text-white text-[18px]" /> */}
                 </div>
-              </div>
-              <div
-                onClick={sendMsgHandler}
-                className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer"
-                title="send"
-              >
-                <FaTelegramPlane className="text-[25px] text-white" />
-              </div>
+              ) : (
+                <div className="flex justify-between w-full items-center">
+                  <div className="w-[90%] relative flex items-center">
+                    <input
+                      value={msg}
+                      onChange={(e) => setMsg(e.target.value)}
+                      type="text"
+                      className="h-[45px] w-full bg-[#F1F1F1] rounded-[10px] my-[35px] outline-0 pl-[20px] pr-[110px] font-regular"
+                    />
+                    <div className="absolute flex gap-5 items-center right-5 opacity-60">
+                      <MdOutlineEmojiEmotions
+                        size={27}
+                        className="cursor-pointer"
+                      />
+                      <IoCameraOutline size={27} className="cursor-pointer" />
+                    </div>
+                  </div>
+                  <div
+                    onClick={sendMsgHandler}
+                    className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer"
+                    title="send"
+                  >
+                    <FaTelegramPlane className="text-[25px] text-white" />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
