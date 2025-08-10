@@ -179,45 +179,46 @@ function Messages() {
                 </button>
               </div>
             ) : (
-         <div className="relative">
-  {showEmoji && (
-    <div className="absolute bottom-[80px] right-[20px] z-50">
-      <EmojiPicker
-        emojiStyle="apple"
-        onEmojiClick={(emojiData) => setMsg((prev) => prev + emojiData.emoji)}
-      />
-    </div>
-  )}
+              <div className="relative">
+                {showEmoji && (
+                  <div className="absolute bottom-[80px] right-[20px] z-50">
+                    <EmojiPicker
+                      emojiStyle="apple"
+                      onEmojiClick={(emojiData) =>
+                        setMsg((prev) => prev + emojiData.emoji)
+                      }
+                    />
+                  </div>
+                )}
 
-  <div className="flex items-center justify-between py-3">
-    <div className="relative w-[90%] flex items-center">
-      <input
-        type="text"
-        value={msg}
-        onChange={(e) => setMsg(e.target.value)}
-        className="h-[45px] w-full bg-[#F1F1F1] rounded-[10px] outline-none pl-[20px] pr-[110px] placeholder:font-primary placeholder:font-semibold"
-        placeholder="Type a message..."
-      />
-      <div className="absolute flex gap-5 items-center right-5 opacity-60">
-        <MdOutlineEmojiEmotions
-          onClick={() => setShowEmoji(!showEmoji)}
-          size={27}
-          className="cursor-pointer"
-        />
-        <IoCameraOutline size={27} className="cursor-pointer" />
-      </div>
-    </div>
+                <div className="flex items-center justify-between py-3">
+                  <div className="relative w-[90%] flex items-center">
+                    <input
+                      type="text"
+                      value={msg}
+                      onChange={(e) => setMsg(e.target.value)}
+                      className="h-[45px] w-full bg-[#F1F1F1] rounded-[10px] outline-none pl-[20px] pr-[110px] placeholder:font-primary placeholder:font-semibold"
+                      placeholder="Type a message..."
+                    />
+                    <div className="absolute flex gap-5 items-center right-5 opacity-60">
+                      <MdOutlineEmojiEmotions
+                        onClick={() => setShowEmoji(!showEmoji)}
+                        size={27}
+                        className="cursor-pointer"
+                      />
+                      <IoCameraOutline size={27} className="cursor-pointer" />
+                    </div>
+                  </div>
 
-    <div
-      onClick={sendMsgHandler}
-      className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer ml-3"
-      title="Send"
-    >
-      <FaTelegramPlane className="text-[25px] text-white" />
-    </div>
-  </div>
-</div>
-
+                  <div
+                    onClick={sendMsgHandler}
+                    className="p-[10px] bg-sideBar rounded-[10px] cursor-pointer ml-3"
+                    title="Send"
+                  >
+                    <FaTelegramPlane className="text-[25px] text-white" />
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         </div>
