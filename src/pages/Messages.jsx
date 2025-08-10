@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SideBar from "../components/Layout/SideBar";
 import Container from "../components/Layout/Container";
 import Friends from "../components/home/friends/Friends";
@@ -8,13 +8,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { IoCameraOutline } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getDatabase,
-  onValue,
-  push,
-  ref,
-  remove,
-} from "firebase/database";
+import { getDatabase, onValue, push, ref, remove } from "firebase/database";
 import { activeMsgBoxInfo } from "../slice/activeMsgBox";
 
 function Messages() {
@@ -54,8 +48,10 @@ function Messages() {
       const arr = [];
       snapshot.forEach((item) => {
         const val = item.val();
-        const isSender = user.uid === val.msgSenderId && activeData.id === val.msgReceiverId;
-        const isReceiver = activeData.id === val.msgSenderId && user.uid === val.msgReceiverId;
+        const isSender =
+          user.uid === val.msgSenderId && activeData.id === val.msgReceiverId;
+        const isReceiver =
+          activeData.id === val.msgSenderId && user.uid === val.msgReceiverId;
         if (isSender || isReceiver) arr.push({ ...val, key: item.key });
       });
       setMsgList(arr);
@@ -100,8 +96,18 @@ function Messages() {
     remove(ref(db, "blockedUsers/" + blockKey));
   };
 
-  const isBlockedByUser = blockedByList.find((item) => item.blockById === activeData.id);
-  const isBlockedUser = blockedList.find((item) => item.blockedId === activeData.id);
+  const isBlockedByUser = blockedByList.find(
+    (item) => item.blockById === activeData.id
+  );
+  const isBlockedUser = blockedList.find(
+    (item) => item.blockedId === activeData.id
+  );
+  const bottomRef = useRef(null);
+const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [msgList]);
 
   return (
     <Container>
@@ -126,41 +132,49 @@ function Messages() {
             <PiDotsThreeOutlineVerticalFill className="text-[25px]" />
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-3 py-3 hide-scrollbar justify-end">
-            {msgList.map((item) => (
-              <div
-                key={item.key}
-                className={`max-w-[70%] ${user.uid === item.msgSenderId ? "self-end" : "self-start"}`}
-              >
-                <p
-                  className={`px-3 py-2 rounded-2xl ${
-                    user.uid === item.msgSenderId
-                      ? "bg-sideBar text-white rounded-br-[6px]"
-                      : "bg-gray-300 text-black rounded-bl-[6px]"
+          <div className="flex flex-col h-full overflow-hidden">
+            <div
+              className="flex-1 overflow-y-auto flex flex-col gap-3 py-3 scrollbar-hidden"
+              ref={scrollContainerRef}
+            >
+              {msgList.map((item) => (
+                <div
+                  key={item.key}
+                  className={`max-w-[70%] ${
+                    user.uid === item.msgSenderId ? "self-end" : "self-start"
                   }`}
                 >
-                  {item.msg}
-                </p>
-              </div>
-            ))}
+                  <p
+                    className={`px-3 py-2 rounded-2xl ${
+                      user.uid === item.msgSenderId
+                        ? "bg-sideBar text-white rounded-br-[6px]"
+                        : "bg-gray-300 text-black rounded-bl-[6px]"
+                    }`}
+                  >
+                    {item.msg}
+                  </p>
+                </div>
+              ))}
+              <div ref={bottomRef} />
+            </div>
           </div>
 
           <div className="border-t-2 border-gray-300">
             {isBlockedByUser ? (
-              <p className="w-full text-center text-warningRed py-5 font-semibold capitalize">
-                You are blocked by {isBlockedByUser.blockByName}
+              <p className="text-warningRed text-base font-semibold  font-regular capitalize text-center my-4">
+                You're blocked by {isBlockedByUser.blockByName}
               </p>
             ) : isBlockedUser ? (
               <div
-                className="flex flex-col items-center my-4"
+                className="flex justify-center items-center my-4 gap-3"
                 title="Unblock"
               >
-                <p className="text-warningRed text-base font-semibold mb-2">
-                  You have blocked this user
+                <p className="text-warningRed text-base font-semibold  font-regular capitalize">
+                  you've blocked this user
                 </p>
                 <button
                   onClick={() => unblockUser(isBlockedUser.blockKey)}
-                  className="bg-confirmBtn hover:bg-hoverConfirmBtn text-white text-sm px-5 py-1 rounded"
+                  className="bg-confirmBtn hover:bg-hoverConfirmBtn text-white text-sm px-5 py-1 rounded font-regular"
                 >
                   Unblock
                 </button>
@@ -176,7 +190,10 @@ function Messages() {
                     placeholder="Type a message..."
                   />
                   <div className="absolute flex gap-5 items-center right-5 opacity-60">
-                    <MdOutlineEmojiEmotions size={27} className="cursor-pointer" />
+                    <MdOutlineEmojiEmotions
+                      size={27}
+                      className="cursor-pointer"
+                    />
                     <IoCameraOutline size={27} className="cursor-pointer" />
                   </div>
                 </div>
