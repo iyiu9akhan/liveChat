@@ -40,7 +40,7 @@ function Messages() {
       msgSenderName: user.displayName,
       msg: msg,
       // time: moment().format(),
-      time:Date.now(),
+      time: Date.now(),
       msgReceiverId: activeData.id,
       msgReceiverName: activeData.name,
     });
@@ -108,6 +108,13 @@ function Messages() {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "auto" });
   }, [msgList]);
+
+  const keyhandler = (e) => {
+    console.log(e);
+    if (e.key == "Enter") {
+      sendMsgHandler();
+    }
+  };
 
   return (
     <Container>
@@ -207,6 +214,7 @@ function Messages() {
                 <div className="flex items-center justify-between py-3">
                   <div className="relative w-[90%] flex items-center">
                     <input
+                      onKeyDown={keyhandler}
                       type="text"
                       value={msg}
                       onChange={(e) => setMsg(e.target.value)}
