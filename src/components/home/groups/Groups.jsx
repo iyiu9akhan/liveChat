@@ -124,9 +124,9 @@ function Groups() {
                   <h1 className="capitalize font-regular text-[14px] text-black font-semibold ">
                     {Group.groupName}
                   </h1>
-                  <p className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
+                  <div className="font-regular font-medium text-[12px] text-[#4D4D4D] capitalize">
                     <p>demo msg</p>
-                  </p>
+                  </div>
                 </div>
               </div>
               <div

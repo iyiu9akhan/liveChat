@@ -26,6 +26,7 @@ function GroupList() {
     onValue(groupRef, (snapshot) => {
       let arr = [];
       snapshot.forEach((item) => {
+        //  console.log("Fetched group:", item.val());
         if (data.uid !== item.val().adminId) {
           arr.push(item.val());
         }
@@ -232,14 +233,11 @@ function GroupList() {
             </button>
           </div>
         </div>
-      ) : 
-       searchUser.length === 0 ? (
-            <p className="text-center text-gray-500 mt-6 text-[17px] font-regular capitalize">
-             No group exists
-            </p>
-          ) :
-      
-      (
+      ) : groupList.length === 0 ? (
+        <div className="text-center text-gray-500 mt-6 text-[17px] font-regular capitalize">
+          No group exists
+        </div>
+      ) : (
         <div className="overflow-y-scroll h-[94%] pr-2">
           {(searchUser.length > 0 ? searchUser : groupList).map(
             (Group, index) => (
@@ -266,9 +264,9 @@ function GroupList() {
                   </div>
                 </div>
                 <div className="bg-confirmBtn hover:bg-hoverConfirmBtn rounded-[5px] h-[23px] w-[70px] md:h-[30px] md:w-[87px] flex justify-center items-center cursor-pointer">
-                  <p className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
+                  <span className="capitalize text-white font-regular font-semibold text-[13px] md:text-[16px]">
                     join
-                  </p>
+                  </span>
                 </div>
               </div>
             )
