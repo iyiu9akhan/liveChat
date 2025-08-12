@@ -146,9 +146,7 @@ function Friends({ className = "" }) {
           ) : (
             searchUser.map((item, index) => {
               const friendId =
-                data.uid === item.senderId
-                  ? item.receiverId
-                  : item.senderId;
+                data.uid === item.senderId ? item.receiverId : item.senderId;
               const isBlocked = blockedUsers.includes(friendId);
 
               return (
@@ -208,9 +206,7 @@ function Friends({ className = "" }) {
         ) : (
           friendList.map((item, index) => {
             const friendId =
-              data.uid === item.senderId
-                ? item.receiverId
-                : item.senderId;
+              data.uid === item.senderId ? item.receiverId : item.senderId;
             const isBlocked = blockedUsers.includes(friendId);
 
             return (
