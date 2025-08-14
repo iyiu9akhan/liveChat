@@ -65,9 +65,9 @@ function Settings() {
             </h1>
             <div className="flex flex-col gap-[37px] ml-[60px] mt-[34px]">
               <div className="flex items-center gap-[29px] cursor-pointer">
-                <FaKey  size={25} />
+                <FaKey size={25} />
                 <p className="font-regular font-normal text-[20px] capitalize">
-                 change password
+                  change password
                 </p>
               </div>
               <div className="flex items-center gap-[29px] cursor-pointer">
