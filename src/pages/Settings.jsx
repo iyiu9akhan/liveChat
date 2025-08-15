@@ -32,20 +32,20 @@ function Settings() {
                 </h1>
               </div>
             </div>
-            <div className="flex flex-col gap-[37px] ml-[60px] mt-[34px]">
+            <div className="flex flex-col gap-[37px] ml-[60px] mt-[34px] w-fit">
               <div className="flex items-center gap-[29px] cursor-pointer">
                 <RiEdit2Fill size={25} />
                 <p className="font-regular font-normal text-[20px] capitalize">
                   edit profile name
                 </p>
               </div>{" "}
-              <div className="flex items-center gap-[29px] cursor-pointer">
+              <div className="flex items-center gap-[29px] cursor-pointer ">
                 <MdInsertComment size={25} />
                 <p className="font-regular font-normal text-[20px] capitalize">
                   edit profile status info
                 </p>
               </div>{" "}
-              <div className="flex items-center gap-[29px] cursor-pointer">
+              <div className="flex items-center gap-[29px] cursor-pointer ">
                 <MdAddPhotoAlternate size={25} />
                 <p className="font-regular font-normal text-[20px] capitalize">
                   edit profile photo
@@ -63,7 +63,7 @@ function Settings() {
             <h1 className="font-regular capitalize font-semibold text-[20px]">
               account settings
             </h1>
-            <div className="flex flex-col gap-[37px] ml-[60px] mt-[34px]">
+            <div className="flex flex-col gap-[37px] ml-[60px] mt-[34px] w-fit">
               <div className="flex items-center gap-[29px] cursor-pointer">
                 <FaKey size={25} />
                 <p className="font-regular font-normal text-[20px] capitalize">
